@@ -46,6 +46,7 @@ var startLevel = function () {
 	);
 }
 
+
 var StandardLevel = function (questions, time, numberOfQuestions, settings, success, fail) {
 	var standardLevelContainer = $("#standardlevel");
 
