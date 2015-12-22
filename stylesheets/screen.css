@@ -90,34 +90,28 @@ body {
   box-sizing: border-box;
 }
 
-/* line 25, ../sass/screen.scss */
-#main-screen {
+/* line 24, ../sass/screen.scss */
+#standardLevel {
+  display: none;
+}
+
+/* line 29, ../sass/screen.scss */
+#mainscreen {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background-color: #589819;
+  text-align: center;
+  padding: 10px;
 }
-
-/* line 35, ../sass/screen.scss */
-#standard-level .question-container {
-  color: white;
-  position: absolute;
-  width: 100%;
-  padding: 20px;
-  display: none;
+/* line 38, ../sass/screen.scss */
+#mainscreen img {
+  display: inline-block;
 }
 /* line 41, ../sass/screen.scss */
-#standard-level .question-container .question {
-  color: white;
-  text-transform: uppercase;
-  font-size: 40px;
-  text-align: center;
-  text-shadow: black 1px 1px 0;
-}
-/* line 48, ../sass/screen.scss */
-#standard-level .question-container .answer {
+#mainscreen .menu-item {
   padding: 10px;
   border: 1px solid white;
   margin: 15px 0 15px 0;
@@ -125,4 +119,63 @@ body {
   font-size: 20px;
   text-align: center;
   text-shadow: black 1px 1px 0;
+}
+
+/* line 52, ../sass/screen.scss */
+#standardlevel {
+  -moz-perspective: 3000;
+  -webkit-perspective: 3000;
+  perspective: 3000;
+}
+/* line 54, ../sass/screen.scss */
+#standardlevel .level-timer {
+  position: absolute;
+  width: 100%;
+  background-color: #fb9817;
+  left: 0;
+  top: 0;
+  height: 10px;
+}
+/* line 62, ../sass/screen.scss */
+#standardlevel .question-container {
+  color: white;
+  position: absolute;
+  width: 100%;
+  padding: 30px 20px 20px 20px;
+}
+/* line 67, ../sass/screen.scss */
+#standardlevel .question-container .question {
+  color: white;
+  text-transform: uppercase;
+  font-size: 40px;
+  text-align: center;
+  text-shadow: black 1px 1px 0;
+}
+/* line 75, ../sass/screen.scss */
+#standardlevel .question-container .answer {
+  padding: 10px;
+  border: 1px solid white;
+  margin: 15px 0 15px 0;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  text-shadow: black 1px 1px 0;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+/* line 84, ../sass/screen.scss */
+#standardlevel .question-container .answer.correct-answer {
+  -moz-transform: scale(10px);
+  -ms-transform: scale(10px);
+  -webkit-transform: scale(10px);
+  transform: scale(10px);
+}
+/* line 87, ../sass/screen.scss */
+#standardlevel .question-container .answer.wrong-answer {
+  -moz-transform: scale(-10px);
+  -ms-transform: scale(-10px);
+  -webkit-transform: scale(-10px);
+  transform: scale(-10px);
 }
