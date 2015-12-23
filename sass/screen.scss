@@ -49,6 +49,74 @@ body {
 	}
 }
 
+#mapscreen {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fb9817;
+	text-align: center;
+	overflow: hidden;
+	display: none;
+
+  	.map-screen-container {
+  		position: absolute;
+  		left: 0;
+  		top: 0;
+  		width: 100%;
+  		height: 100%;
+  		overflow-x: hidden;
+		overflow-y: scroll; /* has to be scroll, not auto */
+	  	-webkit-overflow-scrolling: touch;
+	  	.map-title {
+	  		position: fixed;
+	  		top: 0;
+	  		left: 0;
+	  		width: 100%;
+	  		text-align: center;
+	  		color: white;
+	  		font-size: 30px;
+	  		text-transform: uppercase;
+	  		background-color: rgba(0,0,0,0.8);
+	  	}
+	  	.level {
+	  		width: 100%;
+	  		position: relative;
+	  		&:before {
+	  			content: "";
+	  			position: absolute;
+	  			width: 10px;
+	  			height: 100%;
+	  			left: 50%;
+	  			top: 0;
+	  			margin-left: -5px;
+	  			background-color: #ffd7a2;
+	  		}
+	  		.level-marker {
+	  			position: absolute;
+	  			left: 50%;
+	  			top: 50%;
+	  			background-color: #fb3109;
+	  			width: 20px;
+	  			height: 20px;
+	  			@include border-radius(50%);
+	  			margin-left: -10px;
+	  			margin-top: -10px;
+	  		}
+	  		.level-title {
+	  			position: absolute;
+	  			display: inline-block;
+	  			bottom: 0;
+	  			left: 0;
+	  			color: white;
+	  			text-align: left;
+	  			font-size: 20px;
+	  		}
+	  	}
+  	}
+}
+
 #standardlevel {
 	@include perspective(3000);
 	.level-timer {

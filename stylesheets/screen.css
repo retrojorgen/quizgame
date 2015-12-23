@@ -122,12 +122,89 @@ body {
 }
 
 /* line 52, ../sass/screen.scss */
+#mapscreen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fb9817;
+  text-align: center;
+  overflow: hidden;
+  display: none;
+}
+/* line 63, ../sass/screen.scss */
+#mapscreen .map-screen-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
+}
+/* line 72, ../sass/screen.scss */
+#mapscreen .map-screen-container .map-title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+/* line 83, ../sass/screen.scss */
+#mapscreen .map-screen-container .level {
+  width: 100%;
+  position: relative;
+}
+/* line 86, ../sass/screen.scss */
+#mapscreen .map-screen-container .level:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  margin-left: -5px;
+  background-color: #ffd7a2;
+}
+/* line 96, ../sass/screen.scss */
+#mapscreen .map-screen-container .level .level-marker {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: #fb3109;
+  width: 20px;
+  height: 20px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+/* line 107, ../sass/screen.scss */
+#mapscreen .map-screen-container .level .level-title {
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  left: 0;
+  color: white;
+  text-align: left;
+  font-size: 20px;
+}
+
+/* line 120, ../sass/screen.scss */
 #standardlevel {
   -moz-perspective: 3000;
   -webkit-perspective: 3000;
   perspective: 3000;
 }
-/* line 54, ../sass/screen.scss */
+/* line 122, ../sass/screen.scss */
 #standardlevel .level-timer {
   position: absolute;
   width: 100%;
@@ -136,14 +213,14 @@ body {
   top: 0;
   height: 10px;
 }
-/* line 62, ../sass/screen.scss */
+/* line 130, ../sass/screen.scss */
 #standardlevel .question-container {
   color: white;
   position: absolute;
   width: 100%;
   padding: 30px 20px 20px 20px;
 }
-/* line 67, ../sass/screen.scss */
+/* line 135, ../sass/screen.scss */
 #standardlevel .question-container .question {
   color: white;
   text-transform: uppercase;
@@ -151,7 +228,7 @@ body {
   text-align: center;
   text-shadow: black 1px 1px 0;
 }
-/* line 75, ../sass/screen.scss */
+/* line 143, ../sass/screen.scss */
 #standardlevel .question-container .answer {
   padding: 10px;
   border: 1px solid white;
@@ -165,14 +242,14 @@ body {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 84, ../sass/screen.scss */
+/* line 152, ../sass/screen.scss */
 #standardlevel .question-container .answer.correct-answer {
   -moz-transform: scale(10px);
   -ms-transform: scale(10px);
   -webkit-transform: scale(10px);
   transform: scale(10px);
 }
-/* line 87, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 #standardlevel .question-container .answer.wrong-answer {
   -moz-transform: scale(-10px);
   -ms-transform: scale(-10px);
