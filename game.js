@@ -1,7 +1,7 @@
 var gameSettings = {
 	lives: 3,
 	name: "funkyface",
-	currentlevel: 0,
+	currentlevel: 1,
 	currentmap: 0,
 	width: window.innerWidth,
 	height: window.innerHeight,
@@ -16,188 +16,9 @@ var translation = {
 	"newgame": "New game"
 }
 
-var maps = [
-	{
-		"mapname": "Music world",
-		"levels": [
-			{
-				"levelname": "The amazon",
-				"leveltype": "standardlevel",
-				"correctAnswers": 5,
-				"questions": 
-				[
-					{
-						question: "Who created sonic?",
-						alternatives: ["Nintendo","Sega","Sony Ericsson"],
-						answer: 1
-					},
-					{
-						question: "Who created Mario?",
-						alternatives: ["Sega","Atari","Nintendo"],
-						answer: 2
-					},
-					{
-						question: "Who created Pitfall?",
-						alternatives: ["Sega","Atari","Nintendo"],
-						answer: 1
-					},
-					{
-						question: "Where does Nintendo come from?",
-						alternatives: ["China","Japan","Korea"],
-						answer: 1
-					},
-					{
-						question: "Who created Mario?",
-						alternatives: ["Satoru Iwata","Shigeru Miyamoto","Bill Gates"],
-						answer: 1
-					}
-				],
-				"timeToBeatLevel": 30
-			},
-			{
-				"levelname": "Battle creek",
-				"leveltype": "standardlevel",
-				"correctAnswers": 3,
-				"questions": 
-				[
-					{
-						question: "Who created sonic?",
-						alternatives: ["Nintendo","Sega","Sony Ericsson"],
-						answer: 1
-					},
-					{
-						question: "Who created Mario?",
-						alternatives: ["Sega","Atari","Nintendo"],
-						answer: 2
-					},
-					{
-						question: "Who created Pitfall?",
-						alternatives: ["Sega","Atari","Nintendo"],
-						answer: 1
-					},
-					{
-						question: "Where does Nintendo come from?",
-						alternatives: ["China","Japan","Korea"],
-						answer: 1
-					},
-					{
-						question: "Who created Mario?",
-						alternatives: ["Satoru Iwata","Shigeru Miyamoto","Bill Gates"],
-						answer: 1
-					}
-				],
-				"timeToBeatLevel": 30
-			},
-			{
-				"levelname": "The crazy crack",
-				"leveltype": "standardlevel",
-				"correctAnswers": 1,
-				"questions": 
-				[
-					{
-						question: "Who created sonic?",
-						alternatives: ["Nintendo","Sega","Sony Ericsson"],
-						answer: 1
-					},
-					{
-						question: "Who created Mario?",
-						alternatives: ["Sega","Atari","Nintendo"],
-						answer: 2
-					},
-					{
-						question: "Who created Pitfall?",
-						alternatives: ["Sega","Atari","Nintendo"],
-						answer: 1
-					},
-					{
-						question: "Where does Nintendo come from?",
-						alternatives: ["China","Japan","Korea"],
-						answer: 1
-					},
-					{
-						question: "Who created Mario?",
-						alternatives: ["Satoru Iwata","Shigeru Miyamoto","Bill Gates"],
-						answer: 1
-					}
-				],
-				"timeToBeatLevel": 10
-			},
-			{
-				"levelname": "Cookie cutter",
-				"leveltype": "standardlevel",
-				"correctAnswers": 1,
-				"questions": 
-				[
-					{
-						question: "Who created sonic?",
-						alternatives: ["Nintendo","Sega","Sony Ericsson"],
-						answer: 1
-					},
-					{
-						question: "Who created Mario?",
-						alternatives: ["Sega","Atari","Nintendo"],
-						answer: 2
-					},
-					{
-						question: "Who created Pitfall?",
-						alternatives: ["Sega","Atari","Nintendo"],
-						answer: 1
-					},
-					{
-						question: "Where does Nintendo come from?",
-						alternatives: ["China","Japan","Korea"],
-						answer: 1
-					},
-					{
-						question: "Who created Mario?",
-						alternatives: ["Satoru Iwata","Shigeru Miyamoto","Bill Gates"],
-						answer: 1
-					}
-				],
-				"timeToBeatLevel": 10
-			},
-			{
-				"levelname": "Crappy cutter",
-				"leveltype": "standardlevel",
-				"correctAnswers": 1,
-				"questions": 
-				[
-					{
-						question: "Who created sonic?",
-						alternatives: ["Nintendo","Sega","Sony Ericsson"],
-						answer: 1
-					},
-					{
-						question: "Who created Mario?",
-						alternatives: ["Sega","Atari","Nintendo"],
-						answer: 2
-					},
-					{
-						question: "Who created Pitfall?",
-						alternatives: ["Sega","Atari","Nintendo"],
-						answer: 1
-					},
-					{
-						question: "Where does Nintendo come from?",
-						alternatives: ["China","Japan","Korea"],
-						answer: 1
-					},
-					{
-						question: "Who created Mario?",
-						alternatives: ["Satoru Iwata","Shigeru Miyamoto","Bill Gates"],
-						answer: 1
-					}
-				],
-				"timeToBeatLevel": 10
-			}
-		]
-	},
 
-]
-
-
-console.log($("#start-game"));
-$("#start-game").on("click", function () {
+var startButtonTouch = new Hammer($("#start-game")[0]);
+startButtonTouch.on('tap', function () {
 	openMap();
 });
 
@@ -206,9 +27,10 @@ $("#start-game").on("click", function () {
 var startLevel = function (mapId, levelId) {
 	$("#mainscreen").hide();
 	$("#mapscreen").hide();
+	$("#titlefield").hide();
 	$("#standardlevel").show();
 	console.log(mapId, levelId);
-	var levelStart = maps[mapId];
+	var levelStart = maps[mapId].levels[levelId];
 	console.log(levelStart);
 	if(levelStart.leveltype == "standardlevel") {
 		StandardLevel(levelStart.questions, levelStart.timeToBeatLevel, levelStart.correctAnswers, gameSettings, 
@@ -218,7 +40,7 @@ var startLevel = function (mapId, levelId) {
 			function () {
 				console.log('fail');
 			}
-		);	
+		);
 	}
 	
 }
@@ -228,6 +50,7 @@ var renderMap = function (maps) {
 	var mapContainer = $("#mapscreen");
 
 	var showLevel = function (event) {
+		console.log(event);
 		var levelMarker = $(event.target);
 		levelMarker.parent().siblings().removeClass("selected");
 		levelMarker.parent().addClass("selected");
@@ -244,10 +67,12 @@ var renderMap = function (maps) {
 	};
 	maps.forEach(function(map, mapIndex) {
 		var mapScreenContainer = $("<div></div>").addClass("map-screen-container");
-		var mapTitle = $("<div></div>").addClass("map-title").text(map.mapname);
-		var mapBuffer = $("<div></div>").addClass("map-buffer");
-		mapScreenContainer.append(mapTitle, mapBuffer);
-
+		$("#titlefield").text(map.mapname);
+		var mapBuffer = $("<div></div>").addClass("map-buffer").css("height", gameSettings.levelHeight);
+		mapScreenContainer.append(mapBuffer);
+		if(mapIndex == gameSettings.currentmap) {
+			mapScreenContainer.addClass("current");
+		}
 		TweenMax.to(mapScreenContainer, 0, {x: (mapIndex-gameSettings.currentmap)*gameSettings.width, ease: Linear.easeNone});
 
 		map.levels.forEach(function (level, levelIndex) {
@@ -258,17 +83,20 @@ var renderMap = function (maps) {
 			.attr("data-level-id", levelIndex);
 			var levelTitle = $("<div></div>").addClass("level-title").text(level.levelname);
 			var levelMarker = $("<div></div>").addClass("level-marker");
+			var levelMarkerTouch = new Hammer(levelMarker[0]);
 			var levelStartButton = $("<div></div>").addClass("level-start-button").text(translation.startLevel);
+			var levelStartButtonTouch = new Hammer(levelStartButton[0]);
 			if(mapIndex == gameSettings.currentmap && levelIndex == gameSettings.currentlevel) {
 				levelContainer.addClass("current").addClass("selected");
 			}
 			levelContainer.append(levelMarker, levelTitle, levelStartButton);
 			mapScreenContainer.prepend(levelContainer);
-			levelMarker.on('click', showLevel);
-			levelStartButton.on('click', enterLevel);
+
+			levelMarkerTouch.on('tap', showLevel);
+			levelStartButtonTouch.on('tap', enterLevel);
 		});
 
-		mapScreenContainer.scrollTop(mapScreenContainer[0].scrollHeight);
+
 		mapContainer.append(mapScreenContainer);
 	});
 };
@@ -277,6 +105,14 @@ var openMap = function (settings) {
 	$("#mainscreen").hide();
 	$("#standardlevel").hide();
 	$("#mapscreen").show();
+	$("#titlefield").show();
+	var scrollLength = $(".map-screen-container.current").outerHeight(true)*2;
+	if(gameSettings.currentLevel != 0) {
+		scrollLength = scrollLength - ((gameSettings.currentlevel+1)*gameSettings.levelHeight);
+		console.log(scrollLength);
+	}
+	console.log(scrollLength);
+	$(".map-screen-container.current").scrollTop(scrollLength);
 }
 
 
@@ -297,10 +133,11 @@ var StandardLevel = function (questions, time, numberOfQuestions, settings, succ
 		questionContainer.append(question);
 		questionObject.alternatives.forEach(function (alternative, index) {
 			var answer = $("<div></div>").addClass("answer").text(alternative);
+			var answerTouch = new Hammer(answer[0]);
 			if(index == questionObject.answer) {
 				answer.addClass("correct");
 			}
-			answer.on("click", checkAnswer);
+			answerTouch.on("tap", checkAnswer);
 			questionContainer.append(answer);
 		});
 
@@ -318,11 +155,7 @@ var StandardLevel = function (questions, time, numberOfQuestions, settings, succ
 		}
 		var parentContainer = currentAnswer.parent();
 		TweenMax.to(parentContainer, 0.5, {x: -window.innerWidth, ease: Back.easeOut});
-		if(questionCounter++ <= numberOfQuestions) {
-			generateQuestion(questions[questionCounter-1]);
-		} else {
-			winLevel();
-		}
+		generateQuestion(questions[questionCounter++]);
 	};
 
 	var startTimer = function () {
