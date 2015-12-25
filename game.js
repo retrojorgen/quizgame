@@ -33,7 +33,7 @@ var startLevel = function (mapId, levelId) {
 	var levelStart = maps[mapId].levels[levelId];
 	console.log(levelStart);
 	if(levelStart.leveltype == "standardlevel") {
-		StandardLevel(levelStart.questions, levelStart.timeToBeatLevel, levelStart.correctAnswers, gameSettings, 
+		hordeLevel(levelStart.questions, levelStart.timeToBeatLevel, levelStart.correctAnswers, gameSettings, 
 			function () {
 				console.log("success");
 			},
@@ -116,8 +116,9 @@ var openMap = function (settings) {
 }
 
 
-var StandardLevel = function (questions, time, numberOfQuestions, settings, success, fail) {
+var hordeLevel = function (questions, time, numberOfQuestions, settings, success, fail) {
 	var standardLevelContainer = $("#standardlevel");
+	var levelLives = settings.lives;
 	standardLevelContainer.empty();
 
 	var questionCounter = 1;
@@ -126,8 +127,10 @@ var StandardLevel = function (questions, time, numberOfQuestions, settings, succ
 		failLevel();
 	}, time * 1000);
 
+	var questionTimeout = undefined;
 
-	var generateQuestion = function (questionObject) {
+
+	var generateQuestion = function (questionObject, newTimer) {
 		var questionContainer = $("<div></div>").addClass("question-container").addClass("current");
 		var question = $("<div></div>").addClass("question").text(questionObject.question);
 		questionContainer.append(question);
@@ -144,18 +147,49 @@ var StandardLevel = function (questions, time, numberOfQuestions, settings, succ
 		TweenMax.to(questionContainer, 0, {x: window.innerWidth, ease:Linear.easeNone});
 		standardLevelContainer.append(questionContainer);
 		TweenMax.to(questionContainer, 0.5, {x: 0, ease: Back.easeOut});
+
+		if(newTimer) {
+			questionTimeout = setTimeout(function () {
+				console.log(questionTimeout);
+				failAttack(questionContainer);
+			}, 5000);
+		}
+
+		console.log(questionTimeout);
+	};
+
+	var failAttack = function (questionContainer) {
+		clearTimeout(questionTimeout);
+		levelLives--;
+		console.log('minus life');
+		if(levelLives <= 0) {
+			failLevel();
+		} else {
+			generateNewQuestion(questionContainer, true);
+		}
+
+	}
+
+	var successAttack = function (questionContainer) {
+		clearTimeout(questionTimeout);
+		generateNewQuestion(parentContainer, true);
 	};
 
 	var checkAnswer = function (event) {
 		var currentAnswer = $(event.target);
+		var parentContainer = currentAnswer.parent();
 		if(currentAnswer.hasClass("correct")) {
 			currentAnswer.addClass("correct-animation");
+			successAttack(parentContainer);
 		} else {
 			currentAnswer.addClass("wrong-animation");
+			generateNewQuestion(parentContainer, false);
 		}
-		var parentContainer = currentAnswer.parent();
-		TweenMax.to(parentContainer, 0.5, {x: -window.innerWidth, ease: Back.easeOut});
-		generateQuestion(questions[questionCounter++]);
+	};
+
+	var generateNewQuestion = function (questionContainer, toggle) {
+		TweenMax.to(questionContainer, 0.5, {x: -window.innerWidth, ease: Back.easeOut});
+		generateQuestion(questions[questionCounter++], toggle);
 	};
 
 	var startTimer = function () {
@@ -176,7 +210,7 @@ var StandardLevel = function (questions, time, numberOfQuestions, settings, succ
 	}
 
 	startTimer();
-	generateQuestion(questions[questionCounter-1]);
+	generateQuestion(questions[questionCounter-1], true);
 }
 
 
