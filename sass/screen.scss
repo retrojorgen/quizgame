@@ -156,7 +156,56 @@ body {
   	}
 }
 
+.guysprite {
+	width: 40px;
+	height: 60px;
+	background-color: green;
+	position: absolute;
+	&.standing {
+		bottom: 20px;
+		left: 10px;
+	}
+}
+
+.shotsprite {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	&.horde {
+		bottom: 30px;
+		left: 50px;
+		background-color: black;
+	}
+}
+
+.enemysprite {
+	width: 40px;
+	height: 60px;
+	background-color: red;
+	position: absolute;
+	&.walker {
+		bottom: 20px;
+		left: 100%;
+	}
+}
+
+.ground {
+	position: absolute;
+	width: 100%;
+	height: 20px;
+	bottom: 0;
+	left: 0;
+	&.dirt {
+		background-color: #966b10;
+	}
+}
+
 #standardlevel {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
 	@include perspective(3000);
 	.level-timer {
 		position: absolute;
