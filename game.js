@@ -245,24 +245,45 @@ var hordeLevel = function (questions, time, numberOfQuestions, settings, success
 		walkers.push(walker);
 	}
 
-	var shootWalker = function () {
+	var shootWalker = function (callback) {
 		var shot = $("<div></div>").addClass("shotsprite horde");
 		standardLevelContainer.append(shot);
-		TweenMax.to(shot, 1, {x: settings.width - 40 - 10, ease: Linear.easeNone});
-		setInterval(function () {
-			console.log(shot.offset().left, walkers[0].offset().left);
-		}, 100);
+		TweenMax.to(shot, 2, {x: settings.width - 40 - 10, ease: Linear.easeNone});
+		console.log("hest");
+		console.log(shot, walkers);
+		if(checkShot(shot,walkers[0])) {
+				callback(false);
+		}
+
+		var shotInterval = setInterval(function () {
+			if(checkShot(shot,walkers[0])) {
+				callback(shotInterval);
+			}
+		}, 10);
 	};
 
-	var removeWalker = function (walkerAttackToggle) {
-		var currentWalker = walkers[0];
-		walkers.shift();
-		if(walkerAttackToggle) {
-			console.log("fail attack");
-			currentWalker.remove();
+	checkShot = function (shot, walker) {
+		console.log(shot, walker);
+		if(shot.offset().left >= walker.offset().left) {
+			shot.remove();
+			return true;
 		} else {
+			return false;
+		}
+	}
+
+	var removeWalker = function (walkerAttackToggle, callback) {
+		var currentWalker = walkers[0];
+		if(walkerAttackToggle) {
 			console.log("success attack");
-			shootWalker();
+			shootWalker(function (shotInterval) {
+				if(shotInterval) clearInterval(shotInterval);
+				walkers.shift();
+				currentWalker.remove();
+				callback();
+			});
+		} else {
+			console.log("fail attack");
 			TweenMax.to(currentWalker, 1, {x: "-=100", ease: Linear.easeNone, onComplete: function () {
 				currentWalker.remove();
 			}});
@@ -315,8 +336,9 @@ var hordeLevel = function (questions, time, numberOfQuestions, settings, success
 
 	var successAttack = function (questionContainer) {
 		clearTimeout(questionTimeout);
-		removeWalker(true);
-		generateNewQuestion(questionContainer, true);
+		removeWalker(true, function () {
+			generateNewQuestion(questionContainer, true);
+		});
 	};
 
 	var checkAnswer = function (event) {
