@@ -10,6 +10,11 @@ var gameSettings = {
 	mainScreen: $("mainscreen")
 }
 
+if($("#mobile-wrapper").length) {
+	gameSettings.width = 375;
+	gameSettings.height = 667;
+}
+
 var currentGameData = {
 	points: 0,
 	level: 0,

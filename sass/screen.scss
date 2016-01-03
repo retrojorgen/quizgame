@@ -15,13 +15,27 @@ html, body {
 }
 
 body {
-	background-color: blue;
+	background-color: #151d29;
+	text-transform: uppercase;
 }
 
 * {
 	@include box-sizing(border-box);
 }
 
+
+#mobile-wrapper {
+	position: absolute;
+	width: 375px;
+	height: 667px;
+	top: 50%;
+	left: 50%;
+	overflow: hidden;
+	margin-top: -333.5px;
+	margin-left: -187.5px;
+	@include box-shadow(rgba(255,255,255,0.4) 0 0 34px);
+	@include border-radius(4px);
+}
 
 
 #levelContainer {
@@ -56,15 +70,20 @@ body {
 	background-color: #589819;
 	background-image: url(../img/quiz-quest-splash.jpg);
 	background-size: cover;
+	background-position: center top;
 	text-align: center;
 	padding: 10px;
+	padding-top: 230px;
 	z-index: 100;
+	text-transform: uppercase;
+	text-align: center;
 	img {
 		display: inline-block;
 	}
 	.menu-item {
 		padding: 10px;
 		border: 1px solid white;
+		display: inline-block;
 		margin: 15px 0 15px 0;
 		color: white;
 		font-size: 20px;
@@ -73,13 +92,26 @@ body {
 	}
 }
 
+#bottom-container {
+	font-size: 20px;
+	color: white;
+	@include text-shadow(rgb(0,0,0) 1px 1px 0);
+	position: relative;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 40px;
+}
+
 #levelContainer {
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	left: 0;
 	top: 0;
-	background-color: black;
+	background-image: url(../img/quiz-background.jpg);
+	background-size: cover;
+	background-position: center top;
 	@include perspective(3000);
 	.level-timer {
 		position: absolute;
@@ -88,6 +120,14 @@ body {
 		left: 0;
 		top: 0;
 		height: 10px;
+	}
+
+	.answerbutton {
+	    text-align: center;
+	    margin-top: 20px;
+	    border: 1px solid #FF0000;
+	    padding: 10px;
+	    font-size: 29px;
 	}
 	.questionContainer {
 		color: white;
@@ -104,23 +144,23 @@ body {
 		}
 		.alternative {
 			padding: 10px;
-			border: 1px solid white;
+			border: 1px solid #FF0000;
 			margin: 15px 0 15px 0;
 			color: white;
 			font-size: 20px;
 			text-align: center;
+			letter-spacing: 1;
+			background-color: #BB6A26;
 			@include text-shadow(rgb(0,0,0) 1px 1px 0);
 			@include transition(0.1s);
 			&.correct-answer {
-				@include transform(scale(10px));
-				@include box-shadow(rgba(93,241,42,1) 0 0 30px inset);
+				background-color: #4cc124;
 			}
 			&.wrong-answer {
-				@include transform(scale(-10px));
-				@include box-shadow(rgba(241,42,60,1) 0 0 30px inset);
+				background-color: #FF0000;
 			}
 			&.selected {
-				@include box-shadow(rgba(241,215,42,1) 0 0 30px inset);
+				background-color: #F4A460;
 			}
 		}
 	}

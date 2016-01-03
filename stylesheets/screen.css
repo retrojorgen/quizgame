@@ -2,7 +2,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 5, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,52 +24,52 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
 @font-face {
   font-family: "Pixel";
-  src: url('../fonts/pixel.ttf?1451815560') format('truetype');
+  src: url('../fonts/pixel.ttf?1099418656') format('truetype');
 }
 /* line 10, ../sass/screen.scss */
 html, body {
@@ -81,10 +81,11 @@ html, body {
 
 /* line 17, ../sass/screen.scss */
 body {
-  background-color: blue;
+  background-color: #151d29;
+  text-transform: uppercase;
 }
 
-/* line 21, ../sass/screen.scss */
+/* line 22, ../sass/screen.scss */
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -92,6 +93,24 @@ body {
 }
 
 /* line 27, ../sass/screen.scss */
+#mobile-wrapper {
+  position: absolute;
+  width: 375px;
+  height: 667px;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  margin-top: -333.5px;
+  margin-left: -187.5px;
+  -moz-box-shadow: rgba(255, 255, 255, 0.4) 0 0 34px;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.4) 0 0 34px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 0 34px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 41, ../sass/screen.scss */
 #levelContainer {
   position: absolute;
   left: 0;
@@ -101,7 +120,7 @@ body {
   z-index: 50;
 }
 
-/* line 36, ../sass/screen.scss */
+/* line 50, ../sass/screen.scss */
 #titlefield {
   position: fixed;
   top: 0;
@@ -116,7 +135,7 @@ body {
   z-index: 1000;
 }
 
-/* line 50, ../sass/screen.scss */
+/* line 64, ../sass/screen.scss */
 #mainscreen {
   position: absolute;
   left: 0;
@@ -126,18 +145,23 @@ body {
   background-color: #589819;
   background-image: url(../img/quiz-quest-splash.jpg);
   background-size: cover;
+  background-position: center top;
   text-align: center;
   padding: 10px;
+  padding-top: 230px;
   z-index: 100;
+  text-transform: uppercase;
+  text-align: center;
 }
-/* line 62, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 #mainscreen img {
   display: inline-block;
 }
-/* line 65, ../sass/screen.scss */
+/* line 83, ../sass/screen.scss */
 #mainscreen .menu-item {
   padding: 10px;
   border: 1px solid white;
+  display: inline-block;
   margin: 15px 0 15px 0;
   color: white;
   font-size: 20px;
@@ -145,19 +169,33 @@ body {
   text-shadow: black 1px 1px 0;
 }
 
-/* line 76, ../sass/screen.scss */
+/* line 95, ../sass/screen.scss */
+#bottom-container {
+  font-size: 20px;
+  color: white;
+  text-shadow: black 1px 1px 0;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+}
+
+/* line 106, ../sass/screen.scss */
 #levelContainer {
   width: 100%;
   height: 100%;
   position: absolute;
   left: 0;
   top: 0;
-  background-color: black;
+  background-image: url(../img/quiz-background.jpg);
+  background-size: cover;
+  background-position: center top;
   -moz-perspective: 3000;
   -webkit-perspective: 3000;
   perspective: 3000;
 }
-/* line 84, ../sass/screen.scss */
+/* line 116, ../sass/screen.scss */
 #levelContainer .level-timer {
   position: absolute;
   width: 100%;
@@ -166,14 +204,22 @@ body {
   top: 0;
   height: 10px;
 }
-/* line 92, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
+#levelContainer .answerbutton {
+  text-align: center;
+  margin-top: 20px;
+  border: 1px solid #FF0000;
+  padding: 10px;
+  font-size: 29px;
+}
+/* line 132, ../sass/screen.scss */
 #levelContainer .questionContainer {
   color: white;
   position: absolute;
   width: 100%;
   padding: 30px 20px 20px 20px;
 }
-/* line 97, ../sass/screen.scss */
+/* line 137, ../sass/screen.scss */
 #levelContainer .questionContainer .question {
   color: white;
   text-transform: uppercase;
@@ -181,43 +227,31 @@ body {
   text-align: center;
   text-shadow: black 1px 1px 0;
 }
-/* line 105, ../sass/screen.scss */
+/* line 145, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative {
   padding: 10px;
-  border: 1px solid white;
+  border: 1px solid #FF0000;
   margin: 15px 0 15px 0;
   color: white;
   font-size: 20px;
   text-align: center;
+  letter-spacing: 1;
+  background-color: #BB6A26;
   text-shadow: black 1px 1px 0;
   -moz-transition: 0.1s;
   -o-transition: 0.1s;
   -webkit-transition: 0.1s;
   transition: 0.1s;
 }
-/* line 114, ../sass/screen.scss */
+/* line 156, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.correct-answer {
-  -moz-transform: scale(10px);
-  -ms-transform: scale(10px);
-  -webkit-transform: scale(10px);
-  transform: scale(10px);
-  -moz-box-shadow: #5df12a 0 0 30px inset;
-  -webkit-box-shadow: #5df12a 0 0 30px inset;
-  box-shadow: #5df12a 0 0 30px inset;
+  background-color: #4cc124;
 }
-/* line 118, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.wrong-answer {
-  -moz-transform: scale(-10px);
-  -ms-transform: scale(-10px);
-  -webkit-transform: scale(-10px);
-  transform: scale(-10px);
-  -moz-box-shadow: #f12a3c 0 0 30px inset;
-  -webkit-box-shadow: #f12a3c 0 0 30px inset;
-  box-shadow: #f12a3c 0 0 30px inset;
+  background-color: #FF0000;
 }
-/* line 122, ../sass/screen.scss */
+/* line 162, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.selected {
-  -moz-box-shadow: #f1d72a 0 0 30px inset;
-  -webkit-box-shadow: #f1d72a 0 0 30px inset;
-  box-shadow: #f1d72a 0 0 30px inset;
+  background-color: #F4A460;
 }
