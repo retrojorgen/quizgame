@@ -108,7 +108,8 @@ var maps = [
 						answer: 1
 					}
 				],
-				"timeToBeatLevel": 30
+				"timeToBeatLevel": 60,
+				"timePerZombie": 10
 			},
 			{
 				"levelname": "Battle creek",

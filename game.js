@@ -33,7 +33,7 @@ var startLevel = function (mapId, levelId) {
 	var levelStart = maps[mapId].levels[levelId];
 	console.log(levelStart);
 	if(levelStart.leveltype == "standardlevel") {
-		hordeLevel(levelStart.questions, levelStart.timeToBeatLevel, levelStart.correctAnswers, gameSettings, 
+		hordeLevel(levelStart.questions, levelStart.timeToBeatLevel, levelStart.timePerZombie, levelStart.correctAnswers, gameSettings, 
 			function () {
 				console.log("success");
 			},
@@ -116,109 +116,17 @@ var openMap = function (settings) {
 }
 
 
-
-var gapLevel = function (questions, time, timeBetweenGaps, settings, success, fail, achievements) {
-	var gapLevelContainer = $("#gaplevel");
-	var levelLives = settings.lives;
-	gapLevelContainer.empty();
-
-
-	var clearGap = false;
-
-	var questionCounter = 1;
-
-	var levelTimer = setTimeout(function () {
-		failLevel();
-	}, time * 1000);
-
-	var questionTimeout = undefined;
-
-
-	var generateQuestion = function (questionObject, newTimer) {
-		var questionContainer = $("<div></div>").addClass("question-container").addClass("current");
-		var question = $("<div></div>").addClass("question").text(questionObject.question);
-		questionContainer.append(question);
-		questionObject.alternatives.forEach(function (alternative, index) {
-			var answer = $("<div></div>").addClass("answer").text(alternative);
-			var answerTouch = new Hammer(answer[0]);
-			if(index == questionObject.answer) {
-				answer.addClass("correct");
-			}
-			answerTouch.on("tap", checkAnswer);
-			questionContainer.append(answer);
-		});
-
-		TweenMax.to(questionContainer, 0, {x: window.innerWidth, ease:Linear.easeNone});
-		gapLevelContainer.append(questionContainer);
-		TweenMax.to(questionContainer, 0.5, {x: 0, ease: Back.easeOut});
-
-		if(newTimer) {
-			clearGap = false;
-			questionTimeout = setTimeout(function () {
-				console.log(questionTimeout);
-				checkGap(questionContainer);
-			}, timeBetweenGaps * 100);
-		}
-
-		console.log(questionTimeout);
-	};
-
-	var checkGap = function (questionContainer) {
-		if(!clearGap) {
-			clearTimeout(questionTimeout);
-			generateNewQuestion(parentContainer, true);
-		} else {
-			clearTimeout(questionTimeout);
-			failLevel();
-		}
-	}
-
-	var checkAnswer = function (event) {
-		var currentAnswer = $(event.target);
-		var parentContainer = currentAnswer.parent();
-		if(currentAnswer.hasClass("correct")) {
-			currentAnswer.addClass("correct-animation");
-			clearGap = true;
-		} else {
-			currentAnswer.addClass("wrong-animation");
-			clearGap = false;
-		}
-	};
-
-	var generateNewQuestion = function (questionContainer, toggle) {
-		TweenMax.to(questionContainer, 0.5, {x: -window.innerWidth, ease: Back.easeOut});
-		generateQuestion(questions[questionCounter++], toggle);
-	};
-
-	var startTimer = function () {
-		var timerContainer = $("<div></div>").addClass("level-timer");
-		TweenMax.to(timerContainer, 0, {x: -window.innerWidth, ease: Linear.easeNone});
-		TweenMax.to(timerContainer, time, {x: 0, ease: Linear.easeNone});
-		standardLevelContainer.append(timerContainer);
-	}
-
-	var failLevel = function () {
-		clearTimeout(levelTimer);
-		fail();
-	}
-
-	var winLevel = function () {
-		clearTimeout(levelTimer);
-		success();
-	}
-
-	startTimer();
-	generateQuestion(questions[questionCounter-1], true);
-}
-
-
-var hordeLevel = function (questions, time, numberOfQuestions, settings, success, fail) {
-	var standardLevelContainer = $("#standardlevel");
+var hordeLevel = function (questions, time, numberOfQuestions, timePerZombie, settings, success, fail) {
+	var standardLevelContainer = $("#standardlevel").addClass("forest");
 	var levelLives = settings.lives;
 	var walkers = [];
 	standardLevelContainer.empty();
 
 	var questionCounter = 1;
+
+	var pow = $("<div></div>").addClass("pow").hide();
+
+	standardLevelContainer.append(pow);
 
 	var levelTimer = setTimeout(function () {
 		failLevel();
@@ -227,7 +135,7 @@ var hordeLevel = function (questions, time, numberOfQuestions, settings, success
 	var questionTimeout = undefined;
 
 	var addGround = function () {
-		var ground = $("<div></div>").addClass("ground dirt");
+		var ground = $("<div></div>").addClass("ground forest");
 		standardLevelContainer.append(ground);
 	};
 
@@ -239,16 +147,26 @@ var hordeLevel = function (questions, time, numberOfQuestions, settings, success
 	var addWalker = function (timeToWalk) {
 		var walker = $("<div></div>").addClass("enemysprite walker");
 		var distanceToWalk = settings.width - 10 - 40;
+		var walkingPerSecond = distanceToWalk / timeToWalk;
 		standardLevelContainer.append(walker);
 		console.log('innstillinger: ', timeToWalk, distanceToWalk);
-		TweenMax.to(walker, timeToWalk, {x: -distanceToWalk, ease: Linear.easeNone});
+		
 		walkers.push(walker);
+		setInterval(function () {
+			setTimeout(function() {
+				if(walkers.indexOf(walker) > -1) {
+					console.log('yo', "-=" + walkingPerSecond*2);
+					TweenMax.to(walker, 0.333, {x: "-=" + walkingPerSecond, ease: Power4.easeInOut});		
+				}
+			}, 777);
+		}, 1000);
+		
 	}
 
 	var shootWalker = function (callback) {
-		var shot = $("<div></div>").addClass("shotsprite horde");
+		var shot = $("<div></div>").addClass("shotsprite horde machine-gun");
 		standardLevelContainer.append(shot);
-		TweenMax.to(shot, 2, {x: settings.width - 40 - 10, ease: Linear.easeNone});
+		TweenMax.to(shot, 1, {x: settings.width - 40 - 10, ease: Linear.easeNone});
 		console.log("hest");
 		console.log(shot, walkers);
 		if(checkShot(shot,walkers[0])) {
@@ -273,20 +191,27 @@ var hordeLevel = function (questions, time, numberOfQuestions, settings, success
 	}
 
 	var removeWalker = function (walkerAttackToggle, callback) {
+		console.log(walkers);
 		var currentWalker = walkers[0];
 		if(walkerAttackToggle) {
 			console.log("success attack");
 			shootWalker(function (shotInterval) {
 				if(shotInterval) clearInterval(shotInterval);
 				walkers.shift();
-				currentWalker.remove();
+				currentWalker.addClass("shot");
+				TweenMax.to(currentWalker, 1.5, {x:"+=50", y:"150", rotation: "90deg", ease: Power4.easeOut, onComplete: function () {
+					currentWalker.remove();	
+				}});
 				callback();
 			});
 		} else {
 			console.log("fail attack");
-			TweenMax.to(currentWalker, 1, {x: "-=100", ease: Linear.easeNone, onComplete: function () {
+			pow.show();
+			walkers.shift();
+			setTimeout(function () {
 				currentWalker.remove();
-			}});
+				pow.hide();
+			}, 500);
 		}
 	}
 
@@ -310,12 +235,12 @@ var hordeLevel = function (questions, time, numberOfQuestions, settings, success
 		TweenMax.to(questionContainer, 0.5, {x: 0, ease: Back.easeOut});
 
 		if(newTimer) {
-			addWalker(5);
+			addWalker(10);
 			questionTimeout = setTimeout(function () {
 
 				console.log(questionTimeout);
 				failAttack(questionContainer);
-			}, 5000);
+			}, 10000);
 		}
 
 		console.log(questionTimeout);

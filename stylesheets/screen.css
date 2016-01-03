@@ -2,7 +2,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 5, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,52 +24,52 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
 @font-face {
   font-family: "Pixel";
-  src: url('../fonts/pixel.ttf?1451156096') format('truetype');
+  src: url('../fonts/pixel.ttf?1450733770') format('truetype');
 }
 /* line 10, ../sass/screen.scss */
 html, body {
@@ -91,12 +91,22 @@ body {
   box-sizing: border-box;
 }
 
-/* line 25, ../sass/screen.scss */
+/* line 27, ../sass/screen.scss */
 #standardLevel {
   display: none;
 }
-
 /* line 29, ../sass/screen.scss */
+#standardLevel.sand {
+  background-image: url(../img/background-desert.jpg);
+  background-size: cover;
+}
+/* line 33, ../sass/screen.scss */
+#standardLevel.forest {
+  background-image: url(../img/background-forest.jpg);
+  background-size: cover;
+}
+
+/* line 39, ../sass/screen.scss */
 #titlefield {
   position: fixed;
   top: 0;
@@ -111,7 +121,7 @@ body {
   z-index: 1000;
 }
 
-/* line 43, ../sass/screen.scss */
+/* line 53, ../sass/screen.scss */
 #mainscreen {
   position: absolute;
   left: 0;
@@ -119,14 +129,16 @@ body {
   width: 100%;
   height: 100%;
   background-color: #589819;
+  background-image: url(../img/quiz-quest-splash.jpg);
+  background-size: cover;
   text-align: center;
   padding: 10px;
 }
-/* line 52, ../sass/screen.scss */
+/* line 64, ../sass/screen.scss */
 #mainscreen img {
   display: inline-block;
 }
-/* line 55, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 #mainscreen .menu-item {
   padding: 10px;
   border: 1px solid white;
@@ -137,7 +149,7 @@ body {
   text-shadow: black 1px 1px 0;
 }
 
-/* line 66, ../sass/screen.scss */
+/* line 78, ../sass/screen.scss */
 #mapscreen {
   position: absolute;
   left: 0;
@@ -149,7 +161,7 @@ body {
   overflow: hidden;
   display: none;
 }
-/* line 77, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 #mapscreen .map-screen-container {
   position: absolute;
   left: 0;
@@ -161,12 +173,12 @@ body {
   /* has to be scroll, not auto */
   -webkit-overflow-scrolling: touch;
 }
-/* line 86, ../sass/screen.scss */
+/* line 98, ../sass/screen.scss */
 #mapscreen .map-screen-container .level {
   width: 100%;
   position: relative;
 }
-/* line 89, ../sass/screen.scss */
+/* line 101, ../sass/screen.scss */
 #mapscreen .map-screen-container .level:before {
   content: "";
   position: absolute;
@@ -177,7 +189,7 @@ body {
   margin-left: -5px;
   background-color: #ffd7a2;
 }
-/* line 100, ../sass/screen.scss */
+/* line 112, ../sass/screen.scss */
 #mapscreen .map-screen-container .level.selected .level-marker {
   -moz-transform: scale(9);
   -ms-transform: scale(9);
@@ -188,7 +200,7 @@ body {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-/* line 104, ../sass/screen.scss */
+/* line 116, ../sass/screen.scss */
 #mapscreen .map-screen-container .level.selected .level-title,
 #mapscreen .map-screen-container .level.selected .level-start-button {
   -moz-transition: 0.5s;
@@ -197,7 +209,7 @@ body {
   transition: 0.5s;
   opacity: 1;
 }
-/* line 111, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 #mapscreen .map-screen-container .level .level-marker {
   position: absolute;
   left: 50%;
@@ -215,7 +227,7 @@ body {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-/* line 123, ../sass/screen.scss */
+/* line 135, ../sass/screen.scss */
 #mapscreen .map-screen-container .level .level-title {
   position: absolute;
   display: block;
@@ -233,7 +245,7 @@ body {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-/* line 137, ../sass/screen.scss */
+/* line 149, ../sass/screen.scss */
 #mapscreen .map-screen-container .level .level-start-button {
   position: absolute;
   display: inline-block;
@@ -255,46 +267,134 @@ body {
   opacity: 0;
 }
 
-/* line 159, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 .guysprite {
-  width: 40px;
-  height: 60px;
-  background-color: green;
+  width: 120px;
+  height: 150px;
+  overflow: hidden;
+  background-image: url(../img/run-anim-all-small.png);
+  background-position: left center;
   position: absolute;
+  left: 0;
+  top: 0;
 }
-/* line 164, ../sass/screen.scss */
+/* line 180, ../sass/screen.scss */
 .guysprite.standing {
-  bottom: 20px;
+  top: auto;
+  bottom: 12px;
   left: 10px;
+  background-image: url(../img/morris-gun-standing-anim-small.png);
+  -moz-animation: playzombie 0.5s steps(6) infinite;
+  -webkit-animation: playzombie 0.5s steps(6) infinite;
+  animation: playzombie 0.5s steps(6) infinite;
+}
+/* line 187, ../sass/screen.scss */
+.guysprite.running {
+  -moz-animation: play 0.5s steps(8) infinite;
+  -webkit-animation: play 0.5s steps(8) infinite;
+  animation: play 0.5s steps(8) infinite;
 }
 
-/* line 170, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 .shotsprite {
   width: 20px;
   height: 20px;
   position: absolute;
 }
-/* line 174, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 .shotsprite.horde {
-  bottom: 30px;
-  left: 50px;
+  bottom: 45px;
+  left: 120px;
   background-color: black;
 }
+/* line 202, ../sass/screen.scss */
+.shotsprite.horde.machine-gun {
+  background-image: url(../img/shot-machine-gun.png);
+  background-color: transparent;
+}
 
-/* line 181, ../sass/screen.scss */
+/* line 209, ../sass/screen.scss */
+.pow {
+  position: absolute;
+  left: 0;
+  bottom: 13px;
+  width: 240px;
+  height: 150px;
+  background-image: url(../img/pow-block.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+  z-index: 1000;
+}
+
+/* line 221, ../sass/screen.scss */
 .enemysprite {
-  width: 40px;
-  height: 60px;
-  background-color: red;
+  width: 120px;
+  height: 150px;
   position: absolute;
 }
-/* line 186, ../sass/screen.scss */
+/* line 225, ../sass/screen.scss */
 .enemysprite.walker {
-  bottom: 20px;
+  background-image: url(../img/zombie-anim-small-long.png);
+  background-position: left center;
+  bottom: 13px;
   left: 100%;
+  -moz-animation: playzombielong 1s steps(12) infinite;
+  -webkit-animation: playzombielong 1s steps(12) infinite;
+  animation: playzombielong 1s steps(12) infinite;
+}
+/* line 231, ../sass/screen.scss */
+.enemysprite.walker.shot {
+  background-image: url(../img/zombie-killed.png);
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
 }
 
-/* line 192, ../sass/screen.scss */
+@-moz-keyframes play {
+  100% {
+    background-position: -720px;
+  }
+}
+@-webkit-keyframes play {
+  100% {
+    background-position: -720px;
+  }
+}
+@keyframes play {
+  100% {
+    background-position: -720px;
+  }
+}
+@-moz-keyframes playzombie {
+  100% {
+    background-position: -720px;
+  }
+}
+@-webkit-keyframes playzombie {
+  100% {
+    background-position: -720px;
+  }
+}
+@keyframes playzombie {
+  100% {
+    background-position: -720px;
+  }
+}
+@-moz-keyframes playzombielong {
+  100% {
+    background-position: -1440px;
+  }
+}
+@-webkit-keyframes playzombielong {
+  100% {
+    background-position: -1440px;
+  }
+}
+@keyframes playzombielong {
+  100% {
+    background-position: -1440px;
+  }
+}
+/* line 252, ../sass/screen.scss */
 .ground {
   position: absolute;
   width: 100%;
@@ -302,12 +402,18 @@ body {
   bottom: 0;
   left: 0;
 }
-/* line 198, ../sass/screen.scss */
-.ground.dirt {
+/* line 258, ../sass/screen.scss */
+.ground.sand {
   background-color: #966b10;
+  background-image: url(../img/ground-desert.png);
+}
+/* line 262, ../sass/screen.scss */
+.ground.forest {
+  background-color: #966b10;
+  background-image: url(../img/ground-forest.png);
 }
 
-/* line 203, ../sass/screen.scss */
+/* line 268, ../sass/screen.scss */
 #standardlevel {
   width: 100%;
   height: 100%;
@@ -318,7 +424,7 @@ body {
   -webkit-perspective: 3000;
   perspective: 3000;
 }
-/* line 210, ../sass/screen.scss */
+/* line 275, ../sass/screen.scss */
 #standardlevel .level-timer {
   position: absolute;
   width: 100%;
@@ -327,14 +433,14 @@ body {
   top: 0;
   height: 10px;
 }
-/* line 218, ../sass/screen.scss */
+/* line 283, ../sass/screen.scss */
 #standardlevel .question-container {
   color: white;
   position: absolute;
   width: 100%;
   padding: 30px 20px 20px 20px;
 }
-/* line 223, ../sass/screen.scss */
+/* line 288, ../sass/screen.scss */
 #standardlevel .question-container .question {
   color: white;
   text-transform: uppercase;
@@ -342,7 +448,7 @@ body {
   text-align: center;
   text-shadow: black 1px 1px 0;
 }
-/* line 231, ../sass/screen.scss */
+/* line 296, ../sass/screen.scss */
 #standardlevel .question-container .answer {
   padding: 10px;
   border: 1px solid white;
@@ -356,14 +462,14 @@ body {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 240, ../sass/screen.scss */
+/* line 305, ../sass/screen.scss */
 #standardlevel .question-container .answer.correct-answer {
   -moz-transform: scale(10px);
   -ms-transform: scale(10px);
   -webkit-transform: scale(10px);
   transform: scale(10px);
 }
-/* line 243, ../sass/screen.scss */
+/* line 308, ../sass/screen.scss */
 #standardlevel .question-container .answer.wrong-answer {
   -moz-transform: scale(-10px);
   -ms-transform: scale(-10px);
