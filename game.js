@@ -22,6 +22,7 @@ var currentGameData = {
 	answer: [],
 	gameStatus: true,
 	correctAnswersInCurrentLevel: 0,
+	currentQuestionType: "single",
 	currentQuestionContainerNode : undefined,
 	lives: 3
 }
@@ -72,26 +73,19 @@ var startGame = function () {
 		var questionContainer = $("<div></div>").addClass("questionContainer");
 		var questionTitle = $("<div></div>").addClass("question").text(Levels[currentGameData.level].questions[currentGameData.question].question);
 		questionContainer.append(questionTitle);
+		if(Levels[currentGameData.level].questions[currentGameData.question].type != "single") {
+			questionContainer.addClass("multipleChoice").attr("data-q-id", currentGameData.question);
+		} else {
+			questionContainer.addClass("multipleChoice").attr("data-q-id", currentGameData.question);
+		}
 		Levels[currentGameData.level].questions[currentGameData.question].alternatives.forEach(function (alternative, i) {
 			var alternativeNode = $("<div></div>").addClass("alternative").text(alternative).attr("data-answer-id", i);
 			var alternativeNodeTouch = new Hammer(alternativeNode[0]);
 			alternativeNodeTouch.on("tap", function (event) {
 				if(Levels[currentGameData.level].questions[currentGameData.question].type == "single") {
 					currentGameData.answer = [$(event.target).attr("data-answer-id")];
-					if(checkAnswer()) {
-						var qContainer = $(event.target).parent();
-						currentGameData.points += 10;
-						$(event.target).addClass("correct-answer");
-					} else {
-						$(event.target).addClass("wrong-answer");
-					}
-					if(currentGameData.gameStatus) {
-						currentGameData.question++;
-						drawQuestion();
-					}
-					TweenMax.to($(event.target).parent(), 0.5, {x: "-" + gameSettings.width, ease:Linear.easeNone, onComplete: function () {
-						$(event.target).parent().remove();
-					}});
+					$(event.target).siblings(".alternative").removeClass("selected").addClass("faded");
+					$(event.target).addClass("selected").removeClass("faded");
 				} else {
 					if($(event.target).hasClass("selected")) {
 						var answerIndex = currentGameData.answer.indexOf($(event.target).attr("data-answer-id"));
@@ -107,35 +101,38 @@ var startGame = function () {
 			questionContainer.append(alternativeNode);
 		});
 
-		if(Levels[currentGameData.level].questions[currentGameData.question].type != "single") {
-			var selectButton = $("<div></div>").addClass("answerbutton").text("svar");
-			var selectButtonTouch = new Hammer(selectButton[0]);
-			selectButtonTouch.on('tap', function (event) {
-				if(checkAnswer()) {
-					var qContainer = $(event.target).parent();
-					currentGameData.points += 20;
-					$(event.target).addClass("correct-answer");
-					if(currentGameData.gameStatus) {
-						currentGameData.question++;
-						drawQuestion();
-					}
+		var selectButton = $("<div></div>").addClass("answerbutton").text("svar");
+		var selectButtonTouch = new Hammer(selectButton[0]);
+		selectButtonTouch.on('tap', function (event) {
+			console.log(event);
+			//event.preventDefault();
+			//event.stopPropagation();
+			if(checkAnswer()) {
+				// right answer
+				var qContainer = $(event.target).parent();
+				if(Levels[currentGameData.level].questions[currentGameData.question].type == "single") {
+					currentGameData.points += 10;
 				} else {
-					$(event.target).addClass("wrong-answer");
+					currentGameData.points += 20;	
 				}
-				if(currentGameData.gameStatus) {
-					currentGameData.question++;
-					drawQuestion();
-				}
-				TweenMax.to($(event.target).parent(), 0.5, {x: "-" + gameSettings.width, ease:Linear.easeNone, onComplete: function () {
-					$(event.target).parent().remove();
-				}});
-			});
-			questionContainer.append(selectButton);
+				$("#scoreinput").text(currentGameData.points);
+			} else {
+				// wrong answer
+			}
+			if(currentGameData.gameStatus) {
+				currentGameData.question++;
+				drawQuestion();
+			}
+			TweenMax.to($(event.target).parent(), 0.3, {x: "-" + gameSettings.width, ease:Power4.easeOut, onComplete: function () {
+				console.log("hey");
+				$(event.target).parent().remove();
+			}});
+		});
+		questionContainer.append(selectButton);
 
-		}
 		TweenMax.to(questionContainer, 0, {x: gameSettings.width, ease: Linear.easeNone});
 		levelContainer.append(questionContainer);
-		TweenMax.to(questionContainer, 0.5, {x: 0, ease: Linear.easeNone});
+		TweenMax.to(questionContainer, 0.3, {x: 0, ease: Power4.easeOut});
 	};
 
 	// loads level, sets timer.
@@ -163,6 +160,7 @@ var startGame = function () {
 		currentGameData.question = 0;
 		TweenMax.to($("#mainscreen"), 1, {x: "-" + gameSettings.width, ease: Power4.easeInOut});
 		loadLevel(Levels[0]);
+		$("#bottomContainer").toggleClass("visible");
 	}
 
 	init();
