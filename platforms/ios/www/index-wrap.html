@@ -12,52 +12,94 @@
    <body>
     
     <div id="mobile-wrapper">
-     <div id="loading"></div>
-    <div id="authenticationScreen">
-      
-      <form id="username" class="inputbox">
-        <label class="plaintext" for="username-input">
-          Enter your nickname
-        </label>
-        <input type="text" id="username-input">
-        <div class="button-container">
-          <button type="submit" class="submit">OK</button>
-        </div>
-      </form>
+      <div id="loading"></div>
+      <div id="authenticationScreen" class="screen">
+        
+        <form id="username" class="inputbox">
+          <label class="plaintext" for="username-input">
+            Enter your nickname
+          </label>
+          <input type="text" id="username-input">
+          <div class="button-container">
+            <button type="submit" class="submit">OK</button>
+          </div>
+        </form>
 
-      <form id="email" class="inputbox">
-        <label class="plaintext" for="username-input">
-          Enter your e-mail
-        </label>
-        <input type="email" id="email-input">
-        <div class="button-container">
-          <button type="submit" class="submit">OK</button>
-          <button type="submit" class="submit invert">No thanks</button>
-        </div>
-        <div class="plaintext small" for="username-input">
-          By entering your e-mail you are in the running for a free ticket to Retrospillmessen 2016.
-          You might also receive promotional material for Retrospillmessen 2016.
-        </div>
-      </form>
+        <form id="email" class="inputbox">
+          <label class="plaintext" for="username-input">
+            Enter your e-mail
+          </label>
+          <input type="email" id="email-input">
+          <div class="button-container">
+            <button type="submit" class="submit">OK</button>
+            <button type="submit" class="submit invert">No thanks</button>
+          </div>
+          <div class="plaintext small" for="username-input">
+            By entering your e-mail you are in the running for a free ticket to Retrospillmessen 2016.
+            You might also receive promotional material for Retrospillmessen 2016.
+          </div>
+        </form>
+        
+      </div>
+      <div id="mainscreen" class="screen">
+        <img id="logo" src="img/retro-quiz-logo.png">
+        <div class="plaintext">Hello <span id="username-welcome"></span>!</div>
       
-    </div>
-    <div id="mainscreen">
-      <div id="logo"><span>Retrogaming</span><span>Quiz</span></div>
-      <div class="plaintext">Hello <span id="username-welcome"></span>, <br>ye brave soul!</div>
-    
-      <div id="status">
+        <div id="status">
+        </div>
+
+        <div class="menu-line">
+          <img id="start-game-button" src="img/start-button.png">
+          <img id="start-game-button" src="img/high-score-button.png">
+        </div>
+        <div class="janstandard-wrapper">
+          <img src="img/retrojan-angry.png">
+        </div>
       </div>
 
-      <div id="start-game-button" class="menu-item">Start game</div>
-      <div class="janstandard"></div>
-    </div>
+      <div id="statusscreen" class="screen">
+        <div id="statusscreen-level-complete">Level complete!</div>
+        <div id="statusscreen-level">Next level </div>
+        <div id="statusscreen-title">The fart deamons of fartonia</div>
+        <div id="statusscreen-level-number-container">Level <span id="statusscreen-level-number">0</span></div>
 
-    <div id="levelContainer">
-    </div>
-    <div id="bottomContainer">
-      <div id="lives"></div>
-      <div id="score"><span>SCORE </span><span id="scoreinput">0</span></div>
-    </div>
+
+        <div id="statusscreen-status-and-controls">
+          <div id="statusscreen-timebonus-info-container">Timebonus from level <span id="statusscreen-timebonus-info"></span></div>
+          <div id="statusscreen-timebonus-container"><span id="statusscreen-timebonus">400</span> points</div>
+
+          <div id="statusscreen-current-score-info">Total score</div>
+          <div id="statusscreen-current-score-container">
+            <span id="statusscreen-current-score">400</span> points</div>
+      
+            <div class="menu-line">
+              <img id="start-level-button" src="img/start-button.png">
+            </div>
+        </div>
+      </div>
+      <div id="levelContainer"  class="screen">
+      </div>
+      <div id="bottomContainer">
+        <div id="lives"></div>
+        <div id="score"><span>SCORE </span><span id="scoreinput">0</span></div>
+      </div>
+      <div id="endgameContainer" class="screen">
+        <div class="screen-header-container">
+          <div class="screen-header">Game over!</div>
+          <div class="screen-description">You ran out of lives</div>
+        </div>
+        <div class="screen-custom-container">
+          <div class="screen-label">new score!</div>
+          <div class="screen-number-big">4000</div>
+        </div>
+        <div class="screen-controls-container">
+          <img id="new-game-button" src="img/new-game.png" class="screen-button">
+          <img id="back-to-menu" src="img/to-menu.png" class="screen-button">
+        </div>
+          <div class="screen-bottom-container">
+            <img src="img/retrojan-very-angry.png">
+          </div>
+      </div>
     </div>
     <script src="auth.js"></script>
     <script src="levels.js"></script>

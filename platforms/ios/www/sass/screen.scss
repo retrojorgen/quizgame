@@ -14,6 +14,13 @@ html, body {
 	max-width: 100%;
 	overflow: hidden;
 	font-family: "Pixel";
+	position:absolute;
+}
+
+html {
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0); 
 }
 
 body {
@@ -23,8 +30,14 @@ body {
 
 * {
 	@include box-sizing(border-box);
+	
 }
 
+*:not(input,textarea) {
+	-webkit-tap-highlight-color: rgba(0,0,0,0); 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Disable selection/Copy of UIWebView */
+}
 
 #mobile-wrapper {
 	position: absolute;
@@ -49,8 +62,87 @@ body {
 	z-index: 50;
 }
 
+.screen {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	padding-top: 30px;
+	overflow: hidden;
+	background-image: url(../img/quiz-quest-splash.jpg);
+	background-size: cover;
+	.screen-header-container {
+		margin-bottom: 40px;
+	}
+	.screen-custom-container {
+		margin-bottom: 40px;
+	}
+	.screen-controls-container {
+		div,
+		img,
+		span {
+			margin-bottom: 10px;
+		}
+	}
+	.screen-header,
+	.screen-description,
+	.screen-label,
+	.screen-number,
+	.screen-number-big {
+		color: white;
+		text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
+		text-align: center;
+	}
+
+	.screen-header {
+		font-size: 40px;
+		margin-bottom: 10px;
+	}
+
+	.screen-description {
+		color: #c981fc;
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+
+	.screen-label {
+		color: #c981fc;
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+
+	.screen-number-big {
+		font-size: 40px;
+	}
+	.screen-button {
+		display: block;
+		max-width: 50%;
+		margin: 0 auto;
+	}
+	.screen-bottom-container {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		img {
+			max-width: 80%;
+			margin: 0 auto;
+		}
+	}
+}
+
+.menu-line {
+	text-align: center;
+	img {
+		max-width: 20%;
+		margin: 0 10px 0 10px;
+	}
+}
+
 #titlefield {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -64,41 +156,29 @@ body {
 }
 
 #logo {
-	color: #efefd5;
-	font-size: 30px;
-	margin-bottom: 40px;
+	max-width: 90%;
+	margin: 0 auto;
+}
 
-	span {
-		display: block;
-		@include text-shadow(#91278f 3px 3px 0);
-	}
-	span:nth-child(2) {
-		font-size: 96px;
+.janstandard-wrapper {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	text-align: center;
+
+	img {
+		max-width: 80%;
 	}
 }
 
-.janstandard {
+.jangame-wrapper {
 	position: absolute;
-	left: 0;
-	bottom: -10px;
-	height: 250px;
 	width: 100%;
-	background: {
-		image: url(../img/retrojan-angry.png);
-		repeat: no-repeat;
-		size: cover;
-		position: top center;
-	}
-	&.small {
-		left: -10px;
-		bottom: 54px;
-		width: 250px;
-	}
-	&.rightjan {
-		background-image: url(../img/retrojan-thumbs-up.png);
-	}
-	&.wrongjan {
-		background-image: url(../img/retrojan-very-angry.png);
+	bottom: 0;
+	text-align: center;
+
+	img {
+		max-width: 80%;
 	}
 }
 
@@ -124,16 +204,18 @@ body {
 		display: inline-block;
 	}
 
-	.menu-item {
-		display: inline-block;
-		padding: 10px 20px;
-		color: #242A31;
-		background-color: #efefd5;
-		font-family: "Pixel";
-		font-size: 20px;
-		border: 0;
-		text-transform: uppercase;
-	}
+
+}
+
+.menu-item {
+	display: inline-block;
+	padding: 10px 20px;
+	color: #242A31;
+	border: 4px solid #242A31;
+	background-color: #efefd5;
+	font-family: "Pixel";
+	font-size: 20px;
+	text-transform: uppercase;
 }
 
 .plaintext {
@@ -303,6 +385,7 @@ body {
 	height: 10px;
 	background-color: white;
 	width: 100%;
+	z-index: 100;
 }
 
 #bottomContainer {
@@ -339,7 +422,7 @@ body {
 	position: absolute;
 	left: 0;
 	top: 0;
-	background-image: url(../img/quiz-background.jpg);
+	background-image: url(../img/quiz-quest-splash.jpg);
 	background-size: cover;
 	background-position: center top;
 	@include perspective(3000);
@@ -353,28 +436,41 @@ body {
 	}
 
 	#countdown {
-		position: absolute;
-		left: 50%;
-		margin-left: -20px;
-		font-size: 40px;
-		bottom: 50px;
-		color: white;
-		z-index: 100;
+	    position: absolute;
+	    left: 0;
+	    margin-left: 0;
+	    font-size: 40px;
+	    bottom: 50px;
+	    color: white;
+	    z-index: 100;
+	    width: 100%;
+	    padding: 0 20px 0 20px;
+	    text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
+	}
+
+	#correct {
+	    position: absolute;
+	    left: 0;
+	    margin-left: 0;
+	    font-size: 40px;
+	    bottom: 50px;
+	    color: white;
+	    z-index: 100;
+	    width: 100%;
+	    text-align: right;
+	    .small {
+	    	font-size: 20px;
+	    }
+	    padding: 0 20px 0 20px;
+	    text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
+
 	}
 
 	.answerbutton {
 	    text-align: center;
-	    margin-top: 20px;
-	    background-color: white;
-        color: #242A31;
-	    padding: 10px;
-	    font-size: 29px;
-	    &:active {
-	    	background-color: #242A31;
-	    	color: white;
-	    	margin-top: 22px;
-	    	padding-bottom: 8px;
-	    }
+	    margin: 20px auto 20px auto;
+	    max-width: 50%;
+	    display: block;
 	}
 	.questionContainer {
 		color: white;
@@ -386,7 +482,8 @@ body {
 			text-transform: uppercase;
 			font-size: 40px;
 			text-align: center;
-			@include text-shadow(rgb(0,0,0) 1px 1px 0);
+			text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
+
 
 		}
 		&.multipleChoice {
@@ -408,6 +505,7 @@ body {
 			@include text-shadow(rgb(0,0,0) 1px 1px 0);
 			@include transition(0.1s);
 			position: relative;
+    		text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
 			&.faded {
 				opacity: 0.6;
 			}
@@ -457,3 +555,83 @@ body {
 	}
 }
 
+#statusscreen {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 500;
+	background-image: url(../img/quiz-quest-splash.jpg);
+	background-size: cover;
+	text-align: center;
+	@include translateX(100%);
+
+	#statusscreen-status-and-controls {
+	}
+
+	#statusscreen-level {
+		color: #FDEFBF;
+		padding-bottom: 4px;
+		font-size: 16px;
+	}
+	#statusscreen-level-number {
+		color: #FDEFBF;
+		padding-top: 4px;
+		padding-bottom: 4px;
+		font-size: 28px;
+		margin-bottom: 80px;
+	}
+	#statusscreen-title {
+	    font-size: 40px;
+	}
+	#statusscreen-timebonus-info,
+	#statusscreen-current-score-info {
+		color: #FDEFBF;
+		padding-bottom: 4px;
+		font-size: 20px;
+		text-align: center;
+	}
+	#statusscreen-timebonus,
+	#statusscreen-current-score {
+		text-align: center;
+		font-size: 30px;
+	}
+
+	#statusscreen-level-complete {
+    	text-transform: uppercase;
+    	font-size: 40px;
+    	margin-bottom: 20px;
+    	display: none;
+
+    }	
+
+	#statusscreen-timebonus-container {
+		display: none;
+	}
+
+	#timebonus,
+	#current-score {
+		font-size: 30px;
+	}
+
+	#start-level-button {
+		text-shadow: none;
+		width: 150px;
+		color: #242A31;
+	}
+	div {
+		padding: 10px 20px 10px 20px;
+		text-align: center;
+	}
+	div, span {
+		color: white;
+		text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
+	}
+}
+
+
+#endgameContainer {
+	z-index: 40000000;
+	@include translateX(-100%);
+}

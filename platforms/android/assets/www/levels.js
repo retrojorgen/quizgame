@@ -128,7 +128,7 @@ var Levels = [
 		]
 	},
 	{
-		"levelname": "The amazon",
+		"levelname": "The fantastic computer crapper",
 		"leveltype": "singleAnswer",
 		"timeToBeatLevel": 60,
 		"correctAnswersToProceed": 10,

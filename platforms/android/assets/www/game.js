@@ -10,15 +10,30 @@ var startTheApp = function () {
 		mainScreen: $("#mainscreen").hide(),
 		authenticationScreen: $("#authenticationScreen").hide(),
 		bottomContainer: $("#bottomContainer").hide(),
+		statusScreen: $("#statusscreen"),
 		usernameWelcome: $("#username-welcome"),
 		startGameButton: $("#start-game-button"),
+		startLevelButton: $("#start-level-button"),
 		usernameInput: $("#username-input"),
 		emailInput: $("#email-input"),
 		usernameForm: $("#username"),
 		emailForm: $("#email"),
 		mainScreenJanStandard: $("#mainscreen .janstandard"),
 		logo: $("#logo"),
-		livesUpdate: $("#lives")
+		scoreInput: $("#scoreinput"),
+		livesUpdate: $("#lives"),
+		statusScreenLevel: $("#statusscreen-level"),
+		statusScreenTitle: $("#statusscreen-title"),
+		statusScreenLevelNumberContainer: $("#statusscreen-level-number-container"),
+		statusScreenLevelNumber: $("#statusscreen-level-number"),
+		statusScreenTimebonusInfoContainer: $("#statusscreen-timebonus-info-container"),
+		statusScreenTimebonusInfo: $("#statusscreen-timebonus-info"),
+		statusScreenTimebonusContainer: $("#statusscreen-timebonus-container"),
+		statusScreenTimebonus: $("#statusscreen-timebonus"),
+		statusScreenCurrentScoreInfo: $("#statusscreen-current-score-info"),
+		statusScreenCurrentScoreContainer: $("#statusscreen-current-score-container"),
+		statusScreenCurrentScore: $("#statusscreen-current-score"),
+		statusScreenLevelComplete: $("#statusscreen-level-complete")
 	}
 
 	if($("#mobile-wrapper").length) {
@@ -40,7 +55,7 @@ var startTheApp = function () {
 	}
 
 	var startMainScreen = function () {
-		console.log("starting main");
+		
 		TweenMax.to(gameSettings.mainScreen, 0, {x: gameSettings.width, scale: 0.95, ease: Linear.easeNone});
 		gameSettings.mainScreen.show();
 		TweenMax.to(gameSettings.mainScreen, 1, {x: 0, scale: 1, ease: Bounce.easeOut});
@@ -48,7 +63,7 @@ var startTheApp = function () {
 
 	var submitUsername = function () {
 		var usernameTemp = gameSettings.usernameInput.val();
-		console.log(usernameTemp);
+		
 		if(usernameTemp) {
 			gameSettings.username = usernameTemp;
 			TweenMax.to(gameSettings.usernameForm, 1,  {x: "-" + gameSettings.width, ease: Power4.easeOut, onComplete: function () {
@@ -71,7 +86,7 @@ var startTheApp = function () {
 	}
 
 	var startAuth = function () {
-		console.log("starting auth");
+		
 		TweenMax.to(gameSettings.authenticationScreen, 0, {x: gameSettings.width, ease: Linear.easeNone});
 		TweenMax.to(gameSettings.usernameForm, 0, {x: 0, ease: Linear.easeNone});
 		TweenMax.to(gameSettings.emailForm, 0, {x: gameSettings.width, ease: Linear.easeNone});
@@ -119,18 +134,18 @@ var startTheApp = function () {
 	});
 
 
-	console.log(gameSettings.startGameButton);
+	
 	var startButtonTouch = new Hammer(gameSettings.startGameButton[0]);
 	startButtonTouch.on('tap', function () {
-		console.log("hei");
+		
 		startGame();
 	});
 
 	var startGame = function () {
 		
 		var checkAnswer = function () {
-			console.log("sjekker svar");
-			console.log(currentGameData.answer[0], Levels[currentGameData.level].questions[currentGameData.question].answer);
+			
+			
 			if(Levels[currentGameData.level].questions[currentGameData.question].type == "single") {
 				if(currentGameData.answer[0] == Levels[currentGameData.level].questions[currentGameData.question].answer) {
 					return true;
@@ -191,18 +206,22 @@ var startTheApp = function () {
 			selectButtonTouch.on('tap', function (event) {
 				var that = window;
 
-				console.log("that ", that);
+				
 				//event.preventDefault();
 				//event.stopPropagation();
 				if(checkAnswer()) {
 					// right answer
 					var qContainer = $(event.target).parent();
+
+					currentGameData.correctAnswersInCurrentLevel++;
+					console.log('riktige svar: ', currentGameData.correctAnswersInCurrentLevel);
+
 					if(Levels[currentGameData.level].questions[currentGameData.question].type == "single") {
 						currentGameData.points += 10;
 					} else {
 						currentGameData.points += 20;	
 					}
-					$("#scoreinput").text(currentGameData.points);
+					gameSettings.scoreInput.text(currentGameData.points);
 					currentGameData.janStandard.addClass("rightjan");
 					setTimeout(function () {
 						currentGameData.janStandard.removeClass("rightjan");
@@ -222,12 +241,18 @@ var startTheApp = function () {
 						currentGameData.janStandard.removeClass("wrongjan");
 					},500);
 				}
-				if(currentGameData.gameStatus) {
-					currentGameData.question++;
-					drawQuestion();
+
+				console.log('sjekker svar: ', currentGameData.correctAnswersInCurrentLevel, Levels[currentGameData.level].correctAnswersToProceed);
+				if(currentGameData.correctAnswersInCurrentLevel >= Levels[currentGameData.level].correctAnswersToProceed) {
+					nextLevel();
+				} else {
+					if(currentGameData.gameStatus) {
+						currentGameData.question++;
+						drawQuestion();
+					}
 				}
-				TweenMax.to($(event.target).parent(), 0.3, {x: "-" + gameSettings.width, ease:Power4.easeOut, onComplete: function () {
-					console.log("hey");
+				TweenMax.to($(event.target).parent(), 1, {x: "-" + gameSettings.width, ease:Power4.easeOut, onComplete: function () {
+					
 					$(event.target).parent().remove();
 				}});
 			});
@@ -235,21 +260,40 @@ var startTheApp = function () {
 
 			TweenMax.to(questionContainer, 0, {x: gameSettings.width, ease: Linear.easeNone});
 			gameSettings.levelScreen.append(questionContainer);
-			TweenMax.to(questionContainer, 0.3, {x: 0, ease: Power4.easeOut});
+			TweenMax.to(questionContainer, 1, {x: 0, ease: Power4.easeOut});
+		};
+
+		var nextLevel = function () {
+			console.log("next-level kalt");
+
+			clearTimeout(currentGameData.countDownInterval);
+			var calculatedBonus = currentGameData.levelCounter * 10;
+			currentGameData.points += calculatedBonus;
+			currentGameData.gameStatus = false;
+			if(Levels[currentGameData.level + 1]) {
+				currentGameData.level++;
+				currentGameData.question = 0;
+				console.log("sending data: ", currentGameData.level, calculatedBonus, currentGameData.points, currentGameData.levelCounter, (currentGameData.levelCounter*10));
+				updateStatusScreen(currentGameData.level, calculatedBonus, currentGameData.points);
+				TweenMax.to(gameSettings.levelScreen, 1, {scale: 0.9, ease: Power4.easeOut});
+				TweenMax.to(gameSettings.statusScreen, 1, {x: 0, ease: Power4.easeOut});
+			}
 		};
 
 		// loads level, sets timer.
 		var loadLevel = function (level) {
 
-			console.log(this);
-			
+			gameSettings.levelScreen.empty();
+
+			currentGameData.correctAnswersInCurrentLevel = 0;
+			currentGameData.levelCounter = level.timeToBeatLevel;
+
 			var titleField = $("<div</div>").attr("id", "titlefield").text(level.levelname);
 			var countDownContainer = $("<div></div>").attr("id", "countdown").text(level.timeToBeatLevel);
 			currentGameData.janStandard = $("<div></div>").addClass("janstandard small");
 			currentGameData.rightJan = $("<div></div>").addClass("rightjan");
 			currentGameData.wrongJan = $("<div></div>").addClass("wrongjan");
 			var timerAnimated = $("<div></div>").attr("id", "timer");
-			var levelCounter = level.timeToBeatLevel;
 			TweenMax.to(timerAnimated, 0, {x: "-" + gameSettings.width, ease: Linear.easeNone});
 			TweenMax.to(currentGameData.janStandard, 0, {y: 250, ease: Linear.easeNone});
 			TweenMax.to(currentGameData.janStandard, 1, {y: 120, ease: Linear.easeNone});
@@ -257,9 +301,16 @@ var startTheApp = function () {
 
 			drawQuestion();
 
-			var countDownInterval = setInterval (function () {
-				levelCounter--;
-				countDownContainer.text(levelCounter);
+			TweenMax.to(gameSettings.bottomContainer, 0.5, {y: 0, ease: Bounce.easeInOut});
+
+			TweenMax.to(gameSettings.levelScreen, 1, {scale: 1, ease: Power4.easeOut});
+			TweenMax.to(gameSettings.statusScreen, 1, {x: -gameSettings.width, ease: Power4.easeOut, onComplete: function () {
+				TweenMax.to(gameSettings.statusScreen, 0, {x: gameSettings.width, ease: Linear.easeNone});
+			}});
+
+			currentGameData.countDownInterval = setInterval (function () {
+				currentGameData.levelCounter--;
+				countDownContainer.text(currentGameData.levelCounter);
 			}, 1000);
 
 			setTimeout(function () {
@@ -275,6 +326,29 @@ var startTheApp = function () {
 			currentGameData.gameStatus = false;
 		}
 
+		var updateStatusScreen = function (levelNumber, bonus, score) {
+			console.log("data coming in", levelNumber, bonus, score);
+			gameSettings.statusScreenTitle.text(Levels[levelNumber].levelname);
+			gameSettings.statusScreenLevelNumber.text(levelNumber+1);
+			if(bonus > 0) {
+				gameSettings.statusScreenTimebonusContainer.show();
+				gameSettings.statusScreenTimebonusInfoContainer.show();
+				gameSettings.statusScreenTimebonusInfo.text(levelNumber);
+				gameSettings.statusScreenLevelComplete.show();
+				gameSettings.statusScreenTimebonus.text(bonus);
+			} else {
+				gameSettings.statusScreenTimebonusContainer.hide();
+				gameSettings.statusScreenTimebonusInfoContainer.hide();
+			}
+			if(!score) {
+				gameSettings.statusScreenCurrentScore.text("0");
+			} else {
+				gameSettings.statusScreenCurrentScore.text(score);
+				gameSettings.scoreInput.text(score);
+			}
+
+		};
+
 		// run on first init
 		var init = function () {
 
@@ -285,19 +359,21 @@ var startTheApp = function () {
 
 
 			gameSettings.levelScreen.show();
+			TweenMax.to(gameSettings.levelScreen, 0, {scale: 0.9, ease: Linear.easeNone});
 			gameSettings.bottomContainer.show();
-			TweenMax.to(gameSettings.mainScreen, 1, {x: "-" + gameSettings.width, ease: Power4.easeInOut, onComplete: function () {
+			updateStatusScreen(currentGameData.level, 0, currentGameData.points);
+			TweenMax.to(gameSettings.mainScreen, 1, {x: "-" + gameSettings.width, ease: Power4.easeInOut});
+			TweenMax.to(gameSettings.statusScreen, 1, {x: 0, ease: Power4.easeInOut});
 
-			}});
+			var startLevelTouch = new Hammer(gameSettings.startLevelButton[0]);
 
-			TweenMax.to(gameSettings.bottomContainer, 0.5, {y: 0, ease: Bounce.easeInOut});
-
-			loadLevel(Levels[0]);
-			
+			startLevelTouch.on('tap', function () {
+				loadLevel(Levels[currentGameData.level]);
+			});
 		}
 
 		init();
-		console.log("hello")
+		
 	};
 
 	if(!gameSettings.username) {
