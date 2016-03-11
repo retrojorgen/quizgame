@@ -52,26 +52,18 @@ body {
 	@include border-radius(4px);
 }
 
-
-#levelContainer {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 50;
-}
-
 .screen {
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	padding-top: 30px;
+	padding: 30px;
 	overflow: hidden;
 	background-image: url(../img/quiz-quest-splash.jpg);
 	background-size: cover;
+	display: none;
+	opacity: 0;
 	.screen-header-container {
 		margin-bottom: 40px;
 	}
@@ -115,9 +107,14 @@ body {
 	.screen-number-big {
 		font-size: 40px;
 	}
-	.screen-button {
+	.screen-button-wide {
 		display: block;
 		max-width: 50%;
+		margin: 0 auto;
+	}
+	.screen-button-narrow {
+		display: block;
+		max-width: 20%;
 		margin: 0 auto;
 	}
 	.screen-bottom-container {
@@ -314,11 +311,6 @@ body {
 
 
 #authenticationScreen {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
 	background-color: black;
 	background-image: url(../img/quiz-quest-splash.jpg);
 	background-size: cover;
@@ -329,7 +321,6 @@ body {
 	text-transform: uppercase;
 	text-align: center;
 	padding: 40px 40px 0 40px;
-	@include transform(translateX(100%));
 	&:before {
 		content: "";
 		background-color: rgba(0,0,0,0.3);
@@ -475,6 +466,8 @@ body {
 	.questionContainer {
 		color: white;
 		position: absolute;
+		left: 0;
+		top: 0;
 		width: 100%;
 		padding: 30px 20px 20px 20px;
 		.question {
@@ -556,82 +549,36 @@ body {
 }
 
 #statusscreen {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 500;
 	background-image: url(../img/quiz-quest-splash.jpg);
 	background-size: cover;
 	text-align: center;
-	@include translateX(100%);
 
-	#statusscreen-status-and-controls {
-	}
-
-	#statusscreen-level {
-		color: #FDEFBF;
-		padding-bottom: 4px;
-		font-size: 16px;
-	}
-	#statusscreen-level-number {
-		color: #FDEFBF;
-		padding-top: 4px;
-		padding-bottom: 4px;
-		font-size: 28px;
-		margin-bottom: 80px;
-	}
-	#statusscreen-title {
-	    font-size: 40px;
-	}
-	#statusscreen-timebonus-info,
-	#statusscreen-current-score-info {
-		color: #FDEFBF;
-		padding-bottom: 4px;
-		font-size: 20px;
-		text-align: center;
-	}
-	#statusscreen-timebonus,
-	#statusscreen-current-score {
-		text-align: center;
-		font-size: 30px;
-	}
-
-	#statusscreen-level-complete {
-    	text-transform: uppercase;
-    	font-size: 40px;
-    	margin-bottom: 20px;
-    	display: none;
-
-    }	
-
-	#statusscreen-timebonus-container {
-		display: none;
-	}
-
-	#timebonus,
-	#current-score {
-		font-size: 30px;
-	}
 
 	#start-level-button {
 		text-shadow: none;
 		width: 150px;
 		color: #242A31;
 	}
-	div {
-		padding: 10px 20px 10px 20px;
-		text-align: center;
-	}
-	div, span {
-		color: white;
-		text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
-	}
+}
+
+#correctAnswersCounter {
+	display: inline-block;
 }
 
 
 #endgameContainer {
-	z-index: 40000000;
-	@include translateX(-100%);
+}
+
+.half-width {
+	display: inline-block;
+	width: 48%;
+}
+
+.clearfix {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
 }

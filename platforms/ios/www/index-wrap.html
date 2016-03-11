@@ -42,39 +42,51 @@
         
       </div>
       <div id="mainscreen" class="screen">
-        <img id="logo" src="img/retro-quiz-logo.png">
-        <div class="plaintext">Hello <span id="username-welcome"></span>!</div>
+        <img id="logo" src="img/retro-quiz-logo.png" class="stagger">
+        <div class="plaintext stagger">Hello <span id="username-welcome"></span>!</div>
       
         <div id="status">
         </div>
 
         <div class="menu-line">
-          <img id="start-game-button" src="img/start-button.png">
-          <img id="start-game-button" src="img/high-score-button.png">
+          <img id="start-game-button" src="img/start-button.png" class="stagger">
+          <img id="start-game-button" src="img/high-score-button.png" class="stagger">
         </div>
-        <div class="janstandard-wrapper">
+        <div class="janstandard-wrapper stagger">
           <img src="img/retrojan-angry.png">
         </div>
       </div>
 
       <div id="statusscreen" class="screen">
-        <div id="statusscreen-level-complete">Level complete!</div>
-        <div id="statusscreen-level">Next level </div>
-        <div id="statusscreen-title">The fart deamons of fartonia</div>
-        <div id="statusscreen-level-number-container">Level <span id="statusscreen-level-number">0</span></div>
-
-
-        <div id="statusscreen-status-and-controls">
-          <div id="statusscreen-timebonus-info-container">Timebonus from level <span id="statusscreen-timebonus-info"></span></div>
-          <div id="statusscreen-timebonus-container"><span id="statusscreen-timebonus">400</span> points</div>
-
-          <div id="statusscreen-current-score-info">Total score</div>
-          <div id="statusscreen-current-score-container">
-            <span id="statusscreen-current-score">400</span> points</div>
-      
-            <div class="menu-line">
-              <img id="start-level-button" src="img/start-button.png">
+        <div class="screen-header-container">
+          <div id="statusscreen-level-number-container" class="screen-label stagger">Next Level <span id="statusscreen-level-number">0</span></div>
+          <div id="statusscreen-title" class="screen-header stagger">The fart deamons of fartonia</div>
+          <div class="screen-description stagger">Get <span id="statusscreen-score-to-beat">0</span> answers right to beat level</div>
+        </div>
+            
+        <div id="statusscreen-status-and-controls" class="screen-custom-container">
+          <div class="50">
+            <div id="statusscreen-timebonus-info-container" class="screen-label stagger">
+              Timebonus
             </div>
+
+            <div id="statusscreen-timebonus-container" class="screen-number-big stagger" id="statusscreen-timebonus">
+              400
+            </div>
+          </div>
+
+          <div class="half-width">
+            <div class="screen-label stagger">Total score</div>
+            <div class="screen-number-big stagger" id="statusscreen-current-score">
+              400
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="screen-controls-container">
+            <img id="start-level-button" src="img/start-button.png" class="screen-button-narrow stagger">
         </div>
       </div>
       <div id="levelContainer"  class="screen">
@@ -89,12 +101,12 @@
           <div class="screen-description">You ran out of lives</div>
         </div>
         <div class="screen-custom-container">
-          <div class="screen-label">new score!</div>
-          <div class="screen-number-big">4000</div>
+          <div class="screen-label stagger">new score!</div>
+          <div class="screen-number-big stagger">4000</div>
         </div>
         <div class="screen-controls-container">
-          <img id="new-game-button" src="img/new-game.png" class="screen-button">
-          <img id="back-to-menu" src="img/to-menu.png" class="screen-button">
+          <img id="new-game-button" src="img/new-game.png" class="screen-button-wide">
+          <img id="back-to-menu" src="img/to-menu.png" class="screen-button-wide">
         </div>
           <div class="screen-bottom-container">
             <img src="img/retrojan-very-angry.png">

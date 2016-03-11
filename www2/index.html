@@ -7,7 +7,7 @@
     <script src="jquery.js"></script>
     <script src="hammer.js"></script>
     <script src="jquery.hammer.js"></script>
-    <script type="text/javascript" src="cordova.js"></script>
+    <script src="nadb.js"></script>
     <link rel="stylesheet" href="stylesheets/screen.css">
   </head>
    <body>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="menu-line">
-          <img id="start-game-button" src="img/start-button.png" class="stagger">
+          <div id="start-game-button" class="stagger start-button button-round-animated"></div>
           <img id="start-game-button" src="img/high-score-button.png" class="stagger">
         </div>
         <div class="janstandard-wrapper stagger">
@@ -64,12 +64,12 @@
         </div>
             
         <div id="statusscreen-status-and-controls" class="screen-custom-container">
-          <div class="50">
-            <div id="statusscreen-timebonus-info-container" class="screen-label stagger">
+          <div class="half-width" id="statusscreen-timebonus-info-container">
+            <div id="statusscreen-timebonus-info-title" class="screen-label stagger">
               Timebonus
             </div>
 
-            <div id="statusscreen-timebonus-container" class="screen-number-big stagger" id="statusscreen-timebonus">
+            <div class="screen-number-big stagger" id="statusscreen-timebonus">
               400
             </div>
           </div>
@@ -85,7 +85,7 @@
         </div>
 
         <div class="screen-controls-container">
-            <img id="start-level-button" src="img/start-button.png" class="screen-button-narrow stagger">
+            <div id="start-level-button" class="stagger start-button button-round-animated"></div>
         </div>
       </div>
       <div id="levelContainer"  class="screen">
@@ -104,8 +104,8 @@
           <div class="screen-number-big stagger">4000</div>
         </div>
         <div class="screen-controls-container">
-          <img id="new-game-button" src="img/new-game.png" class="screen-button-wide">
-          <img id="back-to-menu" src="img/to-menu.png" class="screen-button-wide">
+          <div id="new-game-button" class="stagger new-game-button button-wide"></div>
+          <div id="back-to-menu-button" class="stagger to-menu-button button-wide"></div>
         </div>
           <div class="screen-bottom-container">
             <img src="img/retrojan-very-angry.png">
@@ -117,7 +117,15 @@
     <script src="levels.js"></script>
     <script src="game.js"></script>
     <script>
-      document.addEventListener("deviceready", startTheApp, false);
+
+    var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+    console.log(document.URL, app);
+      if ( app ) {
+          document.addEventListener("deviceready", startTheApp, false);
+      } else {
+          startTheApp();
+      }  
+      
     </script>
    </body>
 </html>

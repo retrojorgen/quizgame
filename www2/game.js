@@ -32,6 +32,20 @@ var startTheApp = function () {
 		selectScreen(gameSettings.mainScreen);
 	}
 
+	var getHighScore = function () {
+		var highScores = {};
+		window.nadb.list('retrospillmessen-retroquiz', {}, function(results) {
+			_.each(results.data, function (document) {
+				if(highScores[document.user]) {
+					if(highScores[document.user] < document.points) highScores[document.user] = document.points;
+				} else {
+					highScores[document.user] = document.points;
+				}
+			});
+			console.log(highScores);
+		});
+	}
+
 	var submitUsername = function () {
 		var usernameTemp = gameSettings.usernameInput.val();
 		
@@ -161,7 +175,7 @@ var startTheApp = function () {
 				questionContainer.append(alternativeNode);
 			});
 
-			var selectButton = $("<img>", {src:"img/answer-button.png"}).addClass("answerbutton");
+			var selectButton = $("<div>").addClass("answer-button button-wide");
 			var selectButtonTouch = new Hammer(selectButton[0]);
 			selectButtonTouch.on('tap', function (event) {
 				var that = window;
@@ -277,7 +291,6 @@ var startTheApp = function () {
 			clearTimeout(currentGameData.countDownInterval);
 			var calculatedBonus = currentGameData.levelCounter * 4;
 			currentGameData.points += calculatedBonus;
-			currentGameData.gameStatus = false;
 			if(Levels[currentGameData.level + 1]) {
 				currentGameData.level++;
 				currentGameData.question = 0;
@@ -302,13 +315,16 @@ var startTheApp = function () {
 				gameSettings.endGameContainer.find(".screen-description").text("You ran out of time");
 			}
 
-			if(currentGameData.points > localStorage.score) {
+			if(currentGameData.points < localStorage.score) {
 				gameSettings.endGameContainer.find(".screen-label").text('No new high-score');
 			} else {
 				gameSettings.endGameContainer.find(".screen-label").text('new high score!');
+				localStorage.score = currentGameData.points;
 			}
 
-			gameSettings.endGameContainer.find(".screen-number-bigstart-level-button").text(currentGameData.points);
+			window.nadb.insert('retrospillmessen-retroquiz', {'document': {'points': currentGameData.points, 'user': gameSettings.username, 'email': gameSettings.email, 'timestamp': new Date()}});
+
+			gameSettings.endGameContainer.find(".screen-number-big").text(currentGameData.points);
 			
 			console.log("avslutter spill");
 			currentGameData.gameStatus = false;
@@ -325,7 +341,19 @@ var startTheApp = function () {
 				gameSettings.statusScreenTimebonusContainer.show();
 				gameSettings.statusScreenTimebonusInfoContainer.show();
 				gameSettings.statusScreenTimebonusInfo.text(levelNumber);
-				gameSettings.statusScreenTimebonus.text(bonus);
+				var bonusCounter = 0;
+				var bonusInterval = setInterval(function () {
+					if(bonusCounter >= bonus) {
+						console.log('clearing interval');
+						clearInterval(bonusInterval);
+						gameSettings.statusScreenCurrentScore.text(score+bonus);
+					} else {
+						console.log('counting ', bonusCounter);
+						gameSettings.statusScreenTimebonus.text(bonusCounter);
+						bonusCounter++;
+					}
+				}, 50);
+				
 			} else {
 				gameSettings.statusScreenTimebonusContainer.hide();
 				gameSettings.statusScreenTimebonusInfoContainer.hide();
@@ -333,7 +361,7 @@ var startTheApp = function () {
 			if(!score) {
 				gameSettings.statusScreenCurrentScore.text("0");
 			} else {
-				gameSettings.statusScreenCurrentScore.text(score);
+				gameSettings.statusScreenCurrentScore.text((score-bonus));
 				gameSettings.scoreInput.text(score);
 			}
 
@@ -341,6 +369,8 @@ var startTheApp = function () {
 
 		// run on first init
 		var init = function () {
+
+			var currentGameData = resetGameData();
 
 			gameSettings.livesUpdate.css("width", currentGameData.lives * 29);
 			
@@ -362,6 +392,21 @@ var startTheApp = function () {
 		
 	};
 
+
+	var resetGameData = function () {
+		return {
+			points: 0,
+			level: 0,
+			question: 0,
+			answer: [],
+			gameStatus: true,
+			correctAnswersInCurrentLevel: 0,
+			currentQuestionType: "single",
+			currentQuestionContainerNode : undefined,
+			lives: gameSettings.lives
+		}
+	}
+
 	var translation = {
 		"startLevel": "Start level",
 		"newgame": "New game"
@@ -381,10 +426,13 @@ var startTheApp = function () {
 		statusScreen: $("#statusscreen"),
 		usernameWelcome: $("#username-welcome"),
 		startGameButton: $("#start-game-button"),
+		highScoreButton: $("#high-score-button"),
 		startLevelButton: $("#start-level-button"),
 		usernameInput: $("#username-input"),
 		emailInput: $("#email-input"),
 		usernameForm: $("#username"),
+		toMenuButton: $("#back-to-menu-button"),
+		newGameButton: $("#new-game-button"),
 		emailForm: $("#email"),
 		mainScreenJanStandard: $("#mainscreen .janstandard"),
 		logo: $("#logo"),
@@ -402,7 +450,10 @@ var startTheApp = function () {
 		statusScreenCurrentScoreContainer: $("#statusscreen-current-score-container"),
 		statusScreenCurrentScore: $("#statusscreen-current-score"),
 		statusScreenScoreToBeat: $("#statusscreen-score-to-beat"),
-		endGameContainer : $("#endgameContainer")
+		endGameContainer : $("#endgameContainer"),
+		highScoreContainer : $("#highScoreContainer"),
+		highScoreScore : $("#highscore-score"),
+		highScoreRank : $("#highscore-rank"),
 	}
 
 	if(localStorage.username) {
@@ -415,7 +466,7 @@ var startTheApp = function () {
 	}
 
 	if(localStorage.score) {
-		gameSettings.score = localStorage.score;
+		gameSettings.highScore = localStorage.score;
 	}
 
 	if($("#mobile-wrapper").length) {
@@ -424,17 +475,7 @@ var startTheApp = function () {
 
 	}
 
-	var currentGameData = {
-		points: 0,
-		level: 0,
-		question: 0,
-		answer: [],
-		gameStatus: true,
-		correctAnswersInCurrentLevel: 0,
-		currentQuestionType: "single",
-		currentQuestionContainerNode : undefined,
-		lives: gameSettings.lives
-	}
+	var currentGameData = resetGameData();
 
 
 	gameSettings.usernameForm.submit(function (event) {
@@ -456,6 +497,27 @@ var startTheApp = function () {
 		
 		startGame();
 	});
+
+	var toMenuButtonTouch = new Hammer(gameSettings.toMenuButton[0]);
+	toMenuButtonTouch.on('tap', function () {
+		selectScreen(gameSettings.mainScreen, gameSettings.endGameContainer);
+	});
+
+	var newGameButtonTouch = new Hammer(gameSettings.newGameButton[0]);
+	newGameButtonTouch.on('tap', function () {
+		selectScreen(gameSettings.statusScreen, gameSettings.endGameContainer);
+		startGame();
+	});
+
+
+	var highScoreButtonTouch = new Hammer(gameSettings.highScoreButton[0]);
+	highScoreButtonTouch.on('tap', function () {
+		gameSettings.highScoreScore.text(localStorage.score);
+		selectScreen(gameSettings.highScoreContainer, gameSettings.mainScreen);
+		getHighScore();
+	});
+
+
 
 	if(!gameSettings.username) {
 	  startAuth();

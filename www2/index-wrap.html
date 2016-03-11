@@ -2,15 +2,17 @@
   <head>
     <!-- Pull the engine from the Quintus CDN or load it locally -->
     <!-- (use quintus-all.min.js for production) -->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <script src="TweenMax.js"></script>
     <script src="jquery.js"></script>
     <script src="hammer.js"></script>
     <script src="jquery.hammer.js"></script>
-    <script type="text/javascript" src="cordova.js"></script>
+    <script src="nadb.js"></script>
     <link rel="stylesheet" href="stylesheets/screen.css">
   </head>
    <body>
+    
+    <div id="mobile-wrapper">
       <div id="loading"></div>
       <div id="authenticationScreen" class="screen">
         
@@ -48,8 +50,8 @@
         </div>
 
         <div class="menu-line">
-          <img id="start-game-button" src="img/start-button.png" class="stagger">
-          <img id="start-game-button" src="img/high-score-button.png" class="stagger">
+          <div id="start-game-button" class="stagger start-button button-round-animated"></div>
+          <div id="high-score-button" class="stagger high-score-button button-round-animated"></div>
         </div>
         <div class="janstandard-wrapper stagger">
           <img src="img/retrojan-angry.png">
@@ -64,12 +66,12 @@
         </div>
             
         <div id="statusscreen-status-and-controls" class="screen-custom-container">
-          <div class="50">
-            <div id="statusscreen-timebonus-info-container" class="screen-label stagger">
+          <div class="half-width" id="statusscreen-timebonus-info-container">
+            <div id="statusscreen-timebonus-info-title" class="screen-label stagger">
               Timebonus
             </div>
 
-            <div id="statusscreen-timebonus-container" class="screen-number-big stagger" id="statusscreen-timebonus">
+            <div class="screen-number-big stagger" id="statusscreen-timebonus">
               400
             </div>
           </div>
@@ -81,19 +83,54 @@
             </div>
           </div>
 
-          <div class="clearfix"></div>
+          
         </div>
-
+        <div class="clearfix"></div>
         <div class="screen-controls-container">
-            <img id="start-level-button" src="img/start-button.png" class="screen-button-narrow stagger">
+            <div id="start-level-button" class="stagger start-button button-round-animated"></div>
         </div>
       </div>
+      
+      <!-- level container -->
       <div id="levelContainer"  class="screen">
       </div>
+      <!-- -->
+
       <div id="bottomContainer">
         <div id="lives"></div>
         <div id="score"><span>SCORE </span><span id="scoreinput">0</span></div>
       </div>
+
+      <div id="highScoreContainer" class="screen">
+        <div class="screen-custom-container">
+          <div class="half-width">
+            <div class="screen-label stagger">Top score</div>
+            <div class="screen-number-big stagger" id="highscore-score">
+              400
+            </div>
+          </div>
+
+          <div class="half-width">
+            <div class="screen-label stagger">Rank</div>
+            <div class="screen-number-big stagger" id="highscore-rank">
+              
+            </div>
+          </div>
+
+        </div>
+
+        <table>
+          <tr class="table-header">
+            <th>#</th>
+            <th>username</th>
+            <th>score</th>
+          </tr>
+          <tr class="table-body" id="highscore-body">
+          </tr>
+        </table>
+      </div>
+
+
       <div id="endgameContainer" class="screen">
         <div class="screen-header-container">
           <div class="screen-header">Game over!</div>
@@ -104,20 +141,19 @@
           <div class="screen-number-big stagger">4000</div>
         </div>
         <div class="screen-controls-container">
-          <img id="new-game-button" src="img/new-game.png" class="screen-button-wide">
-          <img id="back-to-menu" src="img/to-menu.png" class="screen-button-wide">
+          <div id="new-game-button" class="stagger new-game-button button-wide"></div>
+          <div id="back-to-menu-button" class="stagger to-menu-button button-wide"></div>
         </div>
           <div class="screen-bottom-container">
             <img src="img/retrojan-very-angry.png">
           </div>
       </div>
-
-      
+    </div>
     <script src="auth.js"></script>
     <script src="levels.js"></script>
     <script src="game.js"></script>
     <script>
-      document.addEventListener("deviceready", startTheApp, false);
+      startTheApp();
     </script>
    </body>
 </html>

@@ -128,43 +128,35 @@ body {
   border-radius: 4px;
 }
 
-/* line 56, ../sass/screen.scss */
-#levelContainer {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 50;
-}
-
-/* line 65, ../sass/screen.scss */
+/* line 55, ../sass/screen.scss */
 .screen {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  padding-top: 30px;
+  padding: 30px;
   overflow: hidden;
   background-image: url(../img/quiz-quest-splash.jpg);
   background-size: cover;
+  display: none;
+  opacity: 0;
 }
-/* line 75, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 .screen .screen-header-container {
   margin-bottom: 40px;
 }
-/* line 78, ../sass/screen.scss */
+/* line 70, ../sass/screen.scss */
 .screen .screen-custom-container {
   margin-bottom: 40px;
 }
-/* line 82, ../sass/screen.scss */
+/* line 74, ../sass/screen.scss */
 .screen .screen-controls-container div,
 .screen .screen-controls-container img,
 .screen .screen-controls-container span {
   margin-bottom: 10px;
 }
-/* line 88, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 .screen .screen-header,
 .screen .screen-description,
 .screen .screen-label,
@@ -174,34 +166,40 @@ body {
   text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
   text-align: center;
 }
-/* line 98, ../sass/screen.scss */
+/* line 90, ../sass/screen.scss */
 .screen .screen-header {
   font-size: 40px;
   margin-bottom: 10px;
 }
-/* line 103, ../sass/screen.scss */
+/* line 95, ../sass/screen.scss */
 .screen .screen-description {
   color: #c981fc;
   font-size: 20px;
   margin-bottom: 10px;
 }
-/* line 109, ../sass/screen.scss */
+/* line 101, ../sass/screen.scss */
 .screen .screen-label {
   color: #c981fc;
   font-size: 20px;
   margin-bottom: 10px;
 }
-/* line 115, ../sass/screen.scss */
+/* line 107, ../sass/screen.scss */
 .screen .screen-number-big {
   font-size: 40px;
 }
-/* line 118, ../sass/screen.scss */
-.screen .screen-button {
+/* line 110, ../sass/screen.scss */
+.screen .screen-button-wide {
   display: block;
   max-width: 50%;
   margin: 0 auto;
 }
-/* line 123, ../sass/screen.scss */
+/* line 115, ../sass/screen.scss */
+.screen .screen-button-narrow {
+  display: block;
+  max-width: 20%;
+  margin: 0 auto;
+}
+/* line 120, ../sass/screen.scss */
 .screen .screen-bottom-container {
   position: absolute;
   bottom: 0;
@@ -209,23 +207,23 @@ body {
   width: 100%;
   text-align: center;
 }
-/* line 129, ../sass/screen.scss */
+/* line 126, ../sass/screen.scss */
 .screen .screen-bottom-container img {
   max-width: 80%;
   margin: 0 auto;
 }
 
-/* line 136, ../sass/screen.scss */
+/* line 133, ../sass/screen.scss */
 .menu-line {
   text-align: center;
 }
-/* line 138, ../sass/screen.scss */
+/* line 135, ../sass/screen.scss */
 .menu-line img {
   max-width: 20%;
   margin: 0 10px 0 10px;
 }
 
-/* line 144, ../sass/screen.scss */
+/* line 141, ../sass/screen.scss */
 #titlefield {
   position: absolute;
   top: 0;
@@ -240,37 +238,37 @@ body {
   z-index: 1000;
 }
 
-/* line 158, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 #logo {
   max-width: 90%;
   margin: 0 auto;
 }
 
-/* line 163, ../sass/screen.scss */
+/* line 160, ../sass/screen.scss */
 .janstandard-wrapper {
   position: absolute;
   width: 100%;
   bottom: 0;
   text-align: center;
 }
-/* line 169, ../sass/screen.scss */
+/* line 166, ../sass/screen.scss */
 .janstandard-wrapper img {
   max-width: 80%;
 }
 
-/* line 174, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 .jangame-wrapper {
   position: absolute;
   width: 100%;
   bottom: 0;
   text-align: center;
 }
-/* line 180, ../sass/screen.scss */
+/* line 177, ../sass/screen.scss */
 .jangame-wrapper img {
   max-width: 80%;
 }
 
-/* line 185, ../sass/screen.scss */
+/* line 182, ../sass/screen.scss */
 #mainscreen {
   display: none;
   position: absolute;
@@ -292,12 +290,12 @@ body {
   -webkit-box-shadow: black 0 0 40px;
   box-shadow: black 0 0 40px;
 }
-/* line 203, ../sass/screen.scss */
+/* line 200, ../sass/screen.scss */
 #mainscreen img {
   display: inline-block;
 }
 
-/* line 210, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
 .menu-item {
   display: inline-block;
   padding: 10px 20px;
@@ -309,7 +307,7 @@ body {
   text-transform: uppercase;
 }
 
-/* line 221, ../sass/screen.scss */
+/* line 218, ../sass/screen.scss */
 .plaintext {
   color: #efefd5;
   text-transform: uppercase;
@@ -319,12 +317,12 @@ body {
   letter-spacing: 1px;
   text-shadow: black 2px 2px 0;
 }
-/* line 229, ../sass/screen.scss */
+/* line 226, ../sass/screen.scss */
 .plaintext.small {
   font-size: 11px;
 }
 
-/* line 234, ../sass/screen.scss */
+/* line 231, ../sass/screen.scss */
 .inputbox {
   position: absolute;
   display: none;
@@ -334,18 +332,18 @@ body {
   height: 100%;
   padding: 50% 20px 20px 20px;
 }
-/* line 242, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 .inputbox .plaintext {
   display: block;
   text-align: center;
   margin-bottom: 10px;
 }
-/* line 246, ../sass/screen.scss */
+/* line 243, ../sass/screen.scss */
 .inputbox .plaintext.small {
   margin-top: 14px;
   line-height: 1.5;
 }
-/* line 251, ../sass/screen.scss */
+/* line 248, ../sass/screen.scss */
 .inputbox #username-input,
 .inputbox #email-input {
   width: 100%;
@@ -361,11 +359,11 @@ body {
   outline: none;
   font-size: 30px;
 }
-/* line 267, ../sass/screen.scss */
+/* line 264, ../sass/screen.scss */
 .inputbox .button-container {
   text-align: center;
 }
-/* line 270, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 .inputbox .submit {
   padding: 10px 20px;
   color: #242A31;
@@ -375,13 +373,13 @@ body {
   border: 0;
   text-transform: uppercase;
 }
-/* line 278, ../sass/screen.scss */
+/* line 275, ../sass/screen.scss */
 .inputbox .submit.invert {
   background-color: #242A31;
   color: #efefd5;
 }
 
-/* line 285, ../sass/screen.scss */
+/* line 282, ../sass/screen.scss */
 #lives {
   height: 30px;
   width: 116px;
@@ -393,7 +391,7 @@ body {
   background-size: auto 100%;
 }
 
-/* line 299, ../sass/screen.scss */
+/* line 296, ../sass/screen.scss */
 #loading {
   display: none;
   position: absolute;
@@ -413,13 +411,8 @@ body {
   box-shadow: black 1px 1px 10px;
 }
 
-/* line 316, ../sass/screen.scss */
+/* line 313, ../sass/screen.scss */
 #authenticationScreen {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
   background-color: black;
   background-image: url(../img/quiz-quest-splash.jpg);
   background-size: cover;
@@ -430,15 +423,11 @@ body {
   text-transform: uppercase;
   text-align: center;
   padding: 40px 40px 0 40px;
-  -moz-transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
   -moz-box-shadow: black 10px 10px 140px;
   -webkit-box-shadow: black 10px 10px 140px;
   box-shadow: black 10px 10px 140px;
 }
-/* line 333, ../sass/screen.scss */
+/* line 324, ../sass/screen.scss */
 #authenticationScreen:before {
   content: "";
   background-color: rgba(0, 0, 0, 0.3);
@@ -448,11 +437,11 @@ body {
   width: 100%;
   height: 100%;
 }
-/* line 343, ../sass/screen.scss */
+/* line 334, ../sass/screen.scss */
 #authenticationScreen img {
   display: inline-block;
 }
-/* line 347, ../sass/screen.scss */
+/* line 338, ../sass/screen.scss */
 #authenticationScreen #facebookLoginButton,
 #authenticationScreen #facebookLogoutButton {
   padding: 10px;
@@ -465,7 +454,7 @@ body {
   -webkit-box-shadow: black 1px 1px 0;
   box-shadow: black 1px 1px 0;
 }
-/* line 358, ../sass/screen.scss */
+/* line 349, ../sass/screen.scss */
 #authenticationScreen #loginNoUser {
   position: absolute;
   right: 10px;
@@ -524,7 +513,7 @@ body {
     transform: rotate(360deg) scale(1);
   }
 }
-/* line 381, ../sass/screen.scss */
+/* line 372, ../sass/screen.scss */
 #timer {
   position: absolute;
   left: 0;
@@ -535,7 +524,7 @@ body {
   z-index: 100;
 }
 
-/* line 391, ../sass/screen.scss */
+/* line 382, ../sass/screen.scss */
 #bottomContainer {
   font-size: 20px;
   color: white;
@@ -557,14 +546,14 @@ body {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 405, ../sass/screen.scss */
+/* line 396, ../sass/screen.scss */
 #bottomContainer.visible {
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
-/* line 409, ../sass/screen.scss */
+/* line 400, ../sass/screen.scss */
 #bottomContainer #score {
   position: absolute;
   width: 50%;
@@ -573,7 +562,7 @@ body {
   text-align: right;
 }
 
-/* line 419, ../sass/screen.scss */
+/* line 410, ../sass/screen.scss */
 #levelContainer {
   width: 100%;
   height: 100%;
@@ -587,7 +576,7 @@ body {
   -webkit-perspective: 3000;
   perspective: 3000;
 }
-/* line 429, ../sass/screen.scss */
+/* line 420, ../sass/screen.scss */
 #levelContainer .level-timer {
   position: absolute;
   width: 100%;
@@ -596,7 +585,7 @@ body {
   top: 0;
   height: 10px;
 }
-/* line 438, ../sass/screen.scss */
+/* line 429, ../sass/screen.scss */
 #levelContainer #countdown {
   position: absolute;
   left: 0;
@@ -609,7 +598,7 @@ body {
   padding: 0 20px 0 20px;
   text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
 }
-/* line 451, ../sass/screen.scss */
+/* line 442, ../sass/screen.scss */
 #levelContainer #correct {
   position: absolute;
   left: 0;
@@ -623,25 +612,27 @@ body {
   padding: 0 20px 0 20px;
   text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
 }
-/* line 461, ../sass/screen.scss */
+/* line 452, ../sass/screen.scss */
 #levelContainer #correct .small {
   font-size: 20px;
 }
-/* line 469, ../sass/screen.scss */
+/* line 460, ../sass/screen.scss */
 #levelContainer .answerbutton {
   text-align: center;
   margin: 20px auto 20px auto;
   max-width: 50%;
   display: block;
 }
-/* line 475, ../sass/screen.scss */
+/* line 466, ../sass/screen.scss */
 #levelContainer .questionContainer {
   color: white;
   position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
   padding: 30px 20px 20px 20px;
 }
-/* line 480, ../sass/screen.scss */
+/* line 473, ../sass/screen.scss */
 #levelContainer .questionContainer .question {
   color: white;
   text-transform: uppercase;
@@ -649,13 +640,13 @@ body {
   text-align: center;
   text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
 }
-/* line 491, ../sass/screen.scss */
+/* line 484, ../sass/screen.scss */
 #levelContainer .questionContainer.multipleChoice .alternative:before, #levelContainer .questionContainer.multipleChoice .alternative:after {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 496, ../sass/screen.scss */
+/* line 489, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative {
   padding: 10px;
   padding-left: 65px;
@@ -673,11 +664,11 @@ body {
   position: relative;
   text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
 }
-/* line 509, ../sass/screen.scss */
+/* line 502, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.faded {
   opacity: 0.6;
 }
-/* line 512, ../sass/screen.scss */
+/* line 505, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative:before {
   position: absolute;
   width: 40px;
@@ -693,7 +684,7 @@ body {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 524, ../sass/screen.scss */
+/* line 517, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative:after {
   position: absolute;
   opacity: 0;
@@ -711,15 +702,15 @@ body {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 538, ../sass/screen.scss */
+/* line 531, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.correct-answer {
   background-color: #4cc124;
 }
-/* line 541, ../sass/screen.scss */
+/* line 534, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.wrong-answer {
   background-color: #FF0000;
 }
-/* line 545, ../sass/screen.scss */
+/* line 538, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.selected:before {
   border: 1px solid black;
   -moz-transform: scale(-0.5);
@@ -727,7 +718,7 @@ body {
   -webkit-transform: scale(-0.5);
   transform: scale(-0.5);
 }
-/* line 549, ../sass/screen.scss */
+/* line 542, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.selected:after {
   opacity: 1;
   -moz-transform: scale(2);
@@ -736,92 +727,37 @@ body {
   transform: scale(2);
 }
 
-/* line 558, ../sass/screen.scss */
+/* line 551, ../sass/screen.scss */
 #statusscreen {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 500;
   background-image: url(../img/quiz-quest-splash.jpg);
   background-size: cover;
   text-align: center;
-  -moz-transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
 }
-/* line 573, ../sass/screen.scss */
-#statusscreen #statusscreen-level {
-  color: #FDEFBF;
-  padding-bottom: 4px;
-  font-size: 16px;
-}
-/* line 578, ../sass/screen.scss */
-#statusscreen #statusscreen-level-number {
-  color: #FDEFBF;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  font-size: 28px;
-  margin-bottom: 80px;
-}
-/* line 585, ../sass/screen.scss */
-#statusscreen #statusscreen-title {
-  font-size: 40px;
-}
-/* line 588, ../sass/screen.scss */
-#statusscreen #statusscreen-timebonus-info,
-#statusscreen #statusscreen-current-score-info {
-  color: #FDEFBF;
-  padding-bottom: 4px;
-  font-size: 20px;
-  text-align: center;
-}
-/* line 595, ../sass/screen.scss */
-#statusscreen #statusscreen-timebonus,
-#statusscreen #statusscreen-current-score {
-  text-align: center;
-  font-size: 30px;
-}
-/* line 601, ../sass/screen.scss */
-#statusscreen #statusscreen-level-complete {
-  text-transform: uppercase;
-  font-size: 40px;
-  margin-bottom: 20px;
-  display: none;
-}
-/* line 609, ../sass/screen.scss */
-#statusscreen #statusscreen-timebonus-container {
-  display: none;
-}
-/* line 613, ../sass/screen.scss */
-#statusscreen #timebonus,
-#statusscreen #current-score {
-  font-size: 30px;
-}
-/* line 618, ../sass/screen.scss */
+/* line 557, ../sass/screen.scss */
 #statusscreen #start-level-button {
   text-shadow: none;
   width: 150px;
   color: #242A31;
 }
-/* line 623, ../sass/screen.scss */
-#statusscreen div {
-  padding: 10px 20px 10px 20px;
-  text-align: center;
-}
-/* line 627, ../sass/screen.scss */
-#statusscreen div, #statusscreen span {
-  color: white;
-  text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
+
+/* line 564, ../sass/screen.scss */
+#correctAnswersCounter {
+  display: inline-block;
 }
 
-/* line 634, ../sass/screen.scss */
-#endgameContainer {
-  z-index: 40000000;
-  -moz-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
-  -webkit-transform: translateX(-100%);
-  transform: translateX(-100%);
+/* line 572, ../sass/screen.scss */
+.half-width {
+  display: inline-block;
+  width: 48%;
+  float: left;
+}
+
+/* line 578, ../sass/screen.scss */
+.clearfix {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }
