@@ -17,6 +17,20 @@ var startTheApp = function () {
 		}
 	}
 
+	var prependBackgroundAnimation = function (container, level) {
+		console.log('adding background', level, container);
+		container.find(".level-background").remove();
+		var levelBackground = $("<div>").addClass("level-background level-" + level + "");
+		var character = $("<div>").addClass("character");
+		var character2 = $("<div>").addClass("character-2");
+		var leftWall = $("<div>").addClass("left-wall");
+		var rightWall = $("<div>").addClass("right-wall");
+		var ceiling = $("<div>").addClass("ceiling");
+		var ground = $("<div>").addClass("ground");
+
+		container.append(levelBackground.append(character, character2, leftWall, rightWall, ceiling,ground));
+	};
+
 	var shuffleArray = function (a) {
 	    var j, x, i;
 	    for (i = a.length; i; i -= 1) {
@@ -33,16 +47,48 @@ var startTheApp = function () {
 	}
 
 	var getHighScore = function () {
+		var highScoreContainer = $("#highscore-table");
 		var highScores = {};
+		var highScoresArray = [];
 		window.nadb.list('retrospillmessen-retroquiz', {}, function(results) {
 			_.each(results.data, function (document) {
-				if(highScores[document.user]) {
-					if(highScores[document.user] < document.points) highScores[document.user] = document.points;
+				console.log(document);
+				if(highScores[document.document.user]) {
+					if(highScores[document.document.user].points < document.document.points) highScores[document.document.user].points = document.document.points;
 				} else {
-					highScores[document.user] = document.points;
+					highScores[document.document.user] = {
+						user: document.document.user,
+						points: document.document.points
+					};
 				}
 			});
-			console.log(highScores);
+			
+			_.each(highScores, function (userAndScore) {
+				console.log(highScoresArray);
+				highScoresArray.push(userAndScore);
+			});
+			highScoreArray = _.sortBy(highScoresArray, 'points');
+
+			highScoreArray.reverse();
+
+			_.each(highScoreArray, function (userAndScore, iteratee) {
+				var row = $("<tr>").addClass("table-body");
+				row.append(
+					$("<td>").text(iteratee+1),
+					$("<td>").text(userAndScore.user),
+					$("<td>").text(userAndScore.points)
+				);
+
+
+				if(userAndScore.user == localStorage.username) {
+					gameSettings.highScoreRank.text(iteratee+1);
+					gameSettings.highScoreScore.text(userAndScore.points);
+				}
+
+				highScoreContainer.append(row);
+
+
+			});
 		});
 	}
 
@@ -141,7 +187,7 @@ var startTheApp = function () {
 		// draw question and add to DOM
 		var drawQuestion = function () {
 			currentGameData.answer = [];
-			var questionContainer = $("<div></div>").addClass("questionContainer");
+			var questionContainer = $("<div></div>").addClass("questionContainer bilboard");
 			var questionTitle = $("<div></div>").addClass("question").text(Levels[currentGameData.level].questions[currentGameData.question].question);
 			if(Levels[currentGameData.level].questions[currentGameData.question].question.length > 27) {
 				questionTitle.css('font-size', '30px');
@@ -150,7 +196,7 @@ var startTheApp = function () {
 			if(Levels[currentGameData.level].questions[currentGameData.question].type != "single") {
 				questionContainer.addClass("multipleChoice").attr("data-q-id", currentGameData.question);
 			} else {
-				questionContainer.addClass("single").attr("data-q-id", currentGameData.question);
+				questionContainer.attr("data-q-id", currentGameData.question);
 			}
 			Levels[currentGameData.level].questions[currentGameData.question].alternatives.forEach(function (alternative, i) {
 				var alternativeNode = $("<div></div>").addClass("alternative").text(alternative).attr("data-answer-id", i);
@@ -242,7 +288,7 @@ var startTheApp = function () {
 		
 
 		// loads level, sets timer.
-		var loadLevel = function (level) {
+		var loadLevel = function (level, levelNumber) {
 
 			shuffleArray(level.questions);
 
@@ -250,6 +296,8 @@ var startTheApp = function () {
 
 			currentGameData.correctAnswersInCurrentLevel = 0;
 			currentGameData.levelCounter = level.timeToBeatLevel;
+
+			
 
 			var titleField = $("<div</div>").attr("id", "titlefield").text(level.levelname);
 			var countDownContainer = $("<div></div>").attr("id", "countdown").text(level.timeToBeatLevel);
@@ -262,6 +310,8 @@ var startTheApp = function () {
 			TweenMax.to(currentGameData.janStandard, 0, {y: 250, ease: Linear.easeNone});
 			TweenMax.to(currentGameData.janStandard, 1, {y: 50, ease: Bounce.easeOut});
 			gameSettings.levelScreen.append(titleField, countDownContainer, correctContainer, timerAnimated, currentGameData.janStandard);
+
+			prependBackgroundAnimation(gameSettings.levelScreen, currentGameData.level+1);
 
 			drawQuestion();
 
@@ -323,6 +373,7 @@ var startTheApp = function () {
 			}
 
 			window.nadb.insert('retrospillmessen-retroquiz', {'document': {'points': currentGameData.points, 'user': gameSettings.username, 'email': gameSettings.email, 'timestamp': new Date()}});
+			console.log('setter inn resultat', {'document': {'points': currentGameData.points, 'user': gameSettings.username, 'email': gameSettings.email, 'timestamp': new Date()}});
 
 			gameSettings.endGameContainer.find(".screen-number-big").text(currentGameData.points);
 			
@@ -333,6 +384,9 @@ var startTheApp = function () {
 		}
 
 		var updateStatusScreen = function (levelNumber, bonus, score) {
+
+			prependBackgroundAnimation(gameSettings.statusScreen, levelNumber+1);
+
 			console.log("data coming in", levelNumber, bonus, score);
 			gameSettings.statusScreenTitle.text(Levels[levelNumber].levelname);
 			gameSettings.statusScreenScoreToBeat.text(Levels[levelNumber].correctAnswersToProceed)
@@ -352,7 +406,7 @@ var startTheApp = function () {
 						gameSettings.statusScreenTimebonus.text(bonusCounter);
 						bonusCounter++;
 					}
-				}, 50);
+				}, 10);
 				
 			} else {
 				gameSettings.statusScreenTimebonusContainer.hide();
@@ -384,7 +438,7 @@ var startTheApp = function () {
 			var startLevelTouch = new Hammer(gameSettings.startLevelButton[0]);
 
 			startLevelTouch.on('tap', function () {
-				loadLevel(Levels[currentGameData.level]);
+				loadLevel(Levels[currentGameData.level], currentGameData.level);
 			});
 		}
 
@@ -427,6 +481,7 @@ var startTheApp = function () {
 		usernameWelcome: $("#username-welcome"),
 		startGameButton: $("#start-game-button"),
 		highScoreButton: $("#high-score-button"),
+		goBackButton: $("#go-back-button"),
 		startLevelButton: $("#start-level-button"),
 		usernameInput: $("#username-input"),
 		emailInput: $("#email-input"),
@@ -507,6 +562,11 @@ var startTheApp = function () {
 	newGameButtonTouch.on('tap', function () {
 		selectScreen(gameSettings.statusScreen, gameSettings.endGameContainer);
 		startGame();
+	});
+
+	var goBackButtonTouch = new Hammer(gameSettings.goBackButton[0]);
+	goBackButtonTouch.on('tap', function () {
+		selectScreen(gameSettings.mainScreen, gameSettings.highScoreContainer);
 	});
 
 

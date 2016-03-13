@@ -8,6 +8,7 @@
     <script src="hammer.js"></script>
     <script src="jquery.hammer.js"></script>
     <script src="nadb.js"></script>
+    <script src="underscore.js"></script>
     <link rel="stylesheet" href="stylesheets/screen.css">
   </head>
    <body>
@@ -59,35 +60,40 @@
       </div>
 
       <div id="statusscreen" class="screen">
-        <div class="screen-header-container">
-          <div id="statusscreen-level-number-container" class="screen-label stagger">Next Level <span id="statusscreen-level-number">0</span></div>
-          <div id="statusscreen-title" class="screen-header stagger">The fart deamons of fartonia</div>
-          <div class="screen-description stagger">Get <span id="statusscreen-score-to-beat">0</span> answers right to beat level</div>
-        </div>
-            
-        <div id="statusscreen-status-and-controls" class="screen-custom-container">
-          <div class="half-width" id="statusscreen-timebonus-info-container">
-            <div id="statusscreen-timebonus-info-title" class="screen-label stagger">
-              Timebonus
-            </div>
 
-            <div class="screen-number-big stagger" id="statusscreen-timebonus">
-              400
+        <div class="over-background">
+          <div class="bilboard">
+            <div class="screen-header-container">
+              <div id="statusscreen-level-number-container" class="screen-label stagger">Next Level <span id="statusscreen-level-number">0</span></div>
+              <div id="statusscreen-title" class="screen-header stagger">The fart deamons of fartonia</div>
+              <div class="screen-description stagger">Get <span id="statusscreen-score-to-beat">0</span> answers right to beat level</div>
+            </div>
+                
+            <div id="statusscreen-status-and-controls" class="screen-custom-container">
+              <div class="half-width" id="statusscreen-timebonus-info-container">
+                <div id="statusscreen-timebonus-info-title" class="screen-label stagger">
+                  Timebonus
+                </div>
+
+                <div class="screen-number-big stagger" id="statusscreen-timebonus">
+                  400
+                </div>
+              </div>
+
+              <div class="half-width">
+                <div class="screen-label stagger">Total score</div>
+                <div class="screen-number-big stagger" id="statusscreen-current-score">
+                  400
+                </div>
+              </div>
+
+              
+            </div>
+            <div class="clearfix"></div>
+            <div class="screen-controls-container">
+                <div id="start-level-button" class="stagger start-button button-round-animated"></div>
             </div>
           </div>
-
-          <div class="half-width">
-            <div class="screen-label stagger">Total score</div>
-            <div class="screen-number-big stagger" id="statusscreen-current-score">
-              400
-            </div>
-          </div>
-
-          
-        </div>
-        <div class="clearfix"></div>
-        <div class="screen-controls-container">
-            <div id="start-level-button" class="stagger start-button button-round-animated"></div>
         </div>
       </div>
       
@@ -102,6 +108,9 @@
       </div>
 
       <div id="highScoreContainer" class="screen">
+        <div class="screen-controls-container">
+              <div id="go-back-button" class="stagger go-back-button button-wide"></div>
+        </div>
         <div class="screen-custom-container">
           <div class="half-width">
             <div class="screen-label stagger">Top score</div>
@@ -119,7 +128,7 @@
 
         </div>
 
-        <table>
+        <table class="highscore-table" id="highscore-table">
           <tr class="table-header">
             <th>#</th>
             <th>username</th>

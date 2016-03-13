@@ -2,7 +2,7 @@ var Levels = [
 	{
 		"levelname": "Warming up",
 		"timeToBeatLevel": 60,
-		"correctAnswersToProceed": 5,
+		"correctAnswersToProceed": 1,
 		"questions": 
 		[
 			{
@@ -269,7 +269,7 @@ var Levels = [
 		"levelname": "Getting warmer",
 		"leveltype": "singleAnswer",
 		"timeToBeatLevel": 60,
-		"correctAnswersToProceed": 5,
+		"correctAnswersToProceed": 1,
 		"questions": 
 		[
 			{

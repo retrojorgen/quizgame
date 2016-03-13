@@ -1,0 +1,877 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass";
+@include font-face("Pixel", font-files("pixel.ttf"));
+
+html, body {
+	width: 100%;
+	height: 100%;
+	max-height: 100%;
+	max-width: 100%;
+	overflow: hidden;
+	font-family: "Pixel";
+	position:absolute;
+}
+
+html {
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0); 
+}
+
+body {
+	background-color: #151d29;
+	text-transform: uppercase;
+}
+
+* {
+	@include box-sizing(border-box);
+	
+}
+
+*:not(input,textarea) {
+	-webkit-tap-highlight-color: rgba(0,0,0,0); 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Disable selection/Copy of UIWebView */
+}
+
+#mobile-wrapper {
+	position: absolute;
+	width: 375px;
+	height: 667px;
+	top: 50%;
+	left: 50%;
+	overflow: hidden;
+	margin-top: -333.5px;
+	margin-left: -187.5px;
+	@include box-shadow(rgba(255,255,255,0.4) 0 0 34px);
+	@include border-radius(4px);
+}
+
+.screen {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	padding: 30px;
+	overflow: hidden;
+	background-image: url(../img/quiz-quest-splash.jpg);
+	background-size: cover;
+	display: none;
+	opacity: 0;
+	.screen-header-container {
+		margin-bottom: 40px;
+	}
+	.screen-custom-container {
+		margin-bottom: 40px;
+	}
+	.screen-controls-container {
+		position: relative;
+		z-index: 4000;
+		div,
+		img,
+		span {
+			margin-bottom: 10px;
+		}
+	}
+	.screen-header,
+	.screen-description,
+	.screen-label,
+	.screen-number,
+	.screen-number-big {
+		color: white;
+		text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
+		text-align: center;
+	}
+
+	.screen-header {
+		font-size: 40px;
+		margin-bottom: 10px;
+	}
+
+	.screen-description {
+		color: #c981fc;
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+
+	.screen-label {
+		color: #c981fc;
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+
+	.screen-number-big {
+		font-size: 40px;
+	}
+	.screen-button-wide {
+		display: block;
+		max-width: 50%;
+		margin: 0 auto;
+	}
+	.screen-button-narrow {
+		display: block;
+		max-width: 20%;
+		margin: 0 auto;
+	}
+	.screen-bottom-container {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		img {
+			max-width: 60%;
+			margin: 0 auto;
+		}
+	}
+}
+
+.menu-line {
+	text-align: center;
+	position: relative;
+	z-index: 4000;
+	img {
+		max-width: 20%;
+		margin: 0 10px 0 10px;
+	}
+}
+
+#titlefield {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	color: white;
+	font-size: 30px;
+	text-transform: uppercase;
+	background-color: rgba(0,0,0,0.8);
+	display: none;
+	z-index: 1000;
+}
+
+#logo {
+	max-width: 90%;
+	margin: 0 auto;
+}
+
+.janstandard-wrapper {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	text-align: center;
+
+	img {
+		max-width: 60%;
+	}
+}
+
+.jangame-wrapper {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	text-align: center;
+	z-index: 150;
+	img {
+		max-width: 60%;
+	}
+}
+
+#mainscreen {
+	background-color: black;
+	background-image: url(../img/quiz-quest-splash.jpg);
+	background-size: cover;
+	background-position: center top;
+	text-align: center;
+	padding: 10px;
+	z-index: 100;
+	padding-top: 40px;
+	text-transform: uppercase;
+	text-align: center;
+	@include box-shadow(rgb(0,0,0) 0 0 40px);
+	img {
+		display: inline-block;
+	}
+
+
+}
+
+.menu-item {
+	display: inline-block;
+	padding: 10px 20px;
+	color: #242A31;
+	border: 4px solid #242A31;
+	background-color: #efefd5;
+	font-family: "Pixel";
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+.plaintext {
+	color: #efefd5;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 20px;
+	margin-bottom: 20px;
+	letter-spacing: 1px;
+	@include text-shadow(rgb(0,0,0) 2px 2px 0);
+	&.small {
+		font-size: 11px;
+	}
+}
+
+.inputbox {
+	position: absolute;
+	display: none;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	padding: 50% 20px 20px 20px;
+	.plaintext {
+		display: block;
+		text-align: center;
+		margin-bottom: 10px;
+		&.small {
+			margin-top: 14px;
+			line-height: 1.5;
+		}
+	}
+	#username-input,
+	#email-input {
+
+		width: 100%;
+		border: 0;
+		padding: 10px;
+		background-color: transparent;
+		text-transform: uppercase;
+		border-bottom: 1px solid #efefd5;
+		margin-bottom: 20px;
+		font-family: "Pixel";
+		text-align: center;
+		color: #efefd5;
+		outline: none;
+		font-size: 30px;
+	}
+	.button-container {
+		text-align: center;
+	}
+	.submit {
+		padding: 10px 20px;
+		color: #242A31;
+		background-color: #efefd5;
+		font-family: "Pixel";
+		font-size: 20px;
+		border: 0;
+		text-transform: uppercase;
+		&.invert {
+			background-color: #242A31;
+			color: #efefd5;
+		}
+	}
+}
+
+#lives {
+	height: 30px;
+	width: 116px;
+	overflow: hidden;
+	position: absolute;
+	left: 4px;
+	bottom: 4px;
+	background: {
+		image: url(../img/pixel-lives.png);
+		size: auto 100%;
+
+	}
+}
+
+#loading {
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 20px;
+	height: 20px;
+	background-color: white;
+	margin-left: -10px;
+	margin-top: -10px;
+	z-index: 1000;
+	@include animation(loop 1s infinite linear);
+	@include box-shadow(rgb(0,0,0) 1px 1px 10px);
+}
+
+
+
+#authenticationScreen {
+	background-color: black;
+	background-image: url(../img/quiz-quest-splash.jpg);
+	background-size: cover;
+	background-position: center top;
+	text-align: center;
+	padding: 10px;
+	z-index: 101;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 40px 40px 0 40px;
+	&:before {
+		content: "";
+		background-color: rgba(0,0,0,0.3);
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+	@include box-shadow(rgb(0,0,0) 10px 10px 140px);
+	img {
+		display: inline-block;
+	}
+
+	#facebookLoginButton,
+	#facebookLogoutButton {
+		padding: 10px;
+		display: inline-block;
+		background-color: red;
+		color: #efefd5;
+		font-size: 20px;
+		letter-spacing: 1px;
+		@include box-shadow(rgb(0,0,0) 1px 1px 0);
+	}
+
+	#loginNoUser {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+		color: #efefd5;
+		@include text-shadow(rgb(0,0,0) 2px 2px 0);
+		font-size: 16px;
+		letter-spacing: 1;
+	}
+}
+
+@include keyframes(loop) {
+	0% {
+		@include transform(rotate(0) scale(1));
+	}
+	50% {
+		@include transform(rotate(180deg) scale(1.5));
+	}
+	100% {
+		@include transform(rotate(360deg) scale(1));
+	}
+}
+
+#timer {
+	position: absolute;
+	left: 0;
+	bottom: 40px;
+	height: 10px;
+	background-color: white;
+	width: 100%;
+	z-index: 150;
+}
+
+#bottomContainer {
+	font-size: 20px;
+	color: white;
+	@include text-shadow(rgb(0,0,0) 1px 1px 0);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 40px;
+    border-top: 1px solid white;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.5);
+    @include translateY(40px);
+    @include transition(0.25s);
+    &.visible {
+    	@include translateY(0);
+    }
+
+	#score {
+		position: absolute;
+		width: 50%;
+		left: 50%;
+		padding: 10px;
+		text-align: right;
+	}
+}
+
+
+#levelContainer {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-image: url(../img/quiz-quest-splash.jpg);
+	background-size: cover;
+	background-position: center top;
+	@include perspective(3000);
+	.level-timer {
+		position: absolute;
+		width: 100%;
+		background-color: #fb9817;
+		left: 0;
+		top: 0;
+		height: 10px;
+	}
+
+	#countdown {
+	    position: absolute;
+	    left: 0;
+	    margin-left: 0;
+	    font-size: 40px;
+	    bottom: 50px;
+	    color: white;
+	    z-index: 150;
+	    width: 100%;
+	    padding: 0 20px 0 20px;
+	    text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
+	}
+
+	#correct {
+	    position: absolute;
+	    left: 0;
+	    margin-left: 0;
+	    font-size: 40px;
+	    bottom: 50px;
+	    color: white;
+	    z-index: 150;
+	    width: 100%;
+	    text-align: right;
+	    .small {
+	    	font-size: 20px;
+	    }
+	    padding: 0 20px 0 20px;
+	    text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
+
+	}
+
+	.answerbutton {
+	    text-align: center;
+	    margin: 20px auto 20px auto;
+	    max-width: 50%;
+	    display: block;
+	}
+	.questionContainer {
+		color: white;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		padding: 30px 20px 20px 20px;
+		z-index: 150 !important;
+		.question {
+			color: white;
+			text-transform: uppercase;
+			font-size: 40px;
+			text-align: center;
+			text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
+
+
+		}
+		&.multipleChoice {
+			.alternative {
+				&:before, &:after {
+					@include border-radius(4px);
+				}
+			}
+		}
+		.alternative {
+			padding: 10px;
+			padding-left: 65px;
+			margin: 15px 0 15px 0;
+			color: white;
+			font-size: 20px;
+			text-align: left;
+			letter-spacing: 1;
+			background-color: transparent;
+			@include text-shadow(rgb(0,0,0) 1px 1px 0);
+			@include transition(0.1s);
+			position: relative;
+    		text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
+			&.faded {
+				opacity: 0.6;
+			}
+			&:before {
+				position: absolute;
+			    width: 40px;
+			    height: 40px;
+			    border: 1px solid white;
+			    left: 0;
+			    top: 0;
+			    content: "";
+			    border-radius: 50%;
+			    z-index: 2;
+			    @include transition(0.25s);
+			}
+			&:after {
+			    position: absolute;
+			    opacity: 0;
+			    width: 20px;
+			    height: 20px;
+			    border: 1px solid white;
+			    background-color: white;
+			    left: 10px;
+			    top: 10px;
+			    content: "";
+			    border-radius: 50%;
+			    z-index: 1;
+			    @include transition(0.25s);
+			}
+			&.correct-answer {
+				background-color: #4cc124;
+			}
+			&.wrong-answer {
+				background-color: #FF0000;
+			}
+			&.selected {
+				&:before {
+					border: 1px solid black;
+					@include transform(scale(-0.5));
+				}
+				&:after {
+					opacity: 1;
+					@include transform(scale(2));
+				}
+			}
+		}
+	}
+}
+
+#statusscreen {
+	background-image: url(../img/quiz-quest-splash.jpg);
+	background-size: cover;
+	text-align: center;
+
+}
+
+#correctAnswersCounter {
+	display: inline-block;
+}
+
+
+#endgameContainer {
+}
+
+.half-width {
+	display: inline-block;
+	width: 48%;
+	vertical-align: top;
+}
+
+.clearfix {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.start-button {
+	background-image: url(../img/start-button-animated.png);
+}
+
+.high-score-button {
+	background-image: url(../img/high-score-button-animated.png);
+}
+
+.button-round-animated {
+	width: 71px;
+	height: 71px;
+	display: inline-block;
+	background-size: auto 100%;
+	position: relative;
+	&:active {
+		background-position: -71px 0;
+	}
+}
+
+.answer-button {
+	background-image: url(../img/answer-button-animated.png);
+}
+.to-menu-button {
+	background-image: url(../img/to-menu-button-animated.png);
+}
+.new-game-button {
+	background-image: url(../img/new-game-button-animated.png);
+}
+
+.go-back-button {
+	background-image: url(../img/go-back-button-animated.png);
+}
+
+.button-wide {
+	width: 155px;
+	height: 55px;
+	display: block;
+	margin: 0 auto;
+	background-size: auto 100%;
+	position: relative;
+	&:active {
+		background-position: -155px 0;
+	}
+}
+
+.over-background {
+	position: relative;
+	z-index: 101;
+}
+
+.bilboard {
+    background-color: black;
+    padding: 20px;
+    position: relative;
+    border: 7px solid black;
+    z-index: 150;
+    &:before {
+	    position: absolute;
+	    content: "";
+	    background-color: transparent;
+	    width: 100%;
+	    left: 0;
+	    top: 0;
+	    height: 100%;
+	    border: 7px solid white;
+	    box-sizing: border-box;
+    }
+}
+
+.level-background {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+
+
+	.ground {
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		left: 0;
+		height: 120px;
+		z-index: 100;
+	}
+
+	.ceiling {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 34px;
+		z-index: 100;
+		width: 100%;
+	}
+
+	.left-wall,
+	.right-wall {
+		position: absolute;
+		height: 100%;
+		width: 50px;
+		z-index: 99;
+		bottom: 120px;
+	}
+
+	.left-wall {
+		left: 0;
+	}
+	.right-wall {
+		right: 0;
+	}
+
+	.character,
+	.character-2 {
+		position: absolute;
+		z-index: 101;
+
+	}
+
+	&.level-1 {
+		background-image: url(../img/level-1-background.png);
+		.ceiling {
+			background-image: url(../img/level-1-ceiling.png);
+		}
+		.right-wall {
+			background-image: url(../img/level-1-right-wall.png);
+		}
+		.left-wall {
+			background-image: url(../img/level-1-left-wall.png);
+		}
+		.character {
+			width: 43px;
+			height: 60px;
+			position: absolute;
+			bottom: 120px;
+			left: 0;
+			@include animation(lefttoright 10s infinite linear);
+			&:after {
+				content: "";
+				position: absolute;
+				width: 43px;
+				height: 60px;
+				top: 0;
+				left: 0;
+				background: url(../img/level-1-character.png) left center;
+				background-size: auto 100%;
+				@include animation(character .8s steps(5) infinite);
+			}
+		}
+
+		.character-2 {
+			background: url(../img/level-1-character-2.png) left center;
+			background-size: auto 100%;
+			width: 50px;
+			height: 60px;
+			position: absolute;
+			bottom: 120px;
+			right: 40px;
+			@include animation(charactertwo .8s steps(2) infinite);
+		}
+		.ground {
+			background-image: url(../img/level-1-ground.png);
+		}
+	}
+
+	&.level-2 {
+		background-image: url(../img/level-2-background.png);
+		.ceiling {
+			background-image: url(../img/level-2-ceiling.png);
+		}
+		.right-wall {
+			background-image: url(../img/level-2-right-wall.png);
+		}
+		.left-wall {
+			background-image: url(../img/level-2-left-wall.png);
+		}
+		.character {
+			width: 43px;
+			height: 60px;
+			position: absolute;
+			bottom: 104px;
+			left: 0;
+			@include animation(lefttoright 10s infinite linear);
+			&:after {
+				content: "";
+				position: absolute;
+				width: 43px;
+				height: 60px;
+				top: 0;
+				left: 0;
+				background: url(../img/level-2-character.png) left center;
+				background-size: auto 100%;
+				@include animation(characterLevel2 .8s steps(3) infinite);
+			}
+		}
+
+		.character-2 {
+			background: url(../img/level-2-character-2.png) left center;
+			background-size: auto 100%;
+			width: 43px;
+			height: 60px;
+			position: absolute;
+			bottom: 116px;
+			right: 40px;
+			@include animation(charactertwolevel2 .8s steps(2) infinite);
+		}
+		.ground {
+			background-image: url(../img/level-2-ground.png);
+		}
+	}
+
+	&.level-3 {
+		background-image: url(../img/level-3-background.png);
+		background-position: bottom left;
+		.ceiling {
+			background-image: url(../img/level-3-ceiling.png);
+		}
+		.right-wall {
+			background-image: url(../img/level-3-right-wall.png);
+		}
+		.left-wall {
+			background-image: url(../img/level-3-left-wall.png);
+		}
+		.character {
+			width: 43px;
+			height: 60px;
+			position: absolute;
+			bottom: 104px;
+			left: 0;
+			@include animation(lefttoright 10s infinite linear);
+			&:after {
+				content: "";
+				position: absolute;
+				width: 43px;
+				height: 60px;
+				top: 0;
+				left: 0;
+				background: url(../img/level-3-character.png) left center;
+				background-size: auto 100%;
+				@include animation(character .8s steps(5) infinite);
+			}
+		}
+
+		.character-2 {
+			background: url(../img/level-3-character-2.png) left center;
+			background-size: auto 100%;
+			width: 43px;
+			height: 60px;
+			position: absolute;
+			bottom: 116px;
+			right: 40px;
+			@include animation(charactertwolevel2 .8s steps(2) infinite);
+		}
+		.ground {
+			background-image: url(../img/level-3-ground.png);
+		}
+	}
+}
+
+@include keyframes(character) {
+   100% { background-position: -216px; }
+}
+
+@include keyframes(characterLevel2) {
+
+   100% { background-position: -129px; }
+}
+
+
+@include keyframes(lefttoright) {
+	0% {
+		@include translateX(0);
+	}
+   100% { 
+   		@include transform(translateX(600px));
+   }
+}
+
+@include keyframes(charactertwo) {
+   100% { background-position: -102px; }
+}
+
+@include keyframes(charactertwolevel2) {
+   100% { background-position: -86px; }
+}
+
+.highscore-table {
+	color:white;
+	width: 100%;
+	th {
+		padding: 10px 5px 10px 5px;
+	    border-bottom: 2px solid white;
+    	font-size: 16px;
+	}
+	td {
+		padding: 10px 5px 10px 5px;
+		font-size: 14px;
+	}
+}
