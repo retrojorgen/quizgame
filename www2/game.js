@@ -2,16 +2,20 @@ var startTheApp = function () {
 
 	var selectScreen = function (showScreen, hideScreen, callback) {
 		if(hideScreen) {
+			console.log('here');
 			TweenMax.to(hideScreen, 0.5, {opacity: 0, ease: Power4.easeOut, onComplete: function () {
 				hideScreen.hide();
 				showScreen.show();
 				TweenMax.to(showScreen, 0.5, {opacity: 1, ease: Power4.easeOut});
+				showScreen.find('.stagger').attr("style", "");
 				TweenMax.staggerFrom(showScreen.find('.stagger'), 2, {scale: 0.7, opacity: 0, delay: 0.5, ease: Elastic.easeOut}, 0.2);
 				if(callback) callback();
 			}});
 		} else {
 			showScreen.show();
+			console.log('here');
 			TweenMax.to(showScreen, 0.5, {opacity: 1, ease: Power4.easeOut});
+			showScreen.find('.stagger').attr("style", "");
 			TweenMax.staggerFrom(showScreen.find('.stagger'), 2, {scale: 0.7, opacity: 0, delay: 0.5, ease: Elastic.easeOut}, 0.2);
 			if(callback) callback();
 		}
@@ -190,7 +194,7 @@ var startTheApp = function () {
 			var questionContainer = $("<div></div>").addClass("questionContainer bilboard");
 			var questionTitle = $("<div></div>").addClass("question").text(Levels[currentGameData.level].questions[currentGameData.question].question);
 			if(Levels[currentGameData.level].questions[currentGameData.question].question.length > 27) {
-				questionTitle.css('font-size', '30px');
+				questionTitle.css('font-size', '26px');
 			}
 			questionContainer.append(questionTitle);
 			if(Levels[currentGameData.level].questions[currentGameData.question].type != "single") {
@@ -360,15 +364,15 @@ var startTheApp = function () {
 			gameSettings.endGameContainer.find(".screen-header").text("Game over!");
 			
 			if(currentGameData.lives <= 0) {
-				gameSettings.endGameContainer.find(".screen-description").text("You ran out of lives");
+				gameSettings.endGameContainer.find(".screen-description").text("Du gikk tom for liv");
 			} else {
-				gameSettings.endGameContainer.find(".screen-description").text("You ran out of time");
+				gameSettings.endGameContainer.find(".screen-description").text("Tiden rant ut på brettet");
 			}
 
 			if(currentGameData.points < localStorage.score) {
-				gameSettings.endGameContainer.find(".screen-label").text('No new high-score');
+				gameSettings.endGameContainer.find(".screen-label").text('Ingen ny high-score');
 			} else {
-				gameSettings.endGameContainer.find(".screen-label").text('new high score!');
+				gameSettings.endGameContainer.find(".screen-label").text('no high score!');
 				localStorage.score = currentGameData.points;
 			}
 
@@ -387,10 +391,9 @@ var startTheApp = function () {
 
 			prependBackgroundAnimation(gameSettings.statusScreen, levelNumber+1);
 
-			console.log("data coming in", levelNumber, bonus, score);
 			gameSettings.statusScreenTitle.text(Levels[levelNumber].levelname);
 			gameSettings.statusScreenScoreToBeat.text(Levels[levelNumber].correctAnswersToProceed)
-			gameSettings.statusScreenLevelNumber.text(levelNumber+1);
+			gameSettings.statusScreenLevelNumber.text(Levels[levelNumber].kicker);
 			if(bonus > 0) {
 				gameSettings.statusScreenTimebonusContainer.show();
 				gameSettings.statusScreenTimebonusInfoContainer.show();
@@ -398,11 +401,10 @@ var startTheApp = function () {
 				var bonusCounter = 0;
 				var bonusInterval = setInterval(function () {
 					if(bonusCounter >= bonus) {
-						console.log('clearing interval');
 						clearInterval(bonusInterval);
 						gameSettings.statusScreenCurrentScore.text(score+bonus);
+						gameSettings.scoreInput.text(score+bonus);
 					} else {
-						console.log('counting ', bonusCounter);
 						gameSettings.statusScreenTimebonus.text(bonusCounter);
 						bonusCounter++;
 					}
@@ -423,7 +425,7 @@ var startTheApp = function () {
 
 		// run on first init
 		var init = function () {
-
+			console.log('kjører init');
 			var currentGameData = resetGameData();
 
 			gameSettings.livesUpdate.css("width", currentGameData.lives * 29);
@@ -434,6 +436,7 @@ var startTheApp = function () {
 			selectScreen(gameSettings.statusScreen, gameSettings.mainScreen);
 			gameSettings.bottomContainer.show();
 			updateStatusScreen(currentGameData.level, 0, currentGameData.points);
+			console.log('oppdaterer statusskjerm ', currentGameData.level, 0, currentGameData.points);
 
 			var startLevelTouch = new Hammer(gameSettings.startLevelButton[0]);
 

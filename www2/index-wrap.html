@@ -1,5 +1,7 @@
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
     <!-- Pull the engine from the Quintus CDN or load it locally -->
     <!-- (use quintus-all.min.js for production) -->
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
@@ -9,43 +11,51 @@
     <script src="jquery.hammer.js"></script>
     <script src="nadb.js"></script>
     <script src="underscore.js"></script>
+    <link href="http://db.onlinewebfonts.com/c/7c2857cbd04acdf539eeb197ca8fd6c2?family=FR73PixelW00-Regular" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="stylesheets/screen.css">
+
   </head>
    <body>
     
     <div id="mobile-wrapper">
       <div id="loading"></div>
       <div id="authenticationScreen" class="screen">
-        
-        <form id="username" class="inputbox">
-          <label class="plaintext" for="username-input">
-            Enter your nickname
-          </label>
-          <input type="text" id="username-input">
-          <div class="button-container">
-            <button type="submit" class="submit">OK</button>
-          </div>
-        </form>
+          <form id="username" class="inputbox bilboard">
+            <label class="plaintext" for="username-input">
+              Velg brukernavn
+            </label>
+            <input type="text" id="username-input">
+            <div class="button-container">
+              <button type="submit" class="submit">OK</button>
+            </div>
+          </form>
 
-        <form id="email" class="inputbox">
-          <label class="plaintext" for="username-input">
-            Enter your e-mail
-          </label>
-          <input type="email" id="email-input">
-          <div class="button-container">
-            <button type="submit" class="submit">OK</button>
-            <button type="submit" class="submit invert">No thanks</button>
-          </div>
-          <div class="plaintext small" for="username-input">
-            By entering your e-mail you are in the running for a free ticket to Retrospillmessen 2016.
-            You might also receive promotional material for Retrospillmessen 2016.
-          </div>
-        </form>
-        
+          <form id="email" class="inputbox bilboard">
+            <label class="plaintext" for="username-input">
+              Din e-postadresse
+            </label>
+            <input type="email" id="email-input">
+            <div class="button-container">
+              <button type="submit" class="submit">OK</button>
+              <button type="submit" class="submit invert">Nei takk</button>
+            </div>
+            <div class="plaintext small" for="username-input">
+              Ved å skrive inn e-post er du med i trekningen av gratisbilletter til Retrospillmessen 2016
+            </div>
+          </form>
+        <div class="level-background authentication-screen">
+          <div class="ceiling"></div>
+          <div class="left-wall"></div>
+          <div class="right-wall"></div>
+          <div class="ground"></div>
+        </div>
       </div>
       <div id="mainscreen" class="screen">
         <img id="logo" src="img/retro-quiz-logo.png" class="stagger">
-        <div class="plaintext stagger">Hello <span id="username-welcome"></span>!</div>
+        <div class="plaintext stagger">
+          Heisann <span id="username-welcome"></span>!<br>
+          Hvor mye kan du om spillgenerasjonene?
+        </div>
       
         <div id="status">
         </div>
@@ -54,6 +64,14 @@
           <div id="start-game-button" class="stagger start-button button-round-animated"></div>
           <div id="high-score-button" class="stagger high-score-button button-round-animated"></div>
         </div>
+
+        <div class="level-background main-screen">
+          <div class="ceiling"></div>
+          <div class="left-wall"></div>
+          <div class="right-wall"></div>
+          <div class="ground"></div>
+        </div>
+
         <div class="janstandard-wrapper stagger">
           <img src="img/retrojan-angry.png">
         </div>
@@ -64,15 +82,15 @@
         <div class="over-background">
           <div class="bilboard">
             <div class="screen-header-container">
-              <div id="statusscreen-level-number-container" class="screen-label stagger">Next Level <span id="statusscreen-level-number">0</span></div>
+              <div id="statusscreen-level-number-container" class="screen-label stagger">årene <span id="statusscreen-level-number">0</span></div>
               <div id="statusscreen-title" class="screen-header stagger">The fart deamons of fartonia</div>
-              <div class="screen-description stagger">Get <span id="statusscreen-score-to-beat">0</span> answers right to beat level</div>
+              <div class="screen-description stagger">Få <span id="statusscreen-score-to-beat">0</span> riktige svar for å gå videre
             </div>
                 
             <div id="statusscreen-status-and-controls" class="screen-custom-container">
               <div class="half-width" id="statusscreen-timebonus-info-container">
                 <div id="statusscreen-timebonus-info-title" class="screen-label stagger">
-                  Timebonus
+                  Tidsbonus
                 </div>
 
                 <div class="screen-number-big stagger" id="statusscreen-timebonus">
@@ -81,17 +99,18 @@
               </div>
 
               <div class="half-width">
-                <div class="screen-label stagger">Total score</div>
+                <div class="screen-label stagger">Poengsum</div>
                 <div class="screen-number-big stagger" id="statusscreen-current-score">
                   400
                 </div>
               </div>
 
               
-            </div>
-            <div class="clearfix"></div>
-            <div class="screen-controls-container">
-                <div id="start-level-button" class="stagger start-button button-round-animated"></div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="screen-controls-container">
+                  <div id="start-level-button" class="stagger start-button button-round-animated"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -104,7 +123,7 @@
 
       <div id="bottomContainer">
         <div id="lives"></div>
-        <div id="score"><span>SCORE </span><span id="scoreinput">0</span></div>
+        <div id="score"><span id="scoreinput">0</span></div>
       </div>
 
       <div id="highScoreContainer" class="screen">
@@ -113,14 +132,14 @@
         </div>
         <div class="screen-custom-container">
           <div class="half-width">
-            <div class="screen-label stagger">Top score</div>
+            <div class="screen-label stagger">beste score</div>
             <div class="screen-number-big stagger" id="highscore-score">
               400
             </div>
           </div>
 
           <div class="half-width">
-            <div class="screen-label stagger">Rank</div>
+            <div class="screen-label stagger">Plassering</div>
             <div class="screen-number-big stagger" id="highscore-rank">
               
             </div>
@@ -131,8 +150,8 @@
         <table class="highscore-table" id="highscore-table">
           <tr class="table-header">
             <th>#</th>
-            <th>username</th>
-            <th>score</th>
+            <th>brukernavn</th>
+            <th>poengsum</th>
           </tr>
           <tr class="table-body" id="highscore-body">
           </tr>
@@ -143,10 +162,10 @@
       <div id="endgameContainer" class="screen">
         <div class="screen-header-container">
           <div class="screen-header">Game over!</div>
-          <div class="screen-description">You ran out of lives</div>
+          <div class="screen-description">Du gikk tom for liv</div>
         </div>
         <div class="screen-custom-container">
-          <div class="screen-label stagger">new score!</div>
+          <div class="screen-label stagger">Ny highscore!</div>
           <div class="screen-number-big stagger">4000</div>
         </div>
         <div class="screen-controls-container">

@@ -5,7 +5,7 @@
 
 @import "compass/reset";
 @import "compass";
-@include font-face("Pixel", font-files("pixel.ttf"));
+@include font-face("FR73PixelW00-Regular", font-files("fr73.ttf"));
 
 html, body {
 	width: 100%;
@@ -13,7 +13,7 @@ html, body {
 	max-height: 100%;
 	max-width: 100%;
 	overflow: hidden;
-	font-family: "Pixel";
+	font-family: "FR73PixelW00-Regular";
 	position:absolute;
 }
 
@@ -31,6 +31,10 @@ body {
 * {
 	@include box-sizing(border-box);
 	
+}
+
+button {
+	font-family: "FR73PixelW00-Regular";
 }
 
 *:not(input,textarea) {
@@ -90,7 +94,7 @@ body {
 	}
 
 	.screen-header {
-		font-size: 40px;
+		font-size: 30px;
 		margin-bottom: 10px;
 	}
 
@@ -98,11 +102,12 @@ body {
 		color: #c981fc;
 		font-size: 20px;
 		margin-bottom: 10px;
+		line-height: 34px;
 	}
 
 	.screen-label {
 		color: #c981fc;
-		font-size: 20px;
+		font-size: 14px;
 		margin-bottom: 10px;
 	}
 
@@ -168,7 +173,7 @@ body {
 	text-align: center;
 
 	img {
-		max-width: 60%;
+		max-width: 90%;
 	}
 }
 
@@ -197,6 +202,8 @@ body {
 	@include box-shadow(rgb(0,0,0) 0 0 40px);
 	img {
 		display: inline-block;
+		z-index: 150;
+		position: relative;
 	}
 
 
@@ -217,9 +224,12 @@ body {
 	color: #efefd5;
 	text-transform: uppercase;
 	text-align: center;
-	font-size: 20px;
+	font-size: 16px;
 	margin-bottom: 20px;
 	letter-spacing: 1px;
+	z-index: 150;
+	line-height: 24px;
+	position: relative;
 	@include text-shadow(rgb(0,0,0) 2px 2px 0);
 	&.small {
 		font-size: 11px;
@@ -227,13 +237,12 @@ body {
 }
 
 .inputbox {
-	position: absolute;
+	position: absolute !important;
 	display: none;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	padding: 50% 20px 20px 20px;
+	left: 50%;
+	margin-left: -40%;
+	top: 30%;
+	width: 80%;
 	.plaintext {
 		display: block;
 		text-align: center;
@@ -266,7 +275,7 @@ body {
 		padding: 10px 20px;
 		color: #242A31;
 		background-color: #efefd5;
-		font-family: "Pixel";
+		font-family: "FR73PixelW00-Regular";
 		font-size: 20px;
 		border: 0;
 		text-transform: uppercase;
@@ -472,7 +481,8 @@ body {
 		.question {
 			color: white;
 			text-transform: uppercase;
-			font-size: 40px;
+			font-size: 33px;
+		    line-height: 34px;
 			text-align: center;
 			text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
 
@@ -490,7 +500,7 @@ body {
 			padding-left: 65px;
 			margin: 15px 0 15px 0;
 			color: white;
-			font-size: 20px;
+			font-size: 14px;
 			text-align: left;
 			letter-spacing: 1;
 			background-color: transparent;
@@ -644,6 +654,11 @@ body {
 	    border: 7px solid white;
 	    box-sizing: border-box;
     }
+    input,
+  	button,
+  	div {
+  		position: relative;
+  	}
 }
 
 .level-background {
@@ -696,15 +711,87 @@ body {
 	}
 
 	&.level-1 {
-		background-image: url(../img/level-1-background.png);
-		.ceiling {
-			background-image: url(../img/level-1-ceiling.png);
+		background-color: black;
+
+		.ground {
+			position: absolute;
+			left: 50%;
+			margin-left: -10px;
+			background-color: white;
+			width: 10px;
+			height: 100%;
+			@include box-shadow(rgba(#1666ef, 0.7) 0 0 25px);
+			&:after {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				@include box-shadow(rgba(#1666ef, 0.7) 0 0 5px inset);
+			}
+		}
+		.left-wall,
+		.right-wall {
+			height: 100px;
+			width: 10px;
+			@include box-shadow(rgba(#1666ef, 0.7) 0 0 25px);
+			bottom: 60px;
+			background-color: white;
+			left: 50%;
+			&:after {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				@include box-shadow(rgba(#1666ef, 0.7) 0 0 5px inset);
+			}
+
+		}
+
+		.left-wall {
+			margin-left: -120px;
+			@include animation(movePaddleLeft 2s infinite linear);
 		}
 		.right-wall {
-			background-image: url(../img/level-1-right-wall.png);
+			margin-left: 95px;
+			bottom: 10px;
+			@include animation(movePaddleRight 1.5s infinite linear);
+		}
+
+		.character {
+			width: 10px;
+			height: 10px;
+			@include box-shadow(rgba(#1666ef, 0.7) 0 0 25px);
+			bottom: 60px;
+			left: 50%;
+			margin-left: -5px;
+			background-color: white;
+			@include animation(movePongBall 1s infinite linear);
+			&:after {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				@include box-shadow(rgba(#1666ef, 0.7) 0 0 10px inset);
+			}
+		}
+	}
+
+	&.level-4 {
+		background-image: url(../img/level-4-background.png);
+		.ceiling {
+			background-image: url(../img/level-4-ceiling.png);
+		}
+		.right-wall {
+			background-image: url(../img/level-4-right-wall.png);
 		}
 		.left-wall {
-			background-image: url(../img/level-1-left-wall.png);
+			background-image: url(../img/level-4-left-wall.png);
 		}
 		.character {
 			width: 43px;
@@ -720,14 +807,14 @@ body {
 				height: 60px;
 				top: 0;
 				left: 0;
-				background: url(../img/level-1-character.png) left center;
+				background: url(../img/level-4-character.png) left center;
 				background-size: auto 100%;
 				@include animation(character .8s steps(5) infinite);
 			}
 		}
 
 		.character-2 {
-			background: url(../img/level-1-character-2.png) left center;
+			background: url(../img/level-4-character-2.png) left center;
 			background-size: auto 100%;
 			width: 50px;
 			height: 60px;
@@ -737,59 +824,53 @@ body {
 			@include animation(charactertwo .8s steps(2) infinite);
 		}
 		.ground {
-			background-image: url(../img/level-1-ground.png);
+			background-image: url(../img/level-4-ground.png);
 		}
 	}
 
-	&.level-2 {
-		background-image: url(../img/level-2-background.png);
+	&.authentication-screen {
+		background-image: url(../img/authentication-screen-background.png);
+		background-color: black;
+		background-size: 100% auto;
+		background-position: top center;
 		.ceiling {
-			background-image: url(../img/level-2-ceiling.png);
-		}
-		.right-wall {
-			background-image: url(../img/level-2-right-wall.png);
-		}
-		.left-wall {
-			background-image: url(../img/level-2-left-wall.png);
-		}
-		.character {
-			width: 43px;
-			height: 60px;
-			position: absolute;
-			bottom: 104px;
-			left: 0;
-			@include animation(lefttoright 10s infinite linear);
-			&:after {
-				content: "";
-				position: absolute;
-				width: 43px;
-				height: 60px;
-				top: 0;
-				left: 0;
-				background: url(../img/level-2-character.png) left center;
-				background-size: auto 100%;
-				@include animation(characterLevel2 .8s steps(3) infinite);
-			}
+			background-image: url(../img/authentication-screen-ground.png);
+			height: 32px;
 		}
 
-		.character-2 {
-			background: url(../img/level-2-character-2.png) left center;
-			background-size: auto 100%;
-			width: 43px;
-			height: 60px;
-			position: absolute;
-			bottom: 116px;
-			right: 40px;
-			@include animation(charactertwolevel2 .8s steps(2) infinite);
+		.right-wall {
+			background-image: url(../img/authentication-screen-right.png);
+			width: 32px;
+			height: 100%;
+			bottom: 0;
 		}
+		.left-wall {
+			background-image: url(../img/authentication-screen-left.png);
+			width: 32px;
+			height: 100%;
+			bottom: 0;
+		}
+
 		.ground {
-			background-image: url(../img/level-2-ground.png);
+			height: 32px;
+			background-image: url(../img/authentication-screen-ground.png);
+		}
+	}
+
+	&.main-screen {
+		background-color: black;
+		background-size: 100% auto;
+		background-position: top center;
+
+
+		.ground {
+			height: 32px;
+			background-image: url(../img/authentication-screen-ground.png);
 		}
 	}
 
 	&.level-3 {
 		background-image: url(../img/level-3-background.png);
-		background-position: bottom left;
 		.ceiling {
 			background-image: url(../img/level-3-ceiling.png);
 		}
@@ -815,11 +896,11 @@ body {
 				left: 0;
 				background: url(../img/level-3-character.png) left center;
 				background-size: auto 100%;
-				@include animation(character .8s steps(5) infinite);
+				@include animation(characterLevel2 .8s steps(3) infinite);
 			}
 		}
 
-		.character-2 {
+		.character-3 {
 			background: url(../img/level-3-character-2.png) left center;
 			background-size: auto 100%;
 			width: 43px;
@@ -831,6 +912,53 @@ body {
 		}
 		.ground {
 			background-image: url(../img/level-3-ground.png);
+		}
+	}
+
+	&.level-2 {
+		background-image: url(../img/level-2-background.png);
+		background-position: bottom left;
+		.ceiling {
+			background-image: url(../img/level-2-ceiling.png);
+		}
+		.right-wall {
+			background-image: url(../img/level-2-right-wall.png);
+		}
+		.left-wall {
+			background-image: url(../img/level-2-left-wall.png);
+		}
+		.character {
+			width: 43px;
+			height: 60px;
+			position: absolute;
+			bottom: 104px;
+			left: 0;
+			@include animation(lefttoright 10s infinite linear);
+			&:after {
+				content: "";
+				position: absolute;
+				width: 43px;
+				height: 60px;
+				top: 0;
+				left: 0;
+				background: url(../img/level-2-character.png) left center;
+				background-size: auto 100%;
+				@include animation(character .8s steps(5) infinite);
+			}
+		}
+
+		.character-2 {
+			background: url(../img/level-2-character-2.png) left center;
+			background-size: auto 100%;
+			width: 43px;
+			height: 60px;
+			position: absolute;
+			bottom: 116px;
+			right: 40px;
+			@include animation(charactertwolevel2 .8s steps(2) infinite);
+		}
+		.ground {
+			background-image: url(../img/level-2-ground.png);
 		}
 	}
 }
@@ -858,6 +986,29 @@ body {
    100% { background-position: -102px; }
 }
 
+@include keyframes(movePongBall) {
+   33.3333% { @include translateX(-110px) }
+   66.6666% { @include translateX(95px) }
+}
+
+@include keyframes(charactertwo) {
+   100% { background-position: -102px; }
+}
+
+@include keyframes(movePaddleLeft) {
+	50% {
+		@include translateY(80px);
+	}
+	100% { @include translateY(0); }
+}
+
+@include keyframes(movePaddleRight) {
+	50% {
+		@include translateY(-60px);
+	}
+	100% { @include translateY(0); }
+}
+
 @include keyframes(charactertwolevel2) {
    100% { background-position: -86px; }
 }
@@ -874,4 +1025,8 @@ body {
 		padding: 10px 5px 10px 5px;
 		font-size: 14px;
 	}
+}
+
+#statusscreen-score-to-beat {
+	color: white;
 }

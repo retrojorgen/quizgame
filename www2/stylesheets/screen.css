@@ -68,8 +68,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 @font-face {
-  font-family: "Pixel";
-  src: url('../fonts/pixel.ttf?1454178579') format('truetype');
+  font-family: "FR73PixelW00-Regular";
+  src: url('../fonts/fr73.ttf?1457892820') format('truetype');
 }
 /* line 10, ../sass/screen.scss */
 html, body {
@@ -78,7 +78,7 @@ html, body {
   max-height: 100%;
   max-width: 100%;
   overflow: hidden;
-  font-family: "Pixel";
+  font-family: "FR73PixelW00-Regular";
   position: absolute;
 }
 
@@ -103,6 +103,11 @@ body {
 }
 
 /* line 36, ../sass/screen.scss */
+button {
+  font-family: "FR73PixelW00-Regular";
+}
+
+/* line 40, ../sass/screen.scss */
 *:not(input, textarea) {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -110,7 +115,7 @@ body {
   /* Disable selection/Copy of UIWebView */
 }
 
-/* line 42, ../sass/screen.scss */
+/* line 46, ../sass/screen.scss */
 #mobile-wrapper {
   position: absolute;
   width: 375px;
@@ -128,7 +133,7 @@ body {
   border-radius: 4px;
 }
 
-/* line 55, ../sass/screen.scss */
+/* line 59, ../sass/screen.scss */
 .screen {
   position: absolute;
   left: 0;
@@ -142,26 +147,26 @@ body {
   display: none;
   opacity: 0;
 }
-/* line 67, ../sass/screen.scss */
+/* line 71, ../sass/screen.scss */
 .screen .screen-header-container {
   margin-bottom: 40px;
 }
-/* line 70, ../sass/screen.scss */
+/* line 74, ../sass/screen.scss */
 .screen .screen-custom-container {
   margin-bottom: 40px;
 }
-/* line 73, ../sass/screen.scss */
+/* line 77, ../sass/screen.scss */
 .screen .screen-controls-container {
   position: relative;
   z-index: 4000;
 }
-/* line 76, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 .screen .screen-controls-container div,
 .screen .screen-controls-container img,
 .screen .screen-controls-container span {
   margin-bottom: 10px;
 }
-/* line 82, ../sass/screen.scss */
+/* line 86, ../sass/screen.scss */
 .screen .screen-header,
 .screen .screen-description,
 .screen .screen-label,
@@ -171,40 +176,41 @@ body {
   text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
   text-align: center;
 }
-/* line 92, ../sass/screen.scss */
+/* line 96, ../sass/screen.scss */
 .screen .screen-header {
-  font-size: 40px;
+  font-size: 30px;
   margin-bottom: 10px;
 }
-/* line 97, ../sass/screen.scss */
+/* line 101, ../sass/screen.scss */
 .screen .screen-description {
   color: #c981fc;
   font-size: 20px;
   margin-bottom: 10px;
+  line-height: 34px;
 }
-/* line 103, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 .screen .screen-label {
   color: #c981fc;
-  font-size: 20px;
+  font-size: 14px;
   margin-bottom: 10px;
 }
-/* line 109, ../sass/screen.scss */
+/* line 114, ../sass/screen.scss */
 .screen .screen-number-big {
   font-size: 40px;
 }
-/* line 112, ../sass/screen.scss */
+/* line 117, ../sass/screen.scss */
 .screen .screen-button-wide {
   display: block;
   max-width: 50%;
   margin: 0 auto;
 }
-/* line 117, ../sass/screen.scss */
+/* line 122, ../sass/screen.scss */
 .screen .screen-button-narrow {
   display: block;
   max-width: 20%;
   margin: 0 auto;
 }
-/* line 122, ../sass/screen.scss */
+/* line 127, ../sass/screen.scss */
 .screen .screen-bottom-container {
   position: absolute;
   bottom: 0;
@@ -212,25 +218,25 @@ body {
   width: 100%;
   text-align: center;
 }
-/* line 128, ../sass/screen.scss */
+/* line 133, ../sass/screen.scss */
 .screen .screen-bottom-container img {
   max-width: 60%;
   margin: 0 auto;
 }
 
-/* line 135, ../sass/screen.scss */
+/* line 140, ../sass/screen.scss */
 .menu-line {
   text-align: center;
   position: relative;
   z-index: 4000;
 }
-/* line 139, ../sass/screen.scss */
+/* line 144, ../sass/screen.scss */
 .menu-line img {
   max-width: 20%;
   margin: 0 10px 0 10px;
 }
 
-/* line 145, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 #titlefield {
   position: absolute;
   top: 0;
@@ -245,25 +251,25 @@ body {
   z-index: 1000;
 }
 
-/* line 159, ../sass/screen.scss */
+/* line 164, ../sass/screen.scss */
 #logo {
   max-width: 90%;
   margin: 0 auto;
 }
 
-/* line 164, ../sass/screen.scss */
+/* line 169, ../sass/screen.scss */
 .janstandard-wrapper {
   position: absolute;
   width: 100%;
   bottom: 0;
   text-align: center;
 }
-/* line 170, ../sass/screen.scss */
+/* line 175, ../sass/screen.scss */
 .janstandard-wrapper img {
-  max-width: 60%;
+  max-width: 90%;
 }
 
-/* line 175, ../sass/screen.scss */
+/* line 180, ../sass/screen.scss */
 .jangame-wrapper {
   position: absolute;
   width: 100%;
@@ -271,12 +277,12 @@ body {
   text-align: center;
   z-index: 150;
 }
-/* line 181, ../sass/screen.scss */
+/* line 186, ../sass/screen.scss */
 .jangame-wrapper img {
   max-width: 60%;
 }
 
-/* line 186, ../sass/screen.scss */
+/* line 191, ../sass/screen.scss */
 #mainscreen {
   background-color: black;
   background-image: url(../img/quiz-quest-splash.jpg);
@@ -292,12 +298,14 @@ body {
   -webkit-box-shadow: black 0 0 40px;
   box-shadow: black 0 0 40px;
 }
-/* line 198, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 #mainscreen img {
   display: inline-block;
+  z-index: 150;
+  position: relative;
 }
 
-/* line 205, ../sass/screen.scss */
+/* line 212, ../sass/screen.scss */
 .menu-item {
   display: inline-block;
   padding: 10px 20px;
@@ -309,43 +317,45 @@ body {
   text-transform: uppercase;
 }
 
-/* line 216, ../sass/screen.scss */
+/* line 223, ../sass/screen.scss */
 .plaintext {
   color: #efefd5;
   text-transform: uppercase;
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
   margin-bottom: 20px;
   letter-spacing: 1px;
+  z-index: 150;
+  line-height: 24px;
+  position: relative;
   text-shadow: black 2px 2px 0;
 }
-/* line 224, ../sass/screen.scss */
+/* line 234, ../sass/screen.scss */
 .plaintext.small {
   font-size: 11px;
 }
 
-/* line 229, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 .inputbox {
-  position: absolute;
+  position: absolute !important;
   display: none;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  padding: 50% 20px 20px 20px;
+  left: 50%;
+  margin-left: -40%;
+  top: 30%;
+  width: 80%;
 }
-/* line 237, ../sass/screen.scss */
+/* line 246, ../sass/screen.scss */
 .inputbox .plaintext {
   display: block;
   text-align: center;
   margin-bottom: 10px;
 }
-/* line 241, ../sass/screen.scss */
+/* line 250, ../sass/screen.scss */
 .inputbox .plaintext.small {
   margin-top: 14px;
   line-height: 1.5;
 }
-/* line 246, ../sass/screen.scss */
+/* line 255, ../sass/screen.scss */
 .inputbox #username-input,
 .inputbox #email-input {
   width: 100%;
@@ -361,27 +371,27 @@ body {
   outline: none;
   font-size: 30px;
 }
-/* line 262, ../sass/screen.scss */
+/* line 271, ../sass/screen.scss */
 .inputbox .button-container {
   text-align: center;
 }
-/* line 265, ../sass/screen.scss */
+/* line 274, ../sass/screen.scss */
 .inputbox .submit {
   padding: 10px 20px;
   color: #242A31;
   background-color: #efefd5;
-  font-family: "Pixel";
+  font-family: "FR73PixelW00-Regular";
   font-size: 20px;
   border: 0;
   text-transform: uppercase;
 }
-/* line 273, ../sass/screen.scss */
+/* line 282, ../sass/screen.scss */
 .inputbox .submit.invert {
   background-color: #242A31;
   color: #efefd5;
 }
 
-/* line 280, ../sass/screen.scss */
+/* line 289, ../sass/screen.scss */
 #lives {
   height: 30px;
   width: 116px;
@@ -393,7 +403,7 @@ body {
   background-size: auto 100%;
 }
 
-/* line 294, ../sass/screen.scss */
+/* line 303, ../sass/screen.scss */
 #loading {
   display: none;
   position: absolute;
@@ -413,7 +423,7 @@ body {
   box-shadow: black 1px 1px 10px;
 }
 
-/* line 311, ../sass/screen.scss */
+/* line 320, ../sass/screen.scss */
 #authenticationScreen {
   background-color: black;
   background-image: url(../img/quiz-quest-splash.jpg);
@@ -429,7 +439,7 @@ body {
   -webkit-box-shadow: black 10px 10px 140px;
   box-shadow: black 10px 10px 140px;
 }
-/* line 322, ../sass/screen.scss */
+/* line 331, ../sass/screen.scss */
 #authenticationScreen:before {
   content: "";
   background-color: rgba(0, 0, 0, 0.3);
@@ -439,11 +449,11 @@ body {
   width: 100%;
   height: 100%;
 }
-/* line 332, ../sass/screen.scss */
+/* line 341, ../sass/screen.scss */
 #authenticationScreen img {
   display: inline-block;
 }
-/* line 336, ../sass/screen.scss */
+/* line 345, ../sass/screen.scss */
 #authenticationScreen #facebookLoginButton,
 #authenticationScreen #facebookLogoutButton {
   padding: 10px;
@@ -456,7 +466,7 @@ body {
   -webkit-box-shadow: black 1px 1px 0;
   box-shadow: black 1px 1px 0;
 }
-/* line 347, ../sass/screen.scss */
+/* line 356, ../sass/screen.scss */
 #authenticationScreen #loginNoUser {
   position: absolute;
   right: 10px;
@@ -515,7 +525,7 @@ body {
     transform: rotate(360deg) scale(1);
   }
 }
-/* line 370, ../sass/screen.scss */
+/* line 379, ../sass/screen.scss */
 #timer {
   position: absolute;
   left: 0;
@@ -526,7 +536,7 @@ body {
   z-index: 150;
 }
 
-/* line 380, ../sass/screen.scss */
+/* line 389, ../sass/screen.scss */
 #bottomContainer {
   font-size: 20px;
   color: white;
@@ -548,14 +558,14 @@ body {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 394, ../sass/screen.scss */
+/* line 403, ../sass/screen.scss */
 #bottomContainer.visible {
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
-/* line 398, ../sass/screen.scss */
+/* line 407, ../sass/screen.scss */
 #bottomContainer #score {
   position: absolute;
   width: 50%;
@@ -564,7 +574,7 @@ body {
   text-align: right;
 }
 
-/* line 408, ../sass/screen.scss */
+/* line 417, ../sass/screen.scss */
 #levelContainer {
   width: 100%;
   height: 100%;
@@ -578,7 +588,7 @@ body {
   -webkit-perspective: 3000;
   perspective: 3000;
 }
-/* line 418, ../sass/screen.scss */
+/* line 427, ../sass/screen.scss */
 #levelContainer .level-timer {
   position: absolute;
   width: 100%;
@@ -587,7 +597,7 @@ body {
   top: 0;
   height: 10px;
 }
-/* line 427, ../sass/screen.scss */
+/* line 436, ../sass/screen.scss */
 #levelContainer #countdown {
   position: absolute;
   left: 0;
@@ -600,7 +610,7 @@ body {
   padding: 0 20px 0 20px;
   text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
 }
-/* line 440, ../sass/screen.scss */
+/* line 449, ../sass/screen.scss */
 #levelContainer #correct {
   position: absolute;
   left: 0;
@@ -614,18 +624,18 @@ body {
   padding: 0 20px 0 20px;
   text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
 }
-/* line 450, ../sass/screen.scss */
+/* line 459, ../sass/screen.scss */
 #levelContainer #correct .small {
   font-size: 20px;
 }
-/* line 458, ../sass/screen.scss */
+/* line 467, ../sass/screen.scss */
 #levelContainer .answerbutton {
   text-align: center;
   margin: 20px auto 20px auto;
   max-width: 50%;
   display: block;
 }
-/* line 464, ../sass/screen.scss */
+/* line 473, ../sass/screen.scss */
 #levelContainer .questionContainer {
   color: white;
   position: absolute;
@@ -635,27 +645,28 @@ body {
   padding: 30px 20px 20px 20px;
   z-index: 150 !important;
 }
-/* line 472, ../sass/screen.scss */
+/* line 481, ../sass/screen.scss */
 #levelContainer .questionContainer .question {
   color: white;
   text-transform: uppercase;
-  font-size: 40px;
+  font-size: 33px;
+  line-height: 34px;
   text-align: center;
   text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
 }
-/* line 483, ../sass/screen.scss */
+/* line 493, ../sass/screen.scss */
 #levelContainer .questionContainer.multipleChoice .alternative:before, #levelContainer .questionContainer.multipleChoice .alternative:after {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 488, ../sass/screen.scss */
+/* line 498, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative {
   padding: 10px;
   padding-left: 65px;
   margin: 15px 0 15px 0;
   color: white;
-  font-size: 20px;
+  font-size: 14px;
   text-align: left;
   letter-spacing: 1;
   background-color: transparent;
@@ -667,11 +678,11 @@ body {
   position: relative;
   text-shadow: 4px 4px 0px #000, -4px -4px 0px #000, -4px 4px 0px #000, 4px -4px 0px #000, 4px 0 0px #000, -4px 0 0px #000, 0 4px 0px #000, 0 -4px 0px #000;
 }
-/* line 501, ../sass/screen.scss */
+/* line 511, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.faded {
   opacity: 0.6;
 }
-/* line 504, ../sass/screen.scss */
+/* line 514, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative:before {
   position: absolute;
   width: 40px;
@@ -687,7 +698,7 @@ body {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 516, ../sass/screen.scss */
+/* line 526, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative:after {
   position: absolute;
   opacity: 0;
@@ -705,15 +716,15 @@ body {
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
-/* line 530, ../sass/screen.scss */
+/* line 540, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.correct-answer {
   background-color: #4cc124;
 }
-/* line 533, ../sass/screen.scss */
+/* line 543, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.wrong-answer {
   background-color: #FF0000;
 }
-/* line 537, ../sass/screen.scss */
+/* line 547, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.selected:before {
   border: 1px solid black;
   -moz-transform: scale(-0.5);
@@ -721,7 +732,7 @@ body {
   -webkit-transform: scale(-0.5);
   transform: scale(-0.5);
 }
-/* line 541, ../sass/screen.scss */
+/* line 551, ../sass/screen.scss */
 #levelContainer .questionContainer .alternative.selected:after {
   opacity: 1;
   -moz-transform: scale(2);
@@ -730,26 +741,26 @@ body {
   transform: scale(2);
 }
 
-/* line 550, ../sass/screen.scss */
+/* line 560, ../sass/screen.scss */
 #statusscreen {
   background-image: url(../img/quiz-quest-splash.jpg);
   background-size: cover;
   text-align: center;
 }
 
-/* line 557, ../sass/screen.scss */
+/* line 567, ../sass/screen.scss */
 #correctAnswersCounter {
   display: inline-block;
 }
 
-/* line 565, ../sass/screen.scss */
+/* line 575, ../sass/screen.scss */
 .half-width {
   display: inline-block;
   width: 48%;
   vertical-align: top;
 }
 
-/* line 571, ../sass/screen.scss */
+/* line 581, ../sass/screen.scss */
 .clearfix {
   visibility: hidden;
   display: block;
@@ -759,17 +770,17 @@ body {
   height: 0;
 }
 
-/* line 580, ../sass/screen.scss */
+/* line 590, ../sass/screen.scss */
 .start-button {
   background-image: url(../img/start-button-animated.png);
 }
 
-/* line 584, ../sass/screen.scss */
+/* line 594, ../sass/screen.scss */
 .high-score-button {
   background-image: url(../img/high-score-button-animated.png);
 }
 
-/* line 588, ../sass/screen.scss */
+/* line 598, ../sass/screen.scss */
 .button-round-animated {
   width: 71px;
   height: 71px;
@@ -777,32 +788,32 @@ body {
   background-size: auto 100%;
   position: relative;
 }
-/* line 594, ../sass/screen.scss */
+/* line 604, ../sass/screen.scss */
 .button-round-animated:active {
   background-position: -71px 0;
 }
 
-/* line 599, ../sass/screen.scss */
+/* line 609, ../sass/screen.scss */
 .answer-button {
   background-image: url(../img/answer-button-animated.png);
 }
 
-/* line 602, ../sass/screen.scss */
+/* line 612, ../sass/screen.scss */
 .to-menu-button {
   background-image: url(../img/to-menu-button-animated.png);
 }
 
-/* line 605, ../sass/screen.scss */
+/* line 615, ../sass/screen.scss */
 .new-game-button {
   background-image: url(../img/new-game-button-animated.png);
 }
 
-/* line 609, ../sass/screen.scss */
+/* line 619, ../sass/screen.scss */
 .go-back-button {
   background-image: url(../img/go-back-button-animated.png);
 }
 
-/* line 613, ../sass/screen.scss */
+/* line 623, ../sass/screen.scss */
 .button-wide {
   width: 155px;
   height: 55px;
@@ -811,18 +822,18 @@ body {
   background-size: auto 100%;
   position: relative;
 }
-/* line 620, ../sass/screen.scss */
+/* line 630, ../sass/screen.scss */
 .button-wide:active {
   background-position: -155px 0;
 }
 
-/* line 625, ../sass/screen.scss */
+/* line 635, ../sass/screen.scss */
 .over-background {
   position: relative;
   z-index: 101;
 }
 
-/* line 630, ../sass/screen.scss */
+/* line 640, ../sass/screen.scss */
 .bilboard {
   background-color: black;
   padding: 20px;
@@ -830,7 +841,7 @@ body {
   border: 7px solid black;
   z-index: 150;
 }
-/* line 636, ../sass/screen.scss */
+/* line 646, ../sass/screen.scss */
 .bilboard:before {
   position: absolute;
   content: "";
@@ -842,8 +853,14 @@ body {
   border: 7px solid white;
   box-sizing: border-box;
 }
+/* line 657, ../sass/screen.scss */
+.bilboard input,
+.bilboard button,
+.bilboard div {
+  position: relative;
+}
 
-/* line 649, ../sass/screen.scss */
+/* line 664, ../sass/screen.scss */
 .level-background {
   position: absolute;
   left: 0;
@@ -851,7 +868,7 @@ body {
   width: 100%;
   height: 100%;
 }
-/* line 657, ../sass/screen.scss */
+/* line 672, ../sass/screen.scss */
 .level-background .ground {
   position: absolute;
   width: 100%;
@@ -860,7 +877,7 @@ body {
   height: 120px;
   z-index: 100;
 }
-/* line 666, ../sass/screen.scss */
+/* line 681, ../sass/screen.scss */
 .level-background .ceiling {
   position: absolute;
   top: 0;
@@ -869,7 +886,7 @@ body {
   z-index: 100;
   width: 100%;
 }
-/* line 675, ../sass/screen.scss */
+/* line 690, ../sass/screen.scss */
 .level-background .left-wall,
 .level-background .right-wall {
   position: absolute;
@@ -878,38 +895,133 @@ body {
   z-index: 99;
   bottom: 120px;
 }
-/* line 684, ../sass/screen.scss */
+/* line 699, ../sass/screen.scss */
 .level-background .left-wall {
   left: 0;
 }
-/* line 687, ../sass/screen.scss */
+/* line 702, ../sass/screen.scss */
 .level-background .right-wall {
   right: 0;
 }
-/* line 691, ../sass/screen.scss */
+/* line 706, ../sass/screen.scss */
 .level-background .character,
 .level-background .character-2 {
   position: absolute;
   z-index: 101;
 }
-/* line 698, ../sass/screen.scss */
+/* line 713, ../sass/screen.scss */
 .level-background.level-1 {
-  background-image: url(../img/level-1-background.png);
+  background-color: black;
 }
-/* line 700, ../sass/screen.scss */
-.level-background.level-1 .ceiling {
-  background-image: url(../img/level-1-ceiling.png);
+/* line 716, ../sass/screen.scss */
+.level-background.level-1 .ground {
+  position: absolute;
+  left: 50%;
+  margin-left: -10px;
+  background-color: white;
+  width: 10px;
+  height: 100%;
+  -moz-box-shadow: rgba(22, 102, 239, 0.7) 0 0 25px;
+  -webkit-box-shadow: rgba(22, 102, 239, 0.7) 0 0 25px;
+  box-shadow: rgba(22, 102, 239, 0.7) 0 0 25px;
 }
-/* line 703, ../sass/screen.scss */
+/* line 724, ../sass/screen.scss */
+.level-background.level-1 .ground:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -moz-box-shadow: rgba(22, 102, 239, 0.7) 0 0 5px inset;
+  -webkit-box-shadow: rgba(22, 102, 239, 0.7) 0 0 5px inset;
+  box-shadow: rgba(22, 102, 239, 0.7) 0 0 5px inset;
+}
+/* line 734, ../sass/screen.scss */
+.level-background.level-1 .left-wall,
 .level-background.level-1 .right-wall {
-  background-image: url(../img/level-1-right-wall.png);
+  height: 100px;
+  width: 10px;
+  -moz-box-shadow: rgba(22, 102, 239, 0.7) 0 0 25px;
+  -webkit-box-shadow: rgba(22, 102, 239, 0.7) 0 0 25px;
+  box-shadow: rgba(22, 102, 239, 0.7) 0 0 25px;
+  bottom: 60px;
+  background-color: white;
+  left: 50%;
 }
-/* line 706, ../sass/screen.scss */
+/* line 742, ../sass/screen.scss */
+.level-background.level-1 .left-wall:after,
+.level-background.level-1 .right-wall:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -moz-box-shadow: rgba(22, 102, 239, 0.7) 0 0 5px inset;
+  -webkit-box-shadow: rgba(22, 102, 239, 0.7) 0 0 5px inset;
+  box-shadow: rgba(22, 102, 239, 0.7) 0 0 5px inset;
+}
+/* line 754, ../sass/screen.scss */
 .level-background.level-1 .left-wall {
-  background-image: url(../img/level-1-left-wall.png);
+  margin-left: -120px;
+  -moz-animation: movePaddleLeft 2s infinite linear;
+  -webkit-animation: movePaddleLeft 2s infinite linear;
+  animation: movePaddleLeft 2s infinite linear;
 }
-/* line 709, ../sass/screen.scss */
+/* line 758, ../sass/screen.scss */
+.level-background.level-1 .right-wall {
+  margin-left: 95px;
+  bottom: 10px;
+  -moz-animation: movePaddleRight 1.5s infinite linear;
+  -webkit-animation: movePaddleRight 1.5s infinite linear;
+  animation: movePaddleRight 1.5s infinite linear;
+}
+/* line 764, ../sass/screen.scss */
 .level-background.level-1 .character {
+  width: 10px;
+  height: 10px;
+  -moz-box-shadow: rgba(22, 102, 239, 0.7) 0 0 25px;
+  -webkit-box-shadow: rgba(22, 102, 239, 0.7) 0 0 25px;
+  box-shadow: rgba(22, 102, 239, 0.7) 0 0 25px;
+  bottom: 60px;
+  left: 50%;
+  margin-left: -5px;
+  background-color: white;
+  -moz-animation: movePongBall 1s infinite linear;
+  -webkit-animation: movePongBall 1s infinite linear;
+  animation: movePongBall 1s infinite linear;
+}
+/* line 773, ../sass/screen.scss */
+.level-background.level-1 .character:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -moz-box-shadow: rgba(22, 102, 239, 0.7) 0 0 10px inset;
+  -webkit-box-shadow: rgba(22, 102, 239, 0.7) 0 0 10px inset;
+  box-shadow: rgba(22, 102, 239, 0.7) 0 0 10px inset;
+}
+/* line 785, ../sass/screen.scss */
+.level-background.level-4 {
+  background-image: url(../img/level-4-background.png);
+}
+/* line 787, ../sass/screen.scss */
+.level-background.level-4 .ceiling {
+  background-image: url(../img/level-4-ceiling.png);
+}
+/* line 790, ../sass/screen.scss */
+.level-background.level-4 .right-wall {
+  background-image: url(../img/level-4-right-wall.png);
+}
+/* line 793, ../sass/screen.scss */
+.level-background.level-4 .left-wall {
+  background-image: url(../img/level-4-left-wall.png);
+}
+/* line 796, ../sass/screen.scss */
+.level-background.level-4 .character {
   width: 43px;
   height: 60px;
   position: absolute;
@@ -919,23 +1031,23 @@ body {
   -webkit-animation: lefttoright 10s infinite linear;
   animation: lefttoright 10s infinite linear;
 }
-/* line 716, ../sass/screen.scss */
-.level-background.level-1 .character:after {
+/* line 803, ../sass/screen.scss */
+.level-background.level-4 .character:after {
   content: "";
   position: absolute;
   width: 43px;
   height: 60px;
   top: 0;
   left: 0;
-  background: url(../img/level-1-character.png) left center;
+  background: url(../img/level-4-character.png) left center;
   background-size: auto 100%;
   -moz-animation: character 0.8s steps(5) infinite;
   -webkit-animation: character 0.8s steps(5) infinite;
   animation: character 0.8s steps(5) infinite;
 }
-/* line 729, ../sass/screen.scss */
-.level-background.level-1 .character-2 {
-  background: url(../img/level-1-character-2.png) left center;
+/* line 816, ../sass/screen.scss */
+.level-background.level-4 .character-2 {
+  background: url(../img/level-4-character-2.png) left center;
   background-size: auto 100%;
   width: 50px;
   height: 60px;
@@ -946,27 +1058,128 @@ body {
   -webkit-animation: charactertwo 0.8s steps(2) infinite;
   animation: charactertwo 0.8s steps(2) infinite;
 }
-/* line 739, ../sass/screen.scss */
-.level-background.level-1 .ground {
-  background-image: url(../img/level-1-ground.png);
+/* line 826, ../sass/screen.scss */
+.level-background.level-4 .ground {
+  background-image: url(../img/level-4-ground.png);
 }
-/* line 744, ../sass/screen.scss */
+/* line 831, ../sass/screen.scss */
+.level-background.authentication-screen {
+  background-image: url(../img/authentication-screen-background.png);
+  background-color: black;
+  background-size: 100% auto;
+  background-position: top center;
+}
+/* line 836, ../sass/screen.scss */
+.level-background.authentication-screen .ceiling {
+  background-image: url(../img/authentication-screen-ground.png);
+  height: 32px;
+}
+/* line 841, ../sass/screen.scss */
+.level-background.authentication-screen .right-wall {
+  background-image: url(../img/authentication-screen-right.png);
+  width: 32px;
+  height: 100%;
+  bottom: 0;
+}
+/* line 847, ../sass/screen.scss */
+.level-background.authentication-screen .left-wall {
+  background-image: url(../img/authentication-screen-left.png);
+  width: 32px;
+  height: 100%;
+  bottom: 0;
+}
+/* line 854, ../sass/screen.scss */
+.level-background.authentication-screen .ground {
+  height: 32px;
+  background-image: url(../img/authentication-screen-ground.png);
+}
+/* line 860, ../sass/screen.scss */
+.level-background.main-screen {
+  background-color: black;
+  background-size: 100% auto;
+  background-position: top center;
+}
+/* line 866, ../sass/screen.scss */
+.level-background.main-screen .ground {
+  height: 32px;
+  background-image: url(../img/authentication-screen-ground.png);
+}
+/* line 872, ../sass/screen.scss */
+.level-background.level-3 {
+  background-image: url(../img/level-3-background.png);
+}
+/* line 874, ../sass/screen.scss */
+.level-background.level-3 .ceiling {
+  background-image: url(../img/level-3-ceiling.png);
+}
+/* line 877, ../sass/screen.scss */
+.level-background.level-3 .right-wall {
+  background-image: url(../img/level-3-right-wall.png);
+}
+/* line 880, ../sass/screen.scss */
+.level-background.level-3 .left-wall {
+  background-image: url(../img/level-3-left-wall.png);
+}
+/* line 883, ../sass/screen.scss */
+.level-background.level-3 .character {
+  width: 43px;
+  height: 60px;
+  position: absolute;
+  bottom: 104px;
+  left: 0;
+  -moz-animation: lefttoright 10s infinite linear;
+  -webkit-animation: lefttoright 10s infinite linear;
+  animation: lefttoright 10s infinite linear;
+}
+/* line 890, ../sass/screen.scss */
+.level-background.level-3 .character:after {
+  content: "";
+  position: absolute;
+  width: 43px;
+  height: 60px;
+  top: 0;
+  left: 0;
+  background: url(../img/level-3-character.png) left center;
+  background-size: auto 100%;
+  -moz-animation: characterLevel2 0.8s steps(3) infinite;
+  -webkit-animation: characterLevel2 0.8s steps(3) infinite;
+  animation: characterLevel2 0.8s steps(3) infinite;
+}
+/* line 903, ../sass/screen.scss */
+.level-background.level-3 .character-3 {
+  background: url(../img/level-3-character-2.png) left center;
+  background-size: auto 100%;
+  width: 43px;
+  height: 60px;
+  position: absolute;
+  bottom: 116px;
+  right: 40px;
+  -moz-animation: charactertwolevel2 0.8s steps(2) infinite;
+  -webkit-animation: charactertwolevel2 0.8s steps(2) infinite;
+  animation: charactertwolevel2 0.8s steps(2) infinite;
+}
+/* line 913, ../sass/screen.scss */
+.level-background.level-3 .ground {
+  background-image: url(../img/level-3-ground.png);
+}
+/* line 918, ../sass/screen.scss */
 .level-background.level-2 {
   background-image: url(../img/level-2-background.png);
+  background-position: bottom left;
 }
-/* line 746, ../sass/screen.scss */
+/* line 921, ../sass/screen.scss */
 .level-background.level-2 .ceiling {
   background-image: url(../img/level-2-ceiling.png);
 }
-/* line 749, ../sass/screen.scss */
+/* line 924, ../sass/screen.scss */
 .level-background.level-2 .right-wall {
   background-image: url(../img/level-2-right-wall.png);
 }
-/* line 752, ../sass/screen.scss */
+/* line 927, ../sass/screen.scss */
 .level-background.level-2 .left-wall {
   background-image: url(../img/level-2-left-wall.png);
 }
-/* line 755, ../sass/screen.scss */
+/* line 930, ../sass/screen.scss */
 .level-background.level-2 .character {
   width: 43px;
   height: 60px;
@@ -977,7 +1190,7 @@ body {
   -webkit-animation: lefttoright 10s infinite linear;
   animation: lefttoright 10s infinite linear;
 }
-/* line 762, ../sass/screen.scss */
+/* line 937, ../sass/screen.scss */
 .level-background.level-2 .character:after {
   content: "";
   position: absolute;
@@ -987,11 +1200,11 @@ body {
   left: 0;
   background: url(../img/level-2-character.png) left center;
   background-size: auto 100%;
-  -moz-animation: characterLevel2 0.8s steps(3) infinite;
-  -webkit-animation: characterLevel2 0.8s steps(3) infinite;
-  animation: characterLevel2 0.8s steps(3) infinite;
+  -moz-animation: character 0.8s steps(5) infinite;
+  -webkit-animation: character 0.8s steps(5) infinite;
+  animation: character 0.8s steps(5) infinite;
 }
-/* line 775, ../sass/screen.scss */
+/* line 950, ../sass/screen.scss */
 .level-background.level-2 .character-2 {
   background: url(../img/level-2-character-2.png) left center;
   background-size: auto 100%;
@@ -1004,68 +1217,9 @@ body {
   -webkit-animation: charactertwolevel2 0.8s steps(2) infinite;
   animation: charactertwolevel2 0.8s steps(2) infinite;
 }
-/* line 785, ../sass/screen.scss */
+/* line 960, ../sass/screen.scss */
 .level-background.level-2 .ground {
   background-image: url(../img/level-2-ground.png);
-}
-/* line 790, ../sass/screen.scss */
-.level-background.level-3 {
-  background-image: url(../img/level-3-background.png);
-  background-position: bottom left;
-}
-/* line 793, ../sass/screen.scss */
-.level-background.level-3 .ceiling {
-  background-image: url(../img/level-3-ceiling.png);
-}
-/* line 796, ../sass/screen.scss */
-.level-background.level-3 .right-wall {
-  background-image: url(../img/level-3-right-wall.png);
-}
-/* line 799, ../sass/screen.scss */
-.level-background.level-3 .left-wall {
-  background-image: url(../img/level-3-left-wall.png);
-}
-/* line 802, ../sass/screen.scss */
-.level-background.level-3 .character {
-  width: 43px;
-  height: 60px;
-  position: absolute;
-  bottom: 104px;
-  left: 0;
-  -moz-animation: lefttoright 10s infinite linear;
-  -webkit-animation: lefttoright 10s infinite linear;
-  animation: lefttoright 10s infinite linear;
-}
-/* line 809, ../sass/screen.scss */
-.level-background.level-3 .character:after {
-  content: "";
-  position: absolute;
-  width: 43px;
-  height: 60px;
-  top: 0;
-  left: 0;
-  background: url(../img/level-3-character.png) left center;
-  background-size: auto 100%;
-  -moz-animation: character 0.8s steps(5) infinite;
-  -webkit-animation: character 0.8s steps(5) infinite;
-  animation: character 0.8s steps(5) infinite;
-}
-/* line 822, ../sass/screen.scss */
-.level-background.level-3 .character-2 {
-  background: url(../img/level-3-character-2.png) left center;
-  background-size: auto 100%;
-  width: 43px;
-  height: 60px;
-  position: absolute;
-  bottom: 116px;
-  right: 40px;
-  -moz-animation: charactertwolevel2 0.8s steps(2) infinite;
-  -webkit-animation: charactertwolevel2 0.8s steps(2) infinite;
-  animation: charactertwolevel2 0.8s steps(2) infinite;
-}
-/* line 832, ../sass/screen.scss */
-.level-background.level-3 .ground {
-  background-image: url(../img/level-3-ground.png);
 }
 
 @-moz-keyframes character {
@@ -1147,6 +1301,123 @@ body {
     background-position: -102px;
   }
 }
+@-moz-keyframes movePongBall {
+  33.3333% {
+    -moz-transform: translateX(-110px);
+    transform: translateX(-110px);
+  }
+  66.6666% {
+    -moz-transform: translateX(95px);
+    transform: translateX(95px);
+  }
+}
+@-webkit-keyframes movePongBall {
+  33.3333% {
+    -webkit-transform: translateX(-110px);
+    transform: translateX(-110px);
+  }
+  66.6666% {
+    -webkit-transform: translateX(95px);
+    transform: translateX(95px);
+  }
+}
+@keyframes movePongBall {
+  33.3333% {
+    -moz-transform: translateX(-110px);
+    -ms-transform: translateX(-110px);
+    -webkit-transform: translateX(-110px);
+    transform: translateX(-110px);
+  }
+  66.6666% {
+    -moz-transform: translateX(95px);
+    -ms-transform: translateX(95px);
+    -webkit-transform: translateX(95px);
+    transform: translateX(95px);
+  }
+}
+@-moz-keyframes charactertwo {
+  100% {
+    background-position: -102px;
+  }
+}
+@-webkit-keyframes charactertwo {
+  100% {
+    background-position: -102px;
+  }
+}
+@keyframes charactertwo {
+  100% {
+    background-position: -102px;
+  }
+}
+@-moz-keyframes movePaddleLeft {
+  50% {
+    -moz-transform: translateY(80px);
+    transform: translateY(80px);
+  }
+  100% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes movePaddleLeft {
+  50% {
+    -webkit-transform: translateY(80px);
+    transform: translateY(80px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes movePaddleLeft {
+  50% {
+    -moz-transform: translateY(80px);
+    -ms-transform: translateY(80px);
+    -webkit-transform: translateY(80px);
+    transform: translateY(80px);
+  }
+  100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@-moz-keyframes movePaddleRight {
+  50% {
+    -moz-transform: translateY(-60px);
+    transform: translateY(-60px);
+  }
+  100% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes movePaddleRight {
+  50% {
+    -webkit-transform: translateY(-60px);
+    transform: translateY(-60px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes movePaddleRight {
+  50% {
+    -moz-transform: translateY(-60px);
+    -ms-transform: translateY(-60px);
+    -webkit-transform: translateY(-60px);
+    transform: translateY(-60px);
+  }
+  100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
 @-moz-keyframes charactertwolevel2 {
   100% {
     background-position: -86px;
@@ -1162,19 +1433,24 @@ body {
     background-position: -86px;
   }
 }
-/* line 865, ../sass/screen.scss */
+/* line 1016, ../sass/screen.scss */
 .highscore-table {
   color: white;
   width: 100%;
 }
-/* line 868, ../sass/screen.scss */
+/* line 1019, ../sass/screen.scss */
 .highscore-table th {
   padding: 10px 5px 10px 5px;
   border-bottom: 2px solid white;
   font-size: 16px;
 }
-/* line 873, ../sass/screen.scss */
+/* line 1024, ../sass/screen.scss */
 .highscore-table td {
   padding: 10px 5px 10px 5px;
   font-size: 14px;
+}
+
+/* line 1030, ../sass/screen.scss */
+#statusscreen-score-to-beat {
+  color: white;
 }
