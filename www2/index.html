@@ -1,5 +1,7 @@
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
     <!-- Pull the engine from the Quintus CDN or load it locally -->
     <!-- (use quintus-all.min.js for production) -->
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
@@ -45,17 +47,20 @@
       </div>
       <div id="mainscreen" class="screen">
         <img id="logo" src="img/retro-quiz-logo.png" class="stagger">
-        <div class="plaintext stagger">
-          Heisann <span id="username-welcome"></span>!<br>
-          Hvor mye kan du om spillgenerasjonene?
-        </div>
-      
-        <div id="status">
-        </div>
+        <div class="bottom">
 
-        <div class="menu-line">
-          <div id="start-game-button" class="stagger start-button button-round-animated"></div>
-          <div id="high-score-button" class="stagger high-score-button button-round-animated"></div>
+        
+          <div id="status">
+          </div>
+
+          <div class="menu-line">
+            <div id="start-game-button" class="stagger start-button button-round-animated"></div>
+            <div id="high-score-button" class="stagger high-score-button button-round-animated"></div>
+          </div>
+          <div class="plaintext stagger">
+            Heisann <span id="username-welcome"></span>!<br>
+            Hvor mye kan du om spillgenerasjonene?
+          </div>
         </div>
 
         <div class="level-background main-screen">
@@ -80,7 +85,7 @@
               <div class="screen-description stagger">Få <span id="statusscreen-score-to-beat">0</span> riktige svar for å gå videre
             </div>
                 
-            <div id="statusscreen-status-and-controls" class="screen-custom-container">
+            <div id="statusscreen-status-and-controls" class="screen-cus7m-container">
               <div class="half-width" id="statusscreen-timebonus-info-container">
                 <div id="statusscreen-timebonus-info-title" class="screen-label stagger">
                   Tidsbonus
@@ -162,7 +167,6 @@
           <div class="screen-number-big stagger">4000</div>
         </div>
         <div class="screen-controls-container">
-          <div id="new-game-button" class="stagger new-game-button button-wide"></div>
           <div id="back-to-menu-button" class="stagger to-menu-button button-wide"></div>
         </div>
           <div class="screen-bottom-container">
@@ -179,7 +183,8 @@
     var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
     console.log(document.URL, app);
       if ( app ) {
-          document.addEventListener("deviceready", startTheApp, false);
+          //document.addEventListener("deviceready", startTheApp, false);
+          startTheApp();
       } else {
           startTheApp();
       }  

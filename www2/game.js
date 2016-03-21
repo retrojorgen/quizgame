@@ -123,7 +123,6 @@ var startTheApp = function () {
 		});
 
 	}
-
 	var startAuth = function () {
 		selectScreen(gameSettings.authenticationScreen, undefined, function () {
 			TweenMax.to(gameSettings.usernameForm, 0, {x: 0, ease: Linear.easeNone});
@@ -194,7 +193,11 @@ var startTheApp = function () {
 			var questionContainer = $("<div></div>").addClass("questionContainer bilboard");
 			var questionTitle = $("<div></div>").addClass("question").text(Levels[currentGameData.level].questions[currentGameData.question].question);
 			if(Levels[currentGameData.level].questions[currentGameData.question].question.length > 27) {
-				questionTitle.css('font-size', '26px');
+				questionTitle.css('font-size', '20px');
+			}
+
+			if(Levels[currentGameData.level].questions[currentGameData.question].question.length > 35) {
+				questionTitle.css('font-size', '17px');
 			}
 			questionContainer.append(questionTitle);
 			if(Levels[currentGameData.level].questions[currentGameData.question].type != "single") {
@@ -559,12 +562,6 @@ var startTheApp = function () {
 	var toMenuButtonTouch = new Hammer(gameSettings.toMenuButton[0]);
 	toMenuButtonTouch.on('tap', function () {
 		selectScreen(gameSettings.mainScreen, gameSettings.endGameContainer);
-	});
-
-	var newGameButtonTouch = new Hammer(gameSettings.newGameButton[0]);
-	newGameButtonTouch.on('tap', function () {
-		selectScreen(gameSettings.statusScreen, gameSettings.endGameContainer);
-		startGame();
 	});
 
 	var goBackButtonTouch = new Hammer(gameSettings.goBackButton[0]);
