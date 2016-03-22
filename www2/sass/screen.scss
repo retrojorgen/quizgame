@@ -33,7 +33,7 @@ body {
 	
 }
 
-button {
+button, input {
 	font-family: "FR73PixelW00-Regular";
 }
 
@@ -235,6 +235,18 @@ button {
 	}
 }
 
+.highscore-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top: 162px solid transparent;
+    width: 100%;
+    overflow-y: scroll;
+    padding: 0 30px 30px 30px;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
 .inputbox {
 	position: absolute !important;
 	display: none;
@@ -261,11 +273,10 @@ button {
 		text-transform: uppercase;
 		border-bottom: 1px solid #efefd5;
 		margin-bottom: 20px;
-		font-family: "Pixel";
 		text-align: center;
 		color: #efefd5;
 		outline: none;
-		font-size: 30px;
+		font-size: 16px;
 	}
 	.button-container {
 		text-align: center;

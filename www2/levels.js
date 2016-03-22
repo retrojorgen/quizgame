@@ -1,9 +1,10 @@
 var Levels = [
 	{
+		"levelnumber": 1,
 		"kicker": "1960-1975",
-		"levelname": "1. generasjon - Ping pong",
+		"levelname": "1. generasjon - Odyssey, Pong",
 		"timeToBeatLevel": 60,
-		"correctAnswersToProceed": 1,
+		"correctAnswersToProceed": 5,
 		"questions": 
 		[
 			{
@@ -71,11 +72,11 @@ var Levels = [
 		]
 	},
 	{
-
+		"levelnumber": 2,
 		"kicker": "1976-1983",
-		"levelname": "2. generasjon - Gullalderen",
+		"levelname": "2. generasjon - Atari 2600, Intellivision, Colecovision, Vectrex",
 		"timeToBeatLevel": 60,
-		"correctAnswersToProceed": 1,
+		"correctAnswersToProceed": 5,
 		"questions": 
 		[
 			{
@@ -142,11 +143,11 @@ var Levels = [
 		]
 	},
 	{
-
+		"levelnumber": 3,
 		"kicker": "1983-1987",
-		"levelname": "3. generasjon - Nintendoens seiersdans",
+		"levelname": "3. generasjon - Nintendo Entertainment System, Sega Master System, Atari 7800",
 		"timeToBeatLevel": 60,
-		"correctAnswersToProceed": 1,
+		"correctAnswersToProceed": 5,
 		"questions": 
 		[
 			{
@@ -213,27 +214,82 @@ var Levels = [
 		]
 	},
 	{
-
+		"levelnumber": 5,
 		"kicker": "1987-1999",
-		"levelname": "4. generasjon - 16 bit",
+		"levelname": "4. generasjon - Super Nintendo, Mega Drive, TurboGrafx 16",
 		"timeToBeatLevel": 60,
-		"correctAnswersToProceed": 1,
+		"correctAnswersToProceed": 5,
 		"questions": 
 		[
 			{
-				question: "Når gikk Super Nintendo ut av produksjon?",
-				alternatives: ["1997","1998","1999"],
+				question: "I Super Mario world kan man fly når man plukker opp..",
+				alternatives: ["ei fjær","et blad","en kappe"],
+				type: "single",
+				answer: 1
+			},
+			{
+				question: "Sega Mega Drive sin maskot var",
+				alternatives: ["Alex Kidd","Opa Opa","Sonic the Hedgehog"],
 				type: "single",
 				answer: 3
+			},
+			{
+				question: "I 1994 kom det et tilbehør som lot deg spille Game Boy på super nintendo. det het..",
+				alternatives: ["Super Game Boy","Game Boy console","Game Boy ultra"],
+				type: "single",
+				answer: 1
+			},
+			{
+				question: "Hva gjør koden ABACABB?",
+				alternatives: ["Sender deg til stjerneverden i Super Mario World","Unlocker blod i Mortal Kombat","Gir spillerne i NBA Jam store hoder"],
+				type: "single",
+				answer: 2
+			},
+			{
+				question: "Sagat, Ken, og Guile er karakterer i dette spillet",
+				alternatives: ["Street Fighter 2","Mortal Kombat","Final Fight"],
+				type: "single",
+				answer: 1
+			},
+			{
+				question: "Hva er det ekte navnet til Sonics kompis Tails?",
+				alternatives: ["Miles Davis","Miles Manuel","Miles Prower"],
+				type: "single",
+				answer: 3
+			},
+			{
+				question: "I dette spillet kaster du et rødt skjell på dine fiender",
+				alternatives: ["Probotector","Super Mario Kart","Super Adventure Island"],
+				type: "single",
+				answer: 2
+			},
+			{
+				question: "Super Mario All Stars inkluderte et spill som få her i Norge hadde testet før ..",
+				alternatives: ["Super Mario Bros 4","The Lost Levels","Super Wario"],
+				type: "single",
+				answer: 2
+			},
+			{
+				question: "I starten av Zelda: A link to the past - bor Link hos sin",
+				alternatives: ["Bestemor","Grandtante","Onkel"],
+				type: "single",
+				answer: 3
+			},
+			{
+				question: "Fargen på drakten til Samus Aran i Super Metroid er",
+				alternatives: ["Grønn og rød","oransje og rød","Oransje og gul"],
+				type: "single",
+				answer: 2
 			}
+
 		]
 	},
 	{
-
+		"levelnumber": 6,
 		"kicker": "1993-2001",
-		"levelname": "5. generasjon - Playstation era",
+		"levelname": "5. generasjon - Playstation, Nintendo 64",
 		"timeToBeatLevel": 60,
-		"correctAnswersToProceed": 1,
+		"correctAnswersToProceed": 5,
 		"questions": 
 		[
 			{
@@ -241,7 +297,62 @@ var Levels = [
 				alternatives: ["64","42","32"],
 				type: "single",
 				answer: 3
+			},
+			{
+				question: "Teknologien som definerte den femte generasjonen var",
+				alternatives: ["Virtual reality","digital lyd","3D"],
+				type: "single",
+				answer: 3
+			},
+			{
+				question: "De fleste konsollene i denne generasjonen hadde så mange bit",
+				alternatives: ["128 eller 64","32 eller 64","128 eller 256"],
+				type: "single",
+				answer: 2
+			},
+			{
+				question: "Atari sin konsoll i denne generasjonen så ut som et romskip og het",
+				alternatives: ["Tiger","Jaguar","Leopard"],
+				type: "single",
+				answer: 2
+			},
+			{
+				question: "Fornavnet på Playstation sin første maskot var ***** Bandicoot",
+				alternatives: ["Crash","Kill","Cart"],
+				type: "single",
+				answer: 1
+			},
+			{
+				question: "Denne serien fikk aldri et spill på Nintendo 64",
+				alternatives: ["Super Mario","Zelda","Metroid"],
+				type: "single",
+				answer: 3
+			},
+			{
+				question: "Denne karakteren var ikke med i originale Super Smash Bros",
+				alternatives: ["Bowser","Donkey Kong","Jigglypuff"],
+				type: "single",
+				answer: 1
+			},
+			{
+				question: "Det ble oppstyr da dette spillet flyttet til Sony Playstation",
+				alternatives: ["Super Mario Kart","Final Fantasy 7","Street Fighter 2"],
+				type: "single",
+				answer: 2
+			},
+			{
+				question: "Det mest populære førstepersons-skytespillet i denne konsollgenerasjonen var",
+				alternatives: ["Goldeneye 64","Dark Forces","Metal Gear Solid"],
+				type: "single",
+				answer: 1
+			},
+			{
+				question: "Fransk spill med en artig skrue i hovedrollen",
+				alternatives: ["Rayman","Spyro","Parappa the Rappa"],
+				type: "single",
+				answer: 1
 			}
+
 		]
 	}
 ]

@@ -1,8 +1,8 @@
 var startTheApp = function () {
-
+	Levels.reverse();
 	var selectScreen = function (showScreen, hideScreen, callback) {
 		if(hideScreen) {
-			console.log('here');
+			
 			TweenMax.to(hideScreen, 0.5, {opacity: 0, ease: Power4.easeOut, onComplete: function () {
 				hideScreen.hide();
 				showScreen.show();
@@ -13,7 +13,7 @@ var startTheApp = function () {
 			}});
 		} else {
 			showScreen.show();
-			console.log('here');
+			
 			TweenMax.to(showScreen, 0.5, {opacity: 1, ease: Power4.easeOut});
 			showScreen.find('.stagger').attr("style", "");
 			TweenMax.staggerFrom(showScreen.find('.stagger'), 2, {scale: 0.7, opacity: 0, delay: 0.5, ease: Elastic.easeOut}, 0.2);
@@ -22,7 +22,8 @@ var startTheApp = function () {
 	}
 
 	var prependBackgroundAnimation = function (container, level) {
-		console.log('adding background', level, container);
+		console.log('legger til bakgrunn 2: ', container, level);
+		
 		container.find(".level-background").remove();
 		var levelBackground = $("<div>").addClass("level-background level-" + level + "");
 		var character = $("<div>").addClass("character");
@@ -56,7 +57,7 @@ var startTheApp = function () {
 		var highScoresArray = [];
 		window.nadb.list('retrospillmessen-retroquiz', {}, function(results) {
 			_.each(results.data, function (document) {
-				console.log(document);
+				
 				if(highScores[document.document.user]) {
 					if(highScores[document.document.user].points < document.document.points) highScores[document.document.user].points = document.document.points;
 				} else {
@@ -68,7 +69,7 @@ var startTheApp = function () {
 			});
 			
 			_.each(highScores, function (userAndScore) {
-				console.log(highScoresArray);
+				
 				highScoresArray.push(userAndScore);
 			});
 			highScoreArray = _.sortBy(highScoresArray, 'points');
@@ -173,8 +174,8 @@ var startTheApp = function () {
 		};
 
 		var animatePoint = function () {
-			console.log("animerer");
-			console.log(currentGameData.correctContainerCount);
+			
+			
 			TweenMax.to(currentGameData.correctContainerCount, 0.25, {x: -9, y: -10, scale: 3.3, ease: Bounce.easeInOut, onComplete: function () {
 				TweenMax.to(currentGameData.correctContainerCount, 0.25, {x: 0, y:0, scale: 1, ease: Linear.easeNone});
 			}});
@@ -242,7 +243,7 @@ var startTheApp = function () {
 
 					currentGameData.correctAnswersInCurrentLevel++;
 					currentGameData.correctContainerCount.text(currentGameData.correctAnswersInCurrentLevel);
-					console.log('riktige svar: ', currentGameData.correctAnswersInCurrentLevel);
+					
 
 					if(Levels[currentGameData.level].questions[currentGameData.question].type == "single") {
 						currentGameData.points += 100;
@@ -266,17 +267,17 @@ var startTheApp = function () {
 					},500);
 				}
 
-				console.log('sjekker svar: ', currentGameData.correctAnswersInCurrentLevel, Levels[currentGameData.level].correctAnswersToProceed);
+				
 				if(currentGameData.correctAnswersInCurrentLevel >= Levels[currentGameData.level].correctAnswersToProceed) {
-					console.log('prøver å komme til neste bane');
+					
 					nextLevel();
 				} else {
 					if(currentGameData.gameStatus) {
-						console.log('prøver å laste neste spørsmål');
+						
 						currentGameData.question++;
 						drawQuestion();
 					} else {
-						console.log('no clue', currentGameData.gameStatus);	
+						
 					}
 					
 				}
@@ -318,7 +319,9 @@ var startTheApp = function () {
 			TweenMax.to(currentGameData.janStandard, 1, {y: 50, ease: Bounce.easeOut});
 			gameSettings.levelScreen.append(titleField, countDownContainer, correctContainer, timerAnimated, currentGameData.janStandard);
 
-			prependBackgroundAnimation(gameSettings.levelScreen, currentGameData.level+1);
+			console.log('oppdaterer kart ', level, gameSettings.levelScreen, level.levelnumber);
+			prependBackgroundAnimation(gameSettings.levelScreen, level.levelnumber);
+
 
 			drawQuestion();
 
@@ -342,16 +345,18 @@ var startTheApp = function () {
 		};
 
 		var nextLevel = function () {
-			console.log("next-level kalt");
+			
 
 			clearTimeout(currentGameData.mainTimeout);
 			clearTimeout(currentGameData.countDownInterval);
 			var calculatedBonus = currentGameData.levelCounter * 4;
 			currentGameData.points += calculatedBonus;
 			if(Levels[currentGameData.level + 1]) {
+
 				currentGameData.level++;
+				console.log('updating levelnumber', currentGameData.level);
 				currentGameData.question = 0;
-				console.log("sending data: ", currentGameData.level, calculatedBonus, currentGameData.points, currentGameData.levelCounter, (currentGameData.levelCounter*10));
+				
 				updateStatusScreen(currentGameData.level, calculatedBonus, currentGameData.points);
 				selectScreen(gameSettings.statusScreen, gameSettings.levelScreen);
 			}
@@ -380,11 +385,11 @@ var startTheApp = function () {
 			}
 
 			window.nadb.insert('retrospillmessen-retroquiz', {'document': {'points': currentGameData.points, 'user': gameSettings.username, 'email': gameSettings.email, 'timestamp': new Date()}});
-			console.log('setter inn resultat', {'document': {'points': currentGameData.points, 'user': gameSettings.username, 'email': gameSettings.email, 'timestamp': new Date()}});
+			
 
 			gameSettings.endGameContainer.find(".screen-number-big").text(currentGameData.points);
 			
-			console.log("avslutter spill");
+			
 			currentGameData.gameStatus = false;
 			clearTimeout(currentGameData.countDownInterval);
 			
@@ -392,7 +397,9 @@ var startTheApp = function () {
 
 		var updateStatusScreen = function (levelNumber, bonus, score) {
 
-			prependBackgroundAnimation(gameSettings.statusScreen, levelNumber+1);
+			
+			console.log('oppdaterer level status sckjerm', levelNumber, bonus, score);
+			prependBackgroundAnimation(gameSettings.statusScreen, Levels[levelNumber].levelnumber);
 
 			gameSettings.statusScreenTitle.text(Levels[levelNumber].levelname);
 			gameSettings.statusScreenScoreToBeat.text(Levels[levelNumber].correctAnswersToProceed)
@@ -428,8 +435,8 @@ var startTheApp = function () {
 
 		// run on first init
 		var init = function () {
-			console.log('kjører init');
-			var currentGameData = resetGameData();
+			console.log('calling init');
+			window.currentGameData = resetGameData();
 
 			gameSettings.livesUpdate.css("width", currentGameData.lives * 29);
 			
@@ -439,11 +446,12 @@ var startTheApp = function () {
 			selectScreen(gameSettings.statusScreen, gameSettings.mainScreen);
 			gameSettings.bottomContainer.show();
 			updateStatusScreen(currentGameData.level, 0, currentGameData.points);
-			console.log('oppdaterer statusskjerm ', currentGameData.level, 0, currentGameData.points);
+			
 
 			var startLevelTouch = new Hammer(gameSettings.startLevelButton[0]);
 
 			startLevelTouch.on('tap', function () {
+				console.log('starting level: ', Levels[currentGameData.level], currentGameData.level);
 				loadLevel(Levels[currentGameData.level], currentGameData.level);
 			});
 		}
@@ -473,7 +481,7 @@ var startTheApp = function () {
 	}
 
 
-	var gameSettings = {
+	window.gameSettings = {
 		lives: 3,
 		highScore: 2000,
 		width: window.innerWidth,
@@ -536,7 +544,7 @@ var startTheApp = function () {
 
 	}
 
-	var currentGameData = resetGameData();
+	window.currentGameData = resetGameData();
 
 
 	gameSettings.usernameForm.submit(function (event) {
