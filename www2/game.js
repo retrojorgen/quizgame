@@ -325,7 +325,7 @@ var startTheApp = function () {
 
 			drawQuestion();
 
-			TweenMax.to(gameSettings.bottomContainer, 0.5, {y: 0, ease: Bounce.easeInOut});
+			toggleBottomContainer(true);
 
 
 			selectScreen(gameSettings.levelScreen, gameSettings.statusScreen);
@@ -344,6 +344,14 @@ var startTheApp = function () {
 
 		};
 
+		var toggleBottomContainer = function (toggle) {
+			if(toggle) {
+				TweenMax.to(gameSettings.bottomContainer, 0.5, {y: 0, ease: Bounce.easeInOut});
+			} else {
+				TweenMax.to(gameSettings.bottomContainer, 0.5, {y: "100%", ease: Bounce.easeInOut});
+			}
+		};
+
 		var nextLevel = function () {
 			
 
@@ -356,10 +364,30 @@ var startTheApp = function () {
 				currentGameData.level++;
 				console.log('updating levelnumber', currentGameData.level);
 				currentGameData.question = 0;
+				toggleBottomContainer(false);
 				
-				updateStatusScreen(currentGameData.level, calculatedBonus, currentGameData.points);
-				selectScreen(gameSettings.statusScreen, gameSettings.levelScreen);
+				showJanStatus(gameSettings.levelScreen, gameSettings.statusScreen, function () {
+					updateStatusScreen(currentGameData.level, currentGameData.levelCounter * 4, currentGameData.points);
+				});
 			}
+		};
+
+		var showJanStatus = function (fromScreen, toScreen, callback) {
+			var statusMessage = "";
+			if(Levels[currentGameData.level-1]) prependBackgroundAnimation(gameSettings.yayContainer, Levels[currentGameData.level-1].levelnumber);
+			if(currentGameData.level-1 < 0) statusMessage = "Slår du meg i retrokunskap? Ta testen da vel. Vi begynner med de nyere generasjonene!";
+			if(currentGameData.level-1 == 0) statusMessage = "Du kan kanskje mye om Nintendo 64 og Playstation, men hvor god er du på 16-bit?";
+			if(currentGameData.level-1 == 1) statusMessage = "Så du har spilt Super Mario World før hva spirrevipp? Hva med litt Sega Master System?";
+			if(currentGameData.level-1 == 2) statusMessage = "Ble Nintendo 8-bit for lett for deg tjommis? Prøv deg på litt saftige megapixler istedenfor da vel";
+			if(currentGameData.level-1 == 3) statusMessage = "Nesten der, men den vanskelige første generasjonen gjenstår. Pong for alle penga! Fikser du biffen?";
+			gameSettings.yayContainerTitle.text(statusMessage);
+			console.log(statusMessage);
+			selectScreen(gameSettings.yayContainer, fromScreen);
+			setTimeout(function () {
+				callback();
+				selectScreen(toScreen, gameSettings.yayContainer);
+
+			}, 6000);
 		};
 
 		// show end screen with ok button
@@ -368,7 +396,7 @@ var startTheApp = function () {
 			clearTimeout(currentGameData.mainTimeout);
 			selectScreen(gameSettings.endGameContainer, gameSettings.levelScreen);
 		
-
+			toggleBottomContainer(false);
 			gameSettings.endGameContainer.find(".screen-header").text("Game over!");
 			
 			if(currentGameData.lives <= 0) {
@@ -443,7 +471,10 @@ var startTheApp = function () {
 			currentGameData.level = 0;
 			currentGameData.question = 0;
 
-			selectScreen(gameSettings.statusScreen, gameSettings.mainScreen);
+			showJanStatus(gameSettings.mainScreen, gameSettings.statusScreen, function () {
+				updateStatusScreen(currentGameData.level, 0, currentGameData.points);
+			});
+
 			gameSettings.bottomContainer.show();
 			updateStatusScreen(currentGameData.level, 0, currentGameData.points);
 			
@@ -452,6 +483,7 @@ var startTheApp = function () {
 
 			startLevelTouch.on('tap', function () {
 				console.log('starting level: ', Levels[currentGameData.level], currentGameData.level);
+				toggleBottomContainer(true);
 				loadLevel(Levels[currentGameData.level], currentGameData.level);
 			});
 		}
@@ -523,6 +555,8 @@ var startTheApp = function () {
 		highScoreContainer : $("#highScoreContainer"),
 		highScoreScore : $("#highscore-score"),
 		highScoreRank : $("#highscore-rank"),
+		yayContainer : $("#yayContainer"),
+		yayContainerTitle : $("#yaycontainer-title")
 	}
 
 	if(localStorage.username) {

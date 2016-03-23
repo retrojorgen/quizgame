@@ -96,6 +96,10 @@ button, input {
 		font-size: 25px;
 		line-height: 28px;
 		margin-bottom: 10px;
+		&.medium-size {
+			font-size: 20px;
+			line-height: 28px;
+		}
 	}
 
 	.screen-description {
@@ -130,6 +134,7 @@ button, input {
 		left: 0;
 		width: 100%;
 		text-align: center;
+		z-index: 1000;
 		img {
 			max-width: 60%;
 			margin: 0 auto;
@@ -508,11 +513,12 @@ button, input {
 		.alternative {
 			padding: 10px;
 			padding-left: 65px;
-			margin: 15px 0 15px 0;
+			margin: 10px 0 10px 0;
 			color: white;
 			font-size: 14px;
 			text-align: left;
 			letter-spacing: 1;
+			line-height: 20px;
 			background-color: transparent;
 			@include text-shadow(rgb(0,0,0) 1px 1px 0);
 			@include transition(0.1s);
